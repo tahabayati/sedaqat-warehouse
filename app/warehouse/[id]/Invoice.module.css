@@ -1,0 +1,44 @@
+.wrapper {
+   padding: 2rem;
+   direction: rtl;
+   font-family: sans-serif;
+ }
+ 
+ .note {
+   margin-bottom: 0.8rem;
+   color: #555;
+ }
+ 
+ .table {
+   width: 100%;
+   border-collapse: collapse;
+   margin-top: 0.5rem;
+ }
+ 
+ .table th,
+ .table td {
+   border: 1px solid #aaa;
+   padding: 4px;
+   text-align: center;
+ }
+ 
+ .doneRow {
+   background: #d4ffd4;
+ }
+ 
+ .actions {
+   margin-top: 1rem;
+ }
+ 
+ .btn {
+   padding: 0.35rem 0.9rem;
+   cursor: pointer;
+   border: none;
+   border-radius: 4px;
+   margin-left: 0.5rem;
+ }
+ 
+ .ok  { background: #006400; color: #fff; }
+ .skip{ background: #ffa500; color: #000; }
+ .dec { background: #e91e63; color: #fff; }
+ 

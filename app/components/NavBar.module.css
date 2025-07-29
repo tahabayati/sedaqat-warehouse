@@ -1,0 +1,23 @@
+.nav {
+   display: flex;
+   gap: 1rem;
+   background: #222;
+   padding: 0.6rem 1rem;
+   direction: rtl;
+ }
+ 
+ .link {
+   color: #eee;
+   text-decoration: none;
+   font-size: 0.95rem;
+ }
+ 
+ .link:hover {
+   color: #fff;
+ }
+ 
+ .active {
+   font-weight: bold;
+   color: #00eaff;
+ }
+ 
