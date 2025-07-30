@@ -1,64 +1,37 @@
 'use client';
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import styles from './Warehouse.module.css';       // CSS Module
+import styles from './Warehouse.module.css';
 
-export default function WarehouseHome() {
-  const [list, setList] = useState([]);
-  const [loading, setLoading] = useState(true);
+export default function WarehouseListPage() {
+  const [invoices, setInvoices] = useState([]);
   const router = useRouter();
 
-  // دریافت فاکتورهای در انتظار
   useEffect(() => {
-    const load = async () => {
-      const res = await fetch('/api/warehouse/invoices?status=pending');
-      const data = await res.json();
-      setList(data.invoices || []);
-      setLoading(false);
-    };
-    load();
+    fetch('/api/warehouse/invoices?status=pending', { cache: 'no-store' })
+      .then(res => res.json())
+      .then(data => setInvoices(data.invoices || []));
   }, []);
 
-  const startInvoice = async (id) => {
-    await fetch(`/api/warehouse/invoices/${id}/start`, { method: 'PATCH' });
-    router.push(`/warehouse/${id}`); // رفتن به صفحهٔ جزئیات
-  };
-
   return (
-    <div className={styles.wrapper}>
-      <h2>فاکتورهای در انتظار</h2>
-
-      {loading ? (
-        <p>در حال بارگذاری…</p>
-      ) : list.length === 0 ? (
-        <p>هیچ فاکتور در انتظاری وجود ندارد ✅</p>
-      ) : (
-        <table className={styles.table}>
-          <thead>
-            <tr>
-              <th>شناسه</th>
-              <th>تاریخ ایجاد</th>
-              <th>اقدام</th>
-            </tr>
-          </thead>
-          <tbody>
-            {list.map((inv) => (
-              <tr key={inv._id}>
-                <td>{inv._id}</td>
-                <td>{inv.createdAt}</td>
-                <td>
-                  <button
-                    className={styles.startBtn}
-                    onClick={() => startInvoice(inv._id)}
-                  >
-                    شروع
-                  </button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      )}
+    <div className={styles.container}>
+      <h1 className={styles.title}>فاکتورهای جدید</h1>
+      <div className={styles.list}>
+        {invoices.map(inv => (
+          <div key={inv._id} className={styles.card}>
+            <div className={styles.cardInfo}>
+              <span>شناسه: {inv._id}</span>
+              <span>تاریخ: {inv.createdAt}</span>
+            </div>
+            <button
+              className={styles.startBtn}
+              onClick={() => router.push(`/warehouse/${inv._id}`)}
+            >
+              شروع
+            </button>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }

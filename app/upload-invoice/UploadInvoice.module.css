@@ -9,11 +9,14 @@
    width: 100%;
    min-height: calc(100vh - 96px); /* full height minus ~nav pill height */
    background-color: white;
+
+   font-family: 'yekanbakh';
  }
  
  .title {
-   font-family: 'yekanbakh', sans-serif;
+   font-family: 'yekanbakh-black', sans-serif;
    font-size: 1.5rem;
+   font-weight: bolder;
    color: #f15922;
    text-align: center;
  }
@@ -38,6 +41,9 @@
    width: 100%;
    overflow-x: auto;
    background-color: white;
+   border-radius: 8px;
+   border: 1px solid #000000;
+   max-width: 1200px;
  }
  
  .table {
@@ -46,6 +52,8 @@
    background: #fff;
    border-radius: 8px;
    overflow: hidden;
+ 
+
  }
  
  .table th,
@@ -61,7 +69,18 @@
    color: #fff;
    font-weight: bold;
  }
- 
+ .nameInput {
+  width: 100%;
+  max-width: 300px;
+  padding: 10px 12px;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  font-family: 'yekanbakh';
+  font-size: 1rem;
+  margin-top: 12px;
+}
+.nameInput:focus { outline: none; border-color: #f15922; }
+
  .button {
    margin-top: 16px;
    padding: 12px 24px;
@@ -99,30 +118,22 @@
   z-index: 2000;
 }
 
-.lottieWrapper {
-  background: #fff;
-  padding: 32px 48px;
-  border-radius: 24px;
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25);
-  border: 2px solid #000000;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+ /* اسپینر */
+.loaderWrapper {
+  margin-top: 24px;
 }
-
 .loader {
   width: 48px;
   height: 48px;
-  border: 3px solid #FFF;
+  border: 3px solid #fff;
   border-radius: 50%;
   display: inline-block;
   position: relative;
   box-sizing: border-box;
   animation: rotation 1s linear infinite;
 }
-
 .loader::after {
-  content: '';  
+  content: '';
   box-sizing: border-box;
   position: absolute;
   left: 50%;
@@ -132,16 +143,26 @@
   height: 40px;
   border-radius: 50%;
   border: 3px solid;
-  border-color: #FF3D00 transparent;
+  border-color: #ff3d00 transparent;
+}
+@keyframes rotation {
+  0%   { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 
-@keyframes rotation {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
+/* لایهٔ لاتی */
+.popupOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
 }
- 
- 
+.lottieWrapper {
+  background: #fff;
+  padding: 24px;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}

@@ -1,31 +1,18 @@
 'use client';
-
 import { useParams, useRouter } from 'next/navigation';
 import { useEffect, useState, useCallback } from 'react';
 import styles from './Invoice.module.css';
 
-/**
- * صفحهٔ پردازش فاکتور برای انباردار
- * 1. فاکتور in‑progress را می‌گیرد.
- * 2. جدول آیتم‌ها را نمایش می‌دهد.
- * 3. رویداد Paste را برای اسکن بارکد می‌شنود.
- * 4. امکان کم‌کردن دستی یک عدد، پایان و Skip دارد.
- */
 export default function InvoiceProcess() {
-  /* ---------------- params & router ---------------- */
-  const { id } = useParams();          // هشدار Promise حل شد
+  const { id } = useParams();
   const router = useRouter();
 
-  /* ---------------- state ---------------- */
-  const [inv, setInv]   = useState(null);
+  const [inv, setInv] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  /* ---------------- fetch invoice ---------------- */
   const load = useCallback(async () => {
-    if (!id) return;                   // در اولین رندر ممکن است id undefined باشد
-    const res  = await fetch(`/api/warehouse/invoices/${id}`, {
-      cache: 'no-store',              // کش را بی‌اثر می‌کنیم
-    });
+    if (!id) return;
+    const res  = await fetch(`/api/warehouse/invoices/${id}`, { cache: 'no-store' });
     const data = await res.json();
     setInv(data.invoice);
     setLoading(false);
@@ -33,36 +20,36 @@ export default function InvoiceProcess() {
 
   useEffect(() => { load(); }, [load]);
 
-  /* ---------------- paste listener ---------------- */
-  useEffect(() => {
+  /* --- barcode handler --- */
+  const handleBarcode = async (e) => {
+    const code = e.target.value.trim();
+    if (code.length < 13) return;     // wait till scanner finishes
+    e.target.value = '';              // clear for next scan
+
+    if (!/^[1][0-9]{12}$/.test(code)) {
+      alert('بارکد نامعتبر است');
+      return;
+    }
     if (!inv) return;
 
-    const onPaste = async (e) => {
-      const text = (e.clipboardData || window.clipboardData)
-        .getData('text')
-        .trim();
-      if (!/^[1][0-9]{12}$/.test(text)) return;           // بارکد معتبر؟
-      const item = inv.items.find((i) => i.barcode === text);
-      if (!item || item.collected >= item.quantity) return;
+    const item = inv.items.find((i) => i.barcode === code);
+    if (!item)          return alert('این بارکد در فاکتور نیست');
+    if (item.collected >= item.quantity)
+      return alert('تعداد این کالا تکمیل است');
 
-      await fetch(`/api/warehouse/invoices/${id}/update-line`, {
-        method: 'PATCH',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ barcode: text, delta: 1 }),
-      });
-      load(); // بروزرسانی مجدد
-    };
+    await fetch(`/api/warehouse/invoices/${id}/update-line`, {
+      method: 'PATCH',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ barcode: code, delta: 1 }),
+    });
+    load();
+  };
 
-    window.addEventListener('paste', onPaste);
-    return () => window.removeEventListener('paste', onPaste);
-  }, [inv, id, load]);
-
-  /* ---------------- decrease button ---------------- */
+  /* --- decrease button --- */
   const decrease = async (barcode) => {
     const item = inv.items.find((i) => i.barcode === barcode);
     if (!item || item.collected === 0) return;
-    const ok = confirm('یک عدد کم شود؟');
-    if (!ok) return;
+    if (!confirm('یک عدد کم شود؟')) return;
     await fetch(`/api/warehouse/invoices/${id}/update-line`, {
       method: 'PATCH',
       headers: { 'Content-Type': 'application/json' },
@@ -71,61 +58,66 @@ export default function InvoiceProcess() {
     load();
   };
 
-  /* ---------------- finish / skip ---------------- */
+  /* --- finish / skip --- */
   const finish = async (mode) => {
     const res = await fetch(`/api/warehouse/invoices/${id}/finish`, {
       method: 'PATCH',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ mode }),   // 'done' یا 'skipped'
+      body: JSON.stringify({ mode }),
     });
-    const body = await res.json();
     if (res.ok) router.push('/warehouse');
-    else alert(body.error || 'خطا');
+    else alert((await res.json()).error);
   };
 
-  /* ---------------- render ---------------- */
   if (loading) return <p className={styles.wrapper}>در حال بارگذاری…</p>;
   if (!inv)     return <p className={styles.wrapper}>فاکتور یافت نشد 🚫</p>;
 
   return (
     <div className={styles.wrapper}>
       <h2>فاکتور {id}</h2>
-      <p className={styles.note}>برای اسکن، بارکدها را با دستگاه بچسبانید.</p>
 
-      {/* جدول آیتم‌ها */}
+      {/* barcode textbox */}
+      <input
+        type="text"
+        className={styles.scanner}
+        placeholder="بارکد را اسکن یا تایپ کنید"
+        onChange={handleBarcode}
+        autoFocus
+      />
+
       <table className={styles.table}>
         <thead>
           <tr>
             <th>بارکد</th>
-            <th>نام کالا</th>
+            <th>نام</th>
             <th>مدل</th>
-            <th>جعبه</th>
-            <th>جمع‌آوری شده / کل</th>
+            <th>تعداد</th>
             <th>عملیات</th>
           </tr>
         </thead>
         <tbody>
           {inv.items.map((it) => (
-            <tr key={it.barcode} className={it.collected === it.quantity ? styles.doneRow : undefined}>
+            <tr key={it.barcode} className={it.collected === it.quantity ? styles.doneRow : ''}>
               <td>{it.barcode}</td>
               <td>{it.name}</td>
               <td>{it.model}</td>
-              <td>{it.box_num}</td>
+              <td>{it.collected} / {it.quantity}</td>
               <td>
-                {it.collected} / {it.quantity}
-              </td>
-              <td>
-                <button onClick={() => decrease(it.barcode)} className={`${styles.btn} ${styles.dec}`}>-۱</button>
+                <button
+                  className={`${styles.btn} ${styles.dec}`}
+                  onClick={() => decrease(it.barcode)}
+                >
+                  -۱
+                </button>
               </td>
             </tr>
           ))}
         </tbody>
       </table>
 
-      {/* دکمه‌های پایان / Skip */}
       <div className={styles.actions}>
-        <button onClick={() => finish('done')}    className={`${styles.btn} ${styles.ok}`}>اتمام</button>
-        <button onClick={() => finish('skipped')} className={`${styles.btn} ${styles.skip}`}>مشکلی نیست</button>
+        <button className={`${styles.btn} ${styles.ok}`}   onClick={() => finish('done')}>اتمام</button>
+        <button className={`${styles.btn} ${styles.skip}`} onClick={() => finish('skipped')}>مشکلی نیست</button>
       </div>
     </div>
   );

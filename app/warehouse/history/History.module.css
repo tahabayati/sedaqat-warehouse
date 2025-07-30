@@ -1,35 +1,59 @@
 .wrapper {
-   padding: 2rem;
-   direction: rtl;
-   font-family: sans-serif;
- }
- 
- .filters {
-   display: flex;
-   gap: 0.5rem;
-   margin-bottom: 1rem;
- }
- 
- .btn {
-   padding: 0.3rem 0.9rem;
-   cursor: pointer;
- }
- 
- .table {
-   width: 100%;
-   border-collapse: collapse;
- }
- 
- .table th,
- .table td {
-   border: 1px solid #aaa;
-   padding: 4px;
-   text-align: center;
- }
- 
- /* رنگ‌ها برای وضعیت‌های مختلف */
- .pending    { background: #fff1b8; }
- .in-progress{ background: #d0e7ff; }
- .done       { background: #d4ffd4; }
- .skipped    { background: #ffe0b3; }
- 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 16px;
+  gap: 16px;
+  width: 100%;
+  min-height: calc(100vh - 96px);
+}
+
+.title {
+  font-size: 1.5rem;
+  color: #f15922;
+  margin-bottom: 12px;
+}
+
+.filters {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 12px;
+}
+
+.btn-filter {
+  padding: 8px 16px;
+  background: #1a1423b5;
+  border: none;
+  border-radius: 8px;
+  color: #fff;
+  font-family: 'yekanbakh';
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.table {
+  width: 100%;
+  max-width: 500px;
+  border-collapse: collapse;
+}
+
+.table th,
+.table td {
+  border: 1px solid #e0e0e0;
+  padding: 8px;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.table th {
+  background: #f15922;
+  color: #fff;
+  font-weight: normal;
+}
+
+.pending { background: #fff9c4; }
+.in-progress { background: #bbdefb; }
+.done { background: #c8e6c9; }
+.skipped { background: #ffe0b2; }

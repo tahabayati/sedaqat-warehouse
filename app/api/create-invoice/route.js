@@ -9,8 +9,7 @@ export const dynamic = 'force-dynamic'; // ⬅️ از کش شدن جلوگیر
 export async function POST(req) {
   try {
     // بدنهٔ JSON را می‌خوانیم
-    const { items } = await req.json();
-
+    const { items, name = '' } = await req.json(); 
     // اعتبارسنجی ساده
     if (!items || !Array.isArray(items) || items.length === 0) {
       return NextResponse.json(
@@ -27,6 +26,7 @@ export async function POST(req) {
       createdAt: persianNow(), // زمان به‌صورت منطقهٔ تهران
       status: 'pending',
       items,
+      name,   
     });
 
     // پاسخ با شناسهٔ فاکتور
