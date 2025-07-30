@@ -1,14 +1,17 @@
+// components/NavBar.jsx
 'use client';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { FaBarcode } from "react-icons/fa6";
+import { TbFileInvoice } from 'react-icons/tb';
+import { LuWarehouse, LuHistory } from 'react-icons/lu';
 import styles from './NavBar.module.css';
 
 const links = [
-  { href: '/',                label: 'خانه' },
-  { href: '/barcode-generator', label: 'ساخت بارکد' },
-  { href: '/upload-invoice',  label: 'آپلود فاکتور' },
-  { href: '/warehouse',       label: 'فاکتورهای جدید' },
-  { href: '/warehouse/history', label: 'تاریخچه' },
+  { href: '/barcode-generator', icon: FaBarcode, label: 'بارکد' },
+  { href: '/upload-invoice',   icon: TbFileInvoice,    label: 'فاکتور' },
+  { href: '/warehouse',        icon: LuWarehouse,      label: 'انبار' },
+  { href: '/warehouse/history',icon: LuHistory,        label: 'تاریخچه' },
 ];
 
 export default function NavBar() {
@@ -16,15 +19,18 @@ export default function NavBar() {
 
   return (
     <nav className={styles.nav}>
-      {links.map((l) => (
+      {links.map(({ href, icon: Icon, label }) => (
         <Link
-          key={l.href}
-          href={l.href}
-          className={`${styles.link} ${
-            pathname === l.href ? styles.active : ''
-          }`}
+          key={href}
+          href={href}
+          className={
+            pathname === href
+              ? `${styles.link} ${styles.active}`
+              : styles.link
+          }
+          aria-label={label}
         >
-          {l.label}
+          <Icon size={24} />
         </Link>
       ))}
     </nav>

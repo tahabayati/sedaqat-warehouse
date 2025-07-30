@@ -9,7 +9,9 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "exceljs": "^4.4.0",
     "formidable": "^3.5.4",
+    "lottie-react": "^2.4.1",
     "moment-timezone": "^0.6.0",
     "mongoose": "^8.16.5",
     "next": "15.4.2",

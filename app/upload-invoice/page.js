@@ -1,6 +1,8 @@
 'use client';
 import { useState } from 'react';
-
+import Lottie from 'lottie-react';
+import successAnimation from '../../public/animations/success.json';
+import styles from './UploadInvoice.module.css';
 export default function UploadInvoice() {
   const [rows, setRows] = useState([]);
   const [saved, setSaved] = useState(false);
@@ -23,44 +25,66 @@ export default function UploadInvoice() {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ items: rows }),
     });
-    if (res.ok) setSaved(true);
+    if (res.ok) {
+      setSaved(true);
+      // After 1.5s show, reload to fresh upload
+      setTimeout(() => window.location.reload(), 1500);
+    }
   };
 
   return (
-    <div style={{ padding: '2rem' }}>
-      <h2>بارگذاری فاکتور اکسل</h2>
-      <input type="file" accept=".xls,.xlsx" onChange={handleFile} />
+    <div className={styles.container}>
+      <h2 className={styles.title}>بارگذاری فاکتور اکسل</h2>
+      <input
+        type="file"
+        accept=".xls,.xlsx"
+        onChange={handleFile}
+        className={styles.fileInput}
+      />
 
       {rows.length > 0 && (
         <>
-          <table border="1" cellPadding="6" style={{ marginTop: '2rem', width: '100%', direction: 'rtl' }}>
-            <thead>
-              <tr>
-                <th>بارکد</th>
-                <th>تعداد</th>
-                <th>نام کالا</th>
-                <th>مدل</th>
-                <th>شماره جعبه</th>
-              </tr>
-            </thead>
-            <tbody>
-              {rows.map((r) => (
-                <tr key={r.barcode}>
-                  <td>{r.barcode}</td>
-                  <td>{r.quantity}</td>
-                  <td>{r.name}</td>
-                  <td>{r.model}</td>
-                  <td>{r.box_num}</td>
+          <div className={styles.tableWrapper}>
+            <table className={styles.table}>
+              <thead>
+                <tr>
+                  <th>بارکد</th>
+                  <th>تعداد</th>
+                  <th>نام کالا</th>
+                  <th>مدل</th>
+                  <th>شماره جعبه</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {rows.map((r) => (
+                  <tr key={r.barcode}>
+                    <td>{r.barcode}</td>
+                    <td>{r.quantity}</td>
+                    <td>{r.name}</td>
+                    <td>{r.model}</td>
+                    <td>{r.box_num}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
 
-          <button onClick={createInvoice} style={{ marginTop: '1rem', padding: '0.6rem 1.2rem' }}>
+          <button onClick={createInvoice} className={styles.button}>
             ایجاد فاکتور
           </button>
-          {saved && <p style={{ color: 'green' }}>ذخیره شد ✅</p>}
         </>
+      )}
+
+      {saved && (
+        <div className={styles.popupOverlay}>
+          <div className={styles.lottieWrapper}>
+            <Lottie
+              animationData={successAnimation}
+              loop={false}
+              style={{ width: 150, height: 150 }}
+            />
+          </div>
+        </div>
       )}
     </div>
   );

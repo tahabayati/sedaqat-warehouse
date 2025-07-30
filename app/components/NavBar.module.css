@@ -1,23 +1,42 @@
+/* components/NavBar.module.css */
+
 .nav {
-   display: flex;
-   gap: 1rem;
-   background: #222;
-   padding: 0.6rem 1rem;
-   direction: rtl;
- }
- 
- .link {
-   color: #eee;
-   text-decoration: none;
-   font-size: 0.95rem;
- }
- 
- .link:hover {
-   color: #fff;
- }
- 
- .active {
-   font-weight: bold;
-   color: #00eaff;
- }
- 
+  position: fixed;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 32px);
+  max-width: 300px;
+  backdrop-filter: blur(10px);
+  display: flex;
+  justify-content: space-around;
+  padding: 8px 0;
+  border-radius: 24px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  font-family: 'yekanbakh';
+  z-index: 1000;
+  background: rgba(249, 249, 249, 0.843);
+  backdrop-filter: blur(12px);
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  z-index: 50;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #fff;
+}
+
+/* Keep the icon links styled the same */
+.link {
+  color: #1e1c1c;
+  text-decoration: none;
+  font-size: 0.875rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 4px;
+}
+
+.active {
+  color: #f15922;
+  font-weight: bold;
+}
