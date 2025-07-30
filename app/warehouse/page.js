@@ -20,7 +20,7 @@ export default function WarehouseHome() {
   }, []);
 
   const startInvoice = async (id) => {
-    await fetch(`/api/warehouse/invoice/${id}/start`, { method: 'PATCH' });
+    await fetch(`/api/warehouse/invoices/${id}/start`, { method: 'PATCH' });
     router.push(`/warehouse/${id}`); // رفتن به صفحهٔ جزئیات
   };
 

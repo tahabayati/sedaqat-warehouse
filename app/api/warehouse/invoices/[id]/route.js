@@ -1,38 +1,24 @@
+// app/api/warehouse/invoices/[id]/route.js
 import { NextResponse } from 'next/server';
 import dbConnect from '../../../../../lib/mongodb';
 import Invoice from '../../../../../lib/models/Invoice';
-import moment from 'moment-timezone';
+import mongoose from 'mongoose';
 
 export const dynamic = 'force-dynamic'; // disable cache
 
-// GET /api/warehouse/invoices?status=pending|in-progress|done|skipped|all
-//                            &from=1404-05-01&to=1404-05-31
-export async function GET(req) {
+export async function GET(req, context) {
+  const { params } = context;
+  const id = (await params).id.trim();
+
+  // اعتبار ID
+  if (!mongoose.Types.ObjectId.isValid(id))
+    return NextResponse.json({ error: 'Bad ID' }, { status: 400 });
+
   await dbConnect();
 
-  const { searchParams } = req.nextUrl;
-  const status = searchParams.get('status') || 'all';
-  const from   = searchParams.get('from'); // 'YYYY-MM-DD' (هجری شمسی به میلادی تبدیل نشده)
-  const to     = searchParams.get('to');
+  const inv = await Invoice.findById(id).lean();
+  if (!inv)
+    return NextResponse.json({ error: 'not found' }, { status: 404 });
 
-  const query = {};
-  if (status !== 'all') query.status = status;
-
-  // فیلتر تاریخ با استفاده از فیلد createdAt (که رشته است)
-  if (from || to) {
-    // تاریخ‌ها را به عدد قابل مقایسه تبدیل می‌کنیم (مثلاً 1404/05/07 → 14040507)
-    const asNum = (s) => Number(s.replaceAll('/', '').slice(0, 8));
-    if (from) query.$expr = { $gte: [asNum('$createdAt'), asNum(from.replaceAll('-', '/'))] };
-    if (to) {
-      const cond = { $lte: [asNum('$createdAt'), asNum(to.replaceAll('-', '/'))] };
-      query.$expr = query.$expr ? { $and: [query.$expr, cond] } : cond;
-    }
-  }
-
-  const invoices = await Invoice.find(query)
-    .select('_id createdAt status items')
-    .sort({ createdAt: -1 })
-    .lean();
-
-  return NextResponse.json({ invoices });
+  return NextResponse.json({ invoice: inv });
 }

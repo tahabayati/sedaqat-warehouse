@@ -3,26 +3,24 @@ import dbConnect from '../../../../../../lib/mongodb';
 import Invoice from '../../../../../../lib/models/Invoice';
 import mongoose from 'mongoose';
 
-export async function PATCH(_, { params }) {
+export async function PATCH(req, context) {
+  const { params } = context;
+  const rawId = (await params).id.trim();   // ⬅️ await
+
   await dbConnect();
 
-  const rawId = (params.id || '').trim();
-  let query = { _id: rawId };
+  // فقط ObjectId معتبر را می‌پذیریم
+  if (!mongoose.Types.ObjectId.isValid(rawId))
+    return NextResponse.json({ error: 'Bad ID' }, { status: 400 });
 
-  // اگر ObjectId معتبر است، دو حالت را با $or چک می‌کنیم
-  if (mongoose.Types.ObjectId.isValid(rawId)) {
-    query = { $or: [{ _id: rawId }, { _id: new mongoose.Types.ObjectId(rawId) }] };
-  }
-
-  const updated = await Invoice.findOneAndUpdate(
-    query,
+  const inv = await Invoice.findByIdAndUpdate(
+    rawId,
     { status: 'in-progress' },
     { new: true }
   ).lean();
 
-  if (!updated) {
-    return NextResponse.json({ error: 'Invoice not found' }, { status: 404 });
-  }
+  if (!inv)
+    return NextResponse.json({ error: 'not found' }, { status: 404 });
 
   return NextResponse.json({ ok: true });
 }

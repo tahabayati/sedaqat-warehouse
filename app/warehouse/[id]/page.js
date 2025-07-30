@@ -23,7 +23,7 @@ export default function InvoiceProcess() {
   /* ---------------- fetch invoice ---------------- */
   const load = useCallback(async () => {
     if (!id) return;                   // در اولین رندر ممکن است id undefined باشد
-    const res  = await fetch(`/api/warehouse/invoice/${id}`, {
+    const res  = await fetch(`/api/warehouse/invoices/${id}`, {
       cache: 'no-store',              // کش را بی‌اثر می‌کنیم
     });
     const data = await res.json();
@@ -45,7 +45,7 @@ export default function InvoiceProcess() {
       const item = inv.items.find((i) => i.barcode === text);
       if (!item || item.collected >= item.quantity) return;
 
-      await fetch(`/api/warehouse/invoice/${id}/update-line`, {
+      await fetch(`/api/warehouse/invoices/${id}/update-line`, {
         method: 'PATCH',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ barcode: text, delta: 1 }),
@@ -63,7 +63,7 @@ export default function InvoiceProcess() {
     if (!item || item.collected === 0) return;
     const ok = confirm('یک عدد کم شود؟');
     if (!ok) return;
-    await fetch(`/api/warehouse/invoice/${id}/update-line`, {
+    await fetch(`/api/warehouse/invoices/${id}/update-line`, {
       method: 'PATCH',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ barcode, delta: -1 }),
@@ -73,7 +73,7 @@ export default function InvoiceProcess() {
 
   /* ---------------- finish / skip ---------------- */
   const finish = async (mode) => {
-    const res = await fetch(`/api/warehouse/invoice/${id}/finish`, {
+    const res = await fetch(`/api/warehouse/invoices/${id}/finish`, {
       method: 'PATCH',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ mode }),   // 'done' یا 'skipped'
