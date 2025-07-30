@@ -13,6 +13,7 @@ export async function GET(req) {
 
   const invoices = await Invoice.find(query)
     .select('_id createdAt status items')
+    .select('_id name createdAt status items') 
     .sort({ createdAt: -1 })
     .lean();
 

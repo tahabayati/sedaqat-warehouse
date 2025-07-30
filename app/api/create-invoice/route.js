@@ -10,8 +10,16 @@ export async function POST(req) {
   try {
     // بدنهٔ JSON را می‌خوانیم
     const { items, name = '' } = await req.json(); 
+    
+    console.log(`[create-invoice] Request received:`, { 
+      name, 
+      itemsCount: items?.length,
+      sampleItem: items?.[0]
+    });
+    
     // اعتبارسنجی ساده
     if (!items || !Array.isArray(items) || items.length === 0) {
+      console.log(`[create-invoice] Validation failed: items is empty or invalid`);
       return NextResponse.json(
         { error: 'لیست آیتم‌ها خالی است' },
         { status: 400 }
@@ -22,11 +30,22 @@ export async function POST(req) {
     await dbConnect();
 
     // ایجاد فاکتور در وضعیت «pending»
-    const doc = await Invoice.create({
+    const invoiceData = {
       createdAt: persianNow(), // زمان به‌صورت منطقهٔ تهران
       status: 'pending',
       items,
       name,   
+    };
+    
+    console.log(`[create-invoice] Creating invoice with data:`, invoiceData);
+    
+    const doc = await Invoice.create(invoiceData);
+    
+    console.log(`[create-invoice] Invoice created successfully:`, { 
+      _id: doc._id, 
+      name: doc.name,
+      itemsCount: doc.items.length,
+      sampleItem: doc.items[0]
     });
 
     // پاسخ با شناسهٔ فاکتور

@@ -1,55 +1,71 @@
 'use client';
 import { useParams, useRouter } from 'next/navigation';
-import { useEffect, useState, useCallback } from 'react';
+import { useEffect, useState, useCallback, useRef } from 'react';
 import styles from './Invoice.module.css';
+import { IoOpenOutline } from "react-icons/io5";
 
 export default function InvoiceProcess() {
-  const { id } = useParams();
-  const router = useRouter();
+  const { id }          = useParams();
+  const router          = useRouter();
+  const scannerRef      = useRef(null);
 
-  const [inv, setInv] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const [inv, setInv]   = useState(null);
+  const [loading, setL] = useState(true);
+  const [toast, setT]   = useState('');
+  const [popup, setPopup] = useState(null);
+  const [errorPopup, setErrorPopup] = useState(null);
+  
+  const showToast = (m) => { 
+    setT(m); 
+    setTimeout(() => setT(''), 3000); 
+  };
 
+  const showErrorPopup = (message) => {
+    setErrorPopup(message);
+    setTimeout(() => setErrorPopup(null), 4000);
+  };
+
+  /* fetch invoice */
   const load = useCallback(async () => {
-    if (!id) return;
     const res  = await fetch(`/api/warehouse/invoices/${id}`, { cache: 'no-store' });
     const data = await res.json();
     setInv(data.invoice);
-    setLoading(false);
+    setL(false);
   }, [id]);
-
   useEffect(() => { load(); }, [load]);
 
-  /* --- barcode handler --- */
-  const handleBarcode = async (e) => {
-    const code = e.target.value.trim();
-    if (code.length < 13) return;     // wait till scanner finishes
-    e.target.value = '';              // clear for next scan
+  useEffect(() => { scannerRef.current?.focus(); }, []);
 
-    if (!/^[1][0-9]{12}$/.test(code)) {
-      alert('بارکد نامعتبر است');
-      return;
-    }
+  /* barcode handler – 1 ⇒ محصول ، 2 ⇒ کارتن */
+  const onScannerChange = async (e) => {
+    const v = e.target.value.trim();
+    if (v.length < 13) return;
+    e.target.value = '';
+
+    if (!/^[12][0-9]{12}$/.test(v)) return showErrorPopup('فرمت بارکد نادرست');
     if (!inv) return;
 
-    const item = inv.items.find((i) => i.barcode === code);
-    if (!item)          return alert('این بارکد در فاکتور نیست');
-    if (item.collected >= item.quantity)
-      return alert('تعداد این کالا تکمیل است');
+    const isCarton   = v.startsWith('2');
+    const productBC  = isCarton ? '1' + v.slice(1) : v;
+
+    const item = inv.items.find((i) => i.barcode === productBC);
+    if (!item) return showErrorPopup('بارکد در فاکتور نیست');
+
+    const delta = isCarton ? Number(item.box_num) || 1 : 1;
+    if (item.collected + delta > item.quantity)
+      return showErrorPopup('از حد مجاز بیشتر است');
 
     await fetch(`/api/warehouse/invoices/${id}/update-line`, {
       method: 'PATCH',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ barcode: code, delta: 1 }),
+      body: JSON.stringify({ barcode: productBC, delta }),
     });
     load();
+    showToast(`+${delta}`);
   };
 
-  /* --- decrease button --- */
+  /* -۱ */
   const decrease = async (barcode) => {
-    const item = inv.items.find((i) => i.barcode === barcode);
-    if (!item || item.collected === 0) return;
-    if (!confirm('یک عدد کم شود؟')) return;
     await fetch(`/api/warehouse/invoices/${id}/update-line`, {
       method: 'PATCH',
       headers: { 'Content-Type': 'application/json' },
@@ -58,7 +74,7 @@ export default function InvoiceProcess() {
     load();
   };
 
-  /* --- finish / skip --- */
+  /* finish / skip */
   const finish = async (mode) => {
     const res = await fetch(`/api/warehouse/invoices/${id}/finish`, {
       method: 'PATCH',
@@ -66,58 +82,118 @@ export default function InvoiceProcess() {
       body: JSON.stringify({ mode }),
     });
     if (res.ok) router.push('/warehouse');
-    else alert((await res.json()).error);
+    else {
+      const errorData = await res.json();
+      showErrorPopup(errorData.error);
+    }
   };
 
-  if (loading) return <p className={styles.wrapper}>در حال بارگذاری…</p>;
+  /* handle completion with error options */
+  const handleComplete = async () => {
+    const res = await fetch(`/api/warehouse/invoices/${id}/finish`, {
+      method: 'PATCH',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ mode: 'done' }),
+    });
+    if (res.ok) router.push('/warehouse');
+    else {
+      const errorData = await res.json();
+      setErrorPopup({
+        message: errorData.error,
+        showOptions: true
+      });
+    }
+  };
+
+  const handleSkipWithError = async () => {
+    await finish('skipped');
+    setErrorPopup(null);
+  };
+
+  const closeErrorPopup = () => {
+    setErrorPopup(null);
+  };
+
+  if (loading)  return <p className={styles.wrapper}>در حال بارگذاری…</p>;
   if (!inv)     return <p className={styles.wrapper}>فاکتور یافت نشد 🚫</p>;
 
   return (
     <div className={styles.wrapper}>
-      <h2>فاکتور {id}</h2>
+      {toast && <div className={styles.toast}>{toast}</div>}
 
-      {/* barcode textbox */}
+      <h2>{inv.name || `فاکتور ${id}`}</h2>
+
       <input
+        ref={scannerRef}
         type="text"
         className={styles.scanner}
         placeholder="بارکد را اسکن یا تایپ کنید"
-        onChange={handleBarcode}
+        onChange={onScannerChange}
         autoFocus
       />
 
       <table className={styles.table}>
         <thead>
           <tr>
-            <th>بارکد</th>
+            <th></th>{/* آیکن */}
             <th>نام</th>
             <th>مدل</th>
             <th>تعداد</th>
-            <th>عملیات</th>
           </tr>
         </thead>
         <tbody>
           {inv.items.map((it) => (
-            <tr key={it.barcode} className={it.collected === it.quantity ? styles.doneRow : ''}>
-              <td>{it.barcode}</td>
+            <tr key={it.barcode} className={it.collected === it.quantity ? styles.doneRow : ''} onClick={() => setPopup(it)}>
+              <td className={styles.iconCell} style={{fontSize:'1.5rem'}}><IoOpenOutline/></td>
               <td>{it.name}</td>
               <td>{it.model}</td>
               <td>{it.collected} / {it.quantity}</td>
-              <td>
-                <button
-                  className={`${styles.btn} ${styles.dec}`}
-                  onClick={() => decrease(it.barcode)}
-                >
-                  -۱
-                </button>
-              </td>
             </tr>
           ))}
         </tbody>
       </table>
 
-      <div className={styles.actions}>
-        <button className={`${styles.btn} ${styles.ok}`}   onClick={() => finish('done')}>اتمام</button>
-        <button className={`${styles.btn} ${styles.skip}`} onClick={() => finish('skipped')}>مشکلی نیست</button>
+      {/* پاپ‑آپ */}
+      {popup && (
+        <div className={styles.popup} onClick={() => setPopup(null)}>
+          <div className={styles.popupInner} onClick={(e) => e.stopPropagation()}>
+            <button className={styles.close} onClick={() => setPopup(null)}>✕</button>
+            <h3>{popup.name}</h3>
+            <p className={styles.barcode}>{popup.barcode}</p>
+            <p>{popup.collected} / {popup.quantity}</p>
+            <button
+              className={`${styles.btn} ${styles.bigDec}`}
+              onClick={() => decrease(popup.barcode)}
+            >
+              -۱
+            </button>
+          </div>
+        </div>
+      )}
+
+      {/* Error Popup */}
+      {errorPopup && (
+        <div className={styles.errorPopup} onClick={() => setErrorPopup(null)}>
+          <div className={styles.errorPopupInner} onClick={(e) => e.stopPropagation()}>
+            <div className={styles.errorMessage}>
+              {typeof errorPopup === 'string' ? errorPopup : errorPopup.message}
+            </div>
+            {typeof errorPopup === 'object' && errorPopup.showOptions && (
+              <div className={styles.errorActions}>
+                <button className={`${styles.btn} ${styles.skip}`} onClick={handleSkipWithError}>
+                  مشکلی نیست
+                </button>
+                <button className={`${styles.btn} ${styles.ok}`} onClick={closeErrorPopup}>
+                  باشه
+                </button>
+              </div>
+            )}
+          </div>
+        </div>
+      )}
+
+      <div className={styles.actions} style={{marginBottom:'60px'}}>
+        <button className={`${styles.btn} ${styles.ok}`} onClick={handleComplete}>اتمام</button>
       </div>
     </div>
   );

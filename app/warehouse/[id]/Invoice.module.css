@@ -1,3 +1,4 @@
+/* =================  کانتینر اصلی  ================= */
 .wrapper {
   display: flex;
   flex-direction: column;
@@ -6,45 +7,150 @@
   gap: 16px;
   width: 100%;
   min-height: calc(100vh - 96px);
+  font-family: 'yekanbakh';
 }
 
-.note {
+/* هشدار کوتاه بالای صفحه */
+.toast {
+  position: fixed;
+  top: 18px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #1a1423b5;
+  color: #fff;
+  padding: 6px 14px;
+  border-radius: 8px;
+  z-index: 3000;
+  font-family: 'yekanbakh';
   font-size: 0.9rem;
-  color: #666;
-  margin-bottom: 8px;
-  text-align: center;
 }
 
+/* =================  Error Popup  ================= */
+.errorPopup {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 4000;
+  animation: fadeIn 0.3s ease-out;
+}
+
+.errorPopupInner {
+  background: #fff;
+  padding: 28px 32px;
+  border-radius: 20px;
+  width: 90%;
+  max-width: 380px;
+  text-align: center;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
+  animation: slideUp 0.4s ease-out;
+  border: 2px solid #ff6b6b;
+}
+
+.errorMessage {
+  font-family: 'yekanbakh';
+  font-size: 1.1rem;
+  color: #d63031;
+  margin-bottom: 20px;
+  line-height: 1.5;
+}
+
+.errorActions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.errorActions .btn {
+  padding: 10px 20px;
+  font-size: 1rem;
+  border-radius: 10px;
+  transition: all 0.2s ease;
+}
+
+.errorActions .btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { 
+    opacity: 0; 
+    transform: translateY(30px) scale(0.9); 
+  }
+  to { 
+    opacity: 1; 
+    transform: translateY(0) scale(1); 
+  }
+}
+
+/* =================  اینپوت بارکد  ================= */
+.scanner {
+  width: 100%;
+  max-width: 280px;
+  padding: 10px 12px;
+  border: 2px dashed #ccc;
+  border-radius: 8px;
+  text-align: center;
+  font-family: 'yekanbakh';
+  font-size: 1rem;
+  margin-bottom: 12px;
+}
+.scanner:focus {
+  outline: none;
+  border-color: #f15922;
+}
+
+/* =================  جدول مدرن  ================= */
 .table {
   width: 100%;
-  border-collapse: collapse;
-  margin-top: 8px;
+  border-collapse: separate;
+  border-spacing: 0;
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
 
 .table th,
 .table td {
-  border: 1px solid #e0e0e0;
-  padding: 8px;
+  padding: 10px;
   text-align: center;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
 }
 
 .table th {
   background: #f15922;
   color: #fff;
-  font-weight: normal;
+  font-weight: 500;
 }
 
+.table tbody tr:nth-child(odd) {
+  background: #fafafa;
+}
+
+.table tbody tr:hover {
+  background: #ffe6d9;
+  cursor: pointer;
+}
+
+.iconCell {
+  font-size: 1.2rem;
+}
+
+/* ردیفی که کامل شده */
 .doneRow {
   background: #e8f5e9;
 }
 
-.actions {
-  display: flex;
-  gap: 12px;
-  margin-top: 16px;
-}
-
+/* =================  دکمه‌ها  ================= */
 .btn {
   padding: 8px 16px;
   border: none;
@@ -54,34 +160,71 @@
   cursor: pointer;
 }
 
-.ok {
-  background: #006400;
-  color: #fff;
-}
+.ok   { background: #006400; color: #fff; }
+.skip { background: #ffa500; color: #fff; }
+.dec  { background: #e91e63; color: #fff; }
 
-.skip {
-  background: #ffa500;
-  color: #fff;
-}
-
-.dec {
+/* دکمه بزرگ -۱ داخل پاپ‌آپ */
+.bigDec {
   background: #e91e63;
   color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 12px 28px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  margin-top: 10px;
 }
-/* Scanner text box */
-.scanner {
-  width: 100%;
-  max-width: 300px;
-  padding: 10px 12px;
-  border: 2px dashed #ccc;
-  border-radius: 8px;
-  text-align: center;
-  font-family: 'yekanbakh';
-  font-size: 1rem;
-  margin-bottom: 12px;
+.bigDec:hover {
+  background: #c2185b;
 }
 
-.scanner:focus {
-  outline: none;
-  border-color: #f15922;
+/* دکمه‌های پایانی */
+.actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+/* =================  پاپ‑آپ  ================= */
+.popup {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 3000;
+}
+
+.popupInner {
+  background: #fff;
+  padding: 24px 28px;
+  border-radius: 16px;
+  position: relative;
+  width: 90%;
+  max-width: 330px;
+  text-align: center;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+.close {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: none;
+  border: none;
+  font-size: 1.4rem;
+  cursor: pointer;
+  color: #888;
+}
+.close:hover {
+  color: #f15922;
+}
+
+.barcode {
+  font-family: monospace;
+  font-size: 0.9rem;
+  color: #555;
+  margin: 6px 0;
 }

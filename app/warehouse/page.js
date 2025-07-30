@@ -8,26 +8,30 @@ export default function WarehouseListPage() {
   const router = useRouter();
 
   useEffect(() => {
-    fetch('/api/warehouse/invoices?status=pending', { cache: 'no-store' })
-      .then(res => res.json())
-      .then(data => setInvoices(data.invoices || []));
+    // دو درخواست موازی: pending و in‑progress
+    Promise.all([
+      fetch('/api/warehouse/invoices?status=pending',     { cache: 'no-store' }),
+      fetch('/api/warehouse/invoices?status=in-progress', { cache: 'no-store' }),
+    ])
+      .then(([a, b]) => Promise.all([a.json(), b.json()]))
+      .then(([p, ip]) => setInvoices([...(p.invoices || []), ...(ip.invoices || [])]));
   }, []);
 
   return (
     <div className={styles.container}>
-      <h1 className={styles.title}>فاکتورهای جدید</h1>
+      <h1 className={styles.title}>فاکتورهای جاری</h1>
       <div className={styles.list}>
-        {invoices.map(inv => (
-          <div key={inv._id} className={styles.card}>
+        {invoices.map((inv, idx) => (
+          <div key={inv._id} className={`${styles.card} ${idx % 2 ? styles.alt : ''}`}>
             <div className={styles.cardInfo}>
-              <span>شناسه: {inv._id}</span>
-              <span>تاریخ: {inv.createdAt}</span>
+              <span className={styles.invName}>{inv.name || 'بدون نام'}</span>
+              <span className={styles.date}>{inv.createdAt}</span>
             </div>
             <button
               className={styles.startBtn}
               onClick={() => router.push(`/warehouse/${inv._id}`)}
             >
-              شروع
+              {inv.status === 'pending' ? 'شروع' : 'ادامه'}
             </button>
           </div>
         ))}

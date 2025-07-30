@@ -62,3 +62,30 @@
 .startBtn:hover {
   background: #f15922;
 }
+/* کارت پایه همان قبلی است */
+.card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 12px 16px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* ردیف‌های یکی‌درمیان کمی تیره‌تر */
+.alt {
+  background: #f7f7f7;
+}
+
+/* نام فاکتور پررنگ‌تر */
+.invName {
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+/* تاریخ سبک‌تر */
+.date {
+  font-size: 0.8rem;
+  color: #777;
+}

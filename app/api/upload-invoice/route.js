@@ -51,14 +51,19 @@ export async function POST(req) {
       // 🔸 Step 3 – merge
       const items = itemsRaw.map(p => {
         const d = details.find(x => x.code === p.barcode) || {};
-        return {
+        const item = {
           ...p,
           box_num: d.box_num || '',
           model:   d.model   || '',
           name:    d.name    || '',
           box_code:d.box_code|| '', 
         };
+        console.log(`[upload] Item processed:`, { barcode: p.barcode, item });
+        return item;
       });
+
+      console.log(`[upload] Total items processed: ${items.length}`);
+      console.log(`[upload] Sample item:`, items[0]);
 
       return NextResponse.json({ items });
     }
@@ -76,14 +81,19 @@ export async function POST(req) {
 
     const enriched = defaultRows.map(p => {
       const d = details.find(x => x.code === p.barcode) || {};
-      return {
+      const item = {
         ...p,
         box_num: d.box_num || '',
         model:   d.model   || '',
         name:    d.name    || '',
         box_code:d.box_code|| '', 
       };
+      console.log(`[upload-fallback] Item processed:`, { barcode: p.barcode, item });
+      return item;
     });
+
+    console.log(`[upload-fallback] Total items processed: ${enriched.length}`);
+    console.log(`[upload-fallback] Sample item:`, enriched[0]);
 
     return NextResponse.json({ items: enriched });
 
