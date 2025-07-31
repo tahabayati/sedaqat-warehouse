@@ -117,20 +117,24 @@ export default function InvoiceProcess() {
   if (loading)  return <p className={styles.wrapper}>در حال بارگذاری…</p>;
   if (!inv)     return <p className={styles.wrapper}>فاکتور یافت نشد 🚫</p>;
 
+  const readOnly = inv.status === 'done';
+
   return (
     <div className={styles.wrapper}>
       {toast && <div className={styles.toast}>{toast}</div>}
 
       <h2>{inv.name || `فاکتور ${id}`}</h2>
 
-      <input
-        ref={scannerRef}
-        type="text"
-        className={styles.scanner}
-        placeholder="بارکد را اسکن یا تایپ کنید"
-        onChange={onScannerChange}
-        autoFocus
-      />
+      {!readOnly && (
+        <input
+          ref={scannerRef}
+          type="text"
+          className={styles.scanner}
+          placeholder="بارکد را اسکن یا تایپ کنید"
+          onChange={onScannerChange}
+          autoFocus
+        />
+      )}
 
       <table className={styles.table}>
         <thead>
@@ -143,7 +147,7 @@ export default function InvoiceProcess() {
         </thead>
         <tbody>
           {inv.items.map((it) => (
-            <tr key={it.barcode} className={it.collected === it.quantity ? styles.doneRow : ''} onClick={() => setPopup(it)}>
+            <tr key={it.barcode} className={it.collected === it.quantity ? styles.doneRow : ''} onClick={!readOnly ? () => setPopup(it) : undefined}>
               <td className={styles.iconCell} style={{fontSize:'1.5rem'}}><IoOpenOutline/></td>
               <td>{it.name}</td>
               <td>{it.model}</td>
@@ -161,12 +165,14 @@ export default function InvoiceProcess() {
             <h3>{popup.name}</h3>
             <p className={styles.barcode}>{popup.barcode}</p>
             <p>{popup.collected} / {popup.quantity}</p>
-            <button
-              className={`${styles.btn} ${styles.bigDec}`}
-              onClick={() => decrease(popup.barcode)}
-            >
-              -۱
-            </button>
+            {!readOnly && (
+              <button
+                className={`${styles.btn} ${styles.bigDec}`}
+                onClick={() => decrease(popup.barcode)}
+              >
+                -۱
+              </button>
+            )}
           </div>
         </div>
       )}
@@ -192,9 +198,11 @@ export default function InvoiceProcess() {
         </div>
       )}
 
-      <div className={styles.actions} style={{marginBottom:'60px'}}>
-        <button className={`${styles.btn} ${styles.ok}`} onClick={handleComplete}>اتمام</button>
-      </div>
+      {!readOnly && (
+        <div className={styles.actions} style={{marginBottom:'60px'}}>
+          <button className={`${styles.btn} ${styles.ok}`} onClick={handleComplete}>اتمام</button>
+        </div>
+      )}
     </div>
   );
 }

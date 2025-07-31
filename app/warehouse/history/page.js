@@ -1,98 +1,107 @@
 'use client';
-
 import { useEffect, useState } from 'react';
+import { useRouter } from 'next/navigation';
+import moment from 'moment-jalaali';
+import 'moment/locale/fa';
 import styles from './History.module.css';
-
-const STATUS_LABEL = {
-  pending: 'در انتظار',
-  'in-progress': 'در حال انجام',
-  done: 'انجام شده',
-  skipped: 'رد شده',
-  all: 'همه',
-};
 
 export default function HistoryPage() {
   const [invoices, setInvoices] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [status, setStatus]   = useState('all');
-  const [from, setFrom]       = useState('');
-  const [to, setTo]           = useState('');
+  const [status, setStatus]     = useState('all');
+  const [from, setFrom]         = useState(''); // jYYYY/MM/DD
+  const [to,   setTo]           = useState('');
+  const router = useRouter();
 
-  const load = async () => {
-    setLoading(true);
-    const params = new URLSearchParams();
-    if (status) params.append('status', status);
-    if (from)   params.append('from', from);
-    if (to)     params.append('to', to);
+  /* تبدیل شمسی → میلادی 'YYYY-MM-DD' */
+  const toGregorian = (j) =>
+    j ? moment.from(j, 'fa', 'jYYYY/jMM/jDD').format('YYYY-MM-DD') : '';
 
-    const res = await fetch(`/api/warehouse/invoices?${params.toString()}`, {
-      cache: 'no-store',
-    });
-    const data = await res.json();
-    setInvoices(data.invoices || []);
-    setLoading(false);
+  const fetchInvoices = () => {
+    const qs = new URLSearchParams();
+    if (status !== 'all') qs.set('status', status);
+    if (from) qs.set('from', toGregorian(from));
+    if (to)   qs.set('to',   toGregorian(to));
+
+    fetch(`/api/warehouse/invoices?${qs.toString()}`, { cache: 'no-store' })
+      .then((r) => r.json())
+      .then((d) => setInvoices(d.invoices || []));
   };
 
-  useEffect(() => { load(); }, []); // بارگذاری اولیه
+  useEffect(fetchInvoices, [status]); // بار اول و هنگام تغییر تب
 
-  const onFilter = (e) => {
-    e.preventDefault();
-    load();
-  };
+  const applyDate = () => fetchInvoices();
+
+  const btnLabel = (st) => (st === 'done' ? 'مشاهده' : 'ادامه');
 
   return (
     <div className={styles.wrapper}>
-      <h2>تاریخچهٔ فاکتورها</h2>
+      <h1 className={styles.title}>تاریخچه فاکتورها</h1>
 
-      {/* فیلترها */}
-      <form onSubmit={onFilter} className={styles.filters}>
-        <select value={status} onChange={(e) => setStatus(e.target.value)}>
-          {Object.keys(STATUS_LABEL).map((k) => (
-            <option key={k} value={k}>{STATUS_LABEL[k]}</option>
-          ))}
-        </select>
+      {/* ---- نوار فیلتر ---- */}
+      <div className={styles.filters}>
+        {['all', 'pending', 'in-progress', 'skipped', 'done'].map((s) => (
+          <button
+            key={s}
+            className={`${styles.fBtn} ${status === s ? styles.active : ''}`}
+            onClick={() => setStatus(s)}
+          >
+            {s === 'all'
+              ? 'همه'
+              : s === 'pending'
+              ? 'در انتظار'
+              : s === 'in-progress'
+              ? 'در حال انجام'
+              : s === 'skipped'
+              ? 'جست'
+              : 'تمام‌شده'}
+          </button>
+        ))}
+      </div>
+
+      {/* ---- فیلتر تاریخ ---- */}
+      <div className={styles.dateRange}>
         <input
-          type="date"
+          type="text"
           value={from}
+          placeholder="از ۱۴۰۴/۰۵/۰۱"
           onChange={(e) => setFrom(e.target.value)}
-          placeholder="از تاریخ"
         />
+        <span>تا</span>
         <input
-          type="date"
+          type="text"
           value={to}
+          placeholder="۱۴۰۴/۰۵/۳۰"
           onChange={(e) => setTo(e.target.value)}
-          placeholder="تا تاریخ"
         />
-        <button type="submit" className={styles.btn}>اعمال فیلتر</button>
-      </form>
+        <button className={styles.apply} onClick={applyDate}>اعمال</button>
+      </div>
 
-      {/* جدول */}
-      {loading ? (
-        <p>در حال بارگذاری…</p>
-      ) : invoices.length === 0 ? (
-        <p>هیچ فاکتوری یافت نشد.</p>
-      ) : (
-        <table className={styles.table}>
-          <thead>
-            <tr>
-              <th>شناسه</th>
-              <th>تاریخ</th>
-              <th>وضعیت</th>
-              <th>تعداد آیتم‌ها</th>
-            </tr>
-          </thead>
-          <tbody>
-            {invoices.map((inv) => (
-              <tr key={inv._id} className={styles[inv.status]}>
-                <td>{inv._id}</td>
-                <td>{inv.createdAt}</td>
-                <td>{STATUS_LABEL[inv.status]}</td>
-                <td>{inv.items.length}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      )}
+      {/* ---- لیست کارت‌ها ---- */}
+      <div className={styles.list}>
+        {invoices.map((inv, idx) => (
+          <div key={inv._id} className={`${styles.card} ${idx % 2 ? styles.alt : ''}`}>
+            <div className={styles.meta}>
+              <span className={styles.name}>{inv.name || 'بدون نام'}</span>
+              <span className={`${styles.status} ${styles[inv.status]}`}>
+                {inv.status === 'pending'
+                  ? 'در انتظار'
+                  : inv.status === 'in-progress'
+                  ? 'در حال انجام'
+                  : inv.status === 'skipped'
+                  ? 'جست'
+                  : 'تمام‌شده'}
+              </span>
+              <span className={styles.date}>{inv.createdAt}</span>
+            </div>
+            <button
+              className={styles.btn}
+              onClick={() => router.push(`/warehouse/${inv._id}`)}
+            >
+              {btnLabel(inv.status)}
+            </button>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
