@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "bwip-js": "^4.7.0",
     "exceljs": "^4.4.0",
     "formidable": "^3.5.4",
     "lottie-react": "^2.4.1",
