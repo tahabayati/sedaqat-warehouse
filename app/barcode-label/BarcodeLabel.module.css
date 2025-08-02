@@ -1,4 +1,4 @@
-.container{display:flex;flex-direction:column;align-items:center;padding:16px;gap:12px; padding-top: 0; margin-bottom: 55px;}
+.container{display:flex;flex-direction:column;align-items:center;padding:16px;gap:12px; padding-top: 0; margin-bottom: 45px; font-family: 'yekanbakh';}
 .search{width:220px;padding:8px;border:1px solid #ccc;border-radius:8px;font-family:'yekanbakh';text-align:center}
 .suggest{list-style:none;margin:0;width:220px;border:1px solid #ddd;border-radius:8px;padding:0;max-height:200px;overflow:auto;background:#fff;box-shadow:0 4px 12px rgba(0,0,0,.05); font-family: 'yekanbakh';}
 .suggest li{padding:6px 8px;font-size:.85rem;cursor:pointer; border-bottom: 1px solid #cccccc66;}
@@ -6,23 +6,11 @@
 .details{background:#fff;border-radius:12px;padding:12px 0px;box-shadow:0 4px 12px rgba(0,0,0,.15);width:90%;max-width:300px; font-family: 'yekanbakh';display: flex; justify-content: center; align-items: center;flex-direction: column;}
 .build{padding:8px 20px;background:#1a1423b5;color:#fff;border:none;border-radius:10px;font-family:'yekanbakh';cursor:pointer;margin-top:8px}
 .build:hover{background:#f15922}
-.result{background:#fff;border-radius:12px;padding:0px;margin-top:12px;box-shadow:0 4px 12px rgba(0,0,0,.10);text-align:center;width:90%;max-width:300px; font-family: 'yekanbakh';max-height: 280px;}
-.h3{
-   background-color: #e7e7e76c;
-   border-top-right-radius: 12px;
-   border-top-left-radius: 12px;
-   font-size: 22px;
-   height: 40px;
-   display: flex;
-   justify-content: center;
-   align-items: center;
-}
-.buttons{display:flex;gap:8px;margin-top:0px;justify-content:center;
-   transform: translateY(-40px);}
-.dl{margin-top:0px;padding:6px 18px;background:#f15922;color:#fff;border:none;border-radius:8px;font-family:'yekanbakh';cursor:pointer; }
+.result{background:#fff;border-radius:12px;padding:14px;margin-top:12px;box-shadow:0 4px 12px rgba(0,0,0,.05);text-align:center;width:90%;max-width:300px}
+.buttons{display:flex;gap:8px;margin-top:8px;justify-content:center;}
+.dl{margin-top:6px;padding:6px 18px;background:#f15922;color:#fff;border:none;border-radius:8px;font-family:'yekanbakh';cursor:pointer}
 .dl:hover{background:#d14a1a}
-.Barocdeimage{
-   max-width: 290px;
-   transform: translateX(30px) translateY(-15px);
-   scale: 0.79;
+.BarcodeImage{
+    transform: translateX(40px);
+    scale: 0.78;
 }

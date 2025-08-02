@@ -9,7 +9,7 @@ export async function GET(req) {
   await dbConnect();
   const regex = new RegExp(q, 'i'); // case-insensitive
   const docs = await Barcode.find({ name: regex })
-    .limit(8)
+    .limit(20)
     .select('code box_code box_num name model')
     .lean();
 

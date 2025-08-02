@@ -114,8 +114,8 @@ export default function BarcodeLabel() {
 
       {svgs.prod && (
         <div className={styles.result}>
-          <h3 className={styles.h3}>بارکد محصول</h3>
-          <div className={styles.Barocdeimage} dangerouslySetInnerHTML={{ __html: svgs.prod }} />
+          <h3>بارکد محصول</h3>
+          <div className={styles.BarcodeImage} dangerouslySetInnerHTML={{ __html: svgs.prod }} />
           <div className={styles.buttons}>
             <button className={styles.dl} onClick={() => dl(selected.name, svgs.prod)}>دانلود SVG</button>
             <button className={styles.dl} onClick={() => dlAsPng(selected.name, svgs.prod)}>دانلود PNG</button>
@@ -125,8 +125,8 @@ export default function BarcodeLabel() {
 
       {svgs.carton && (
         <div className={styles.result}>
-          <h3 className={styles.h3}>لیبل کارتن</h3>
-          <div className={styles.Barocdeimage}  dangerouslySetInnerHTML={{ __html: svgs.carton }} />
+          <h3>لیبل کارتن</h3>
+          <div className={styles.BarcodeImage} dangerouslySetInnerHTML={{ __html: svgs.carton }} />
           <div className={styles.buttons}>
             <button className={styles.dl} onClick={() => dl('کارتن ' + selected.name, svgs.carton)}>دانلود SVG</button>
             <button className={styles.dl} onClick={() => dlAsPng('کارتن ' + selected.name, svgs.carton)}>دانلود PNG</button>

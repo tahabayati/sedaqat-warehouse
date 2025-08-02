@@ -74,28 +74,25 @@ export async function GET(req) {
    <rect width="100%" height="100%" fill="#ffffff"/>
  
    <!-- متن‌های بالا -->
-   <text x="50" y="8" font-size="5pt" font-weight="normal"
+   <text x="50" y="12" font-size="3pt" font-weight="normal"
          direction="rtl" text-anchor="middle"
-         font-family:'yekanbakh';
          style="unicode-bidi:bidi-override">
      ${isCarton ? 'کارتن ' : ''}${name}
    </text>
    ${model ? `
-   <text x="50" y="17" font-size="5pt" font-weight="bold"
+   <text x="50" y="18" font-size="3pt" font-weight="bold"
          direction="rtl" text-anchor="middle"
-         font-family:'yekanbakh';
          style="unicode-bidi:bidi-override">
      مدل ${model}
    </text>` : ''}
  
    <!-- بارکد -->
    <image href="data:image/png;base64,${png64}"
-          x="5" y="21" width="90" height="33"/>
+          x="5" y="25" width="90" height="27"/>
  
    <!-- نام برند پایین -->
-   <text x="50" y="57" font-size="3pt"
+   <text x="50" y="55" font-size="3pt"
          direction="rtl" text-anchor="middle"
-         font-family:'yekanbakh';
          style="unicode-bidi:bidi-override">
      هیبرید بیستون
    </text>
