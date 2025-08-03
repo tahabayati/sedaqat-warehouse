@@ -46,14 +46,14 @@ export default function HistoryPage() {
             onClick={() => setStatus(s)}
           >
             {s === 'all'
-              ? 'همه'
+              ? 'همه فاکتورها'
               : s === 'pending'
-              ? 'در انتظار'
+              ? 'در انتظار انجام'
               : s === 'in-progress'
               ? 'در حال انجام'
               : s === 'skipped'
-              ? 'جست'
-              : 'تمام‌شده'}
+              ? 'رسید های موقت'
+              : 'تمام‌ شده'}
           </button>
         ))}
       </div>
@@ -84,11 +84,11 @@ export default function HistoryPage() {
               <span className={styles.name}>{inv.name || 'بدون نام'}</span>
               <span className={`${styles.status} ${styles[inv.status]}`}>
                 {inv.status === 'pending'
-                  ? 'در انتظار'
+                  ? 'درانتظار'
                   : inv.status === 'in-progress'
-                  ? 'در حال انجام'
+                  ? 'درحال انجام'
                   : inv.status === 'skipped'
-                  ? 'جست'
+                  ? 'رسید موقت'
                   : 'تمام‌شده'}
               </span>
               <span className={styles.date}>{inv.createdAt}</span>

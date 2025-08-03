@@ -20,7 +20,7 @@ export async function PATCH(req, { params }) {
     const unfilled = inv.items.find((i) => i.collected !== i.quantity);
     if (unfilled)
       return NextResponse.json(
-        { error: `آیتم ${unfilled.barcode} تکمیل نیست` },
+        { error: `آیتم "${unfilled.name} - ${unfilled.model}" تکمیل نیست` },
         { status: 400 }
       );
   }

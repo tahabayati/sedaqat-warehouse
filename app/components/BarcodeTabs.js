@@ -17,9 +17,14 @@ export default function BarcodeTabs() {
          تولید بارکد
          </Link>
       </div>
-      <div className={styles.BarcodeTabs}>
+      <div className={styles.BarcodeTabs} style={{borderLeft:"2px solid #c7c7c760"}}  >
          <Link href="/barcode-label" className={`${styles.tab} ${isLabel ? styles.active : ''}`}>
          لیبل بارکد
+         </Link>
+      </div>
+      <div className={styles.BarcodeTabs}>
+         <Link href="/barcode-bulk-update" className={`${styles.tab} ${isLabel ? styles.active : ''}`}>
+          به‌روز‌رسانی
          </Link>
       </div>
      

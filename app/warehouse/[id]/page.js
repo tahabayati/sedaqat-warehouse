@@ -187,10 +187,10 @@ export default function InvoiceProcess() {
             {typeof errorPopup === 'object' && errorPopup.showOptions && (
               <div className={styles.errorActions}>
                 <button className={`${styles.btn} ${styles.skip}`} onClick={handleSkipWithError}>
-                  مشکلی نیست
+                  انتقال به رسید موقت
                 </button>
                 <button className={`${styles.btn} ${styles.ok}`} onClick={closeErrorPopup}>
-                  باشه
+                  تایید
                 </button>
               </div>
             )}
