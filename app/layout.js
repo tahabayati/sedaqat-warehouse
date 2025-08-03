@@ -10,7 +10,7 @@ export const metadata = {
   },
   appleWebApp: {
     capable: true,
-    title: 'Sedaqat Warehouse',
+    title: 'H-Bisetun',
     statusBarStyle: 'default'
   }
 };
