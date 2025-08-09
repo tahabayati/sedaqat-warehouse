@@ -1,11 +1,29 @@
 @font-face {
   font-family: 'yekanbakh';
-  src: url('/font/yekanbakh.TTF');
+  src: url('/font/yekanbakh.TTF') format('truetype');
+  font-display: swap;
+  font-weight: normal;
+  font-style: normal;
 }
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 16px;
+  gap: 12px;
+  padding-top: 0;
+  margin-bottom: 65px;
+  font-family: 'yekanbakh', 'Tahoma', 'Arial', sans-serif;
+  width: 100%;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .title{
-  font-family: 'yekanbakh';
+  font-family: 'yekanbakh', 'Tahoma', 'Arial', sans-serif;
   font-size: 2rem;
-  font-size: 45px;
   color: #f15922;
   text-align: center;
   margin-bottom: 2rem;
@@ -13,29 +31,35 @@
 
 .wrapper {
     background: #fff;
-
    display: flex;
    flex-direction: column;
    align-items: center;
    justify-content: center;
    gap: 1rem;
-   min-height: 100vh;
+   padding: 16px;
+   padding-top: 0;
+   width: 100%;
  }
  
  .gen,
  .copy {
-   padding: 5px 15px;
+   padding: 4px 12px;
    border: none;
    border-radius: 4px;
    cursor: pointer;
    font-size: 20px;
-   font-family: 'yekanbakh';
+   font-family: 'yekanbakh', 'Tahoma', 'Arial', sans-serif;
    display: flex;
    align-items: center;
    justify-content: center;
    gap: 10px;
    transition: all 0.3s ease;
-
+   min-width: 36px;
+   min-height: 36px;
+   -webkit-tap-highlight-color: transparent;
+   -webkit-touch-callout: none;
+   -webkit-user-select: none;
+   user-select: none;
  }
  .copy p {
    transform: translateY(2px);
@@ -56,15 +80,16 @@
  .gen {
     background:#1a1423b5;
     backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     border-radius: 12px;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
     z-index: 50;
     border: 1px solid rgba(255, 255, 255, 0.3);
     color: #fff;
-    font-family: 'yekanbakh';
+    font-family: 'yekanbakh', 'Tahoma', 'Arial', sans-serif;
     font-size: 20px;
     font-weight: 900;
-    padding: 10px 20px;
+    padding: 8px 16px;
     border: none;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -79,6 +104,11 @@
  .code {
    font-size: 2rem;
    letter-spacing: 0.1rem;
+   word-break: break-all;
+   text-align: center;
+   max-width: 100%;
+   padding: 0 16px;
+   font-family: 'yekanbakh', 'Tahoma', 'Arial', sans-serif;
  }
 
 .loader {
@@ -90,6 +120,7 @@
   position: relative;
   box-sizing: border-box;
   animation: rotation 1s linear infinite;
+  -webkit-animation: rotation 1s linear infinite;
 }
 
 .loader::after {
@@ -112,6 +143,103 @@
   }
   100% {
     transform: rotate(360deg);
+  }
+}
+
+@-webkit-keyframes rotation {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .container {
+    padding: 12px;
+    padding-top: 0;
+    gap: 10px;
+    margin-bottom: 60px;
+  }
+
+  .title {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .wrapper {
+    padding: 12px;
+    padding-top: 0;
+    gap: 0.75rem;
+  }
+  
+  .gen,
+  .copy {
+    font-size: 18px;
+    padding: 6px 14px;
+  }
+  
+  .code {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 8px;
+    padding-top: 0;
+    gap: 8px;
+    margin-bottom: 70px;
+  }
+
+  .title {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+  }
+  
+  .wrapper {
+    padding: 8px;
+    padding-top: 0;
+    gap: 0.75rem;
+  }
+  
+  .gen,
+  .copy {
+    font-size: 16px;
+    padding: 4px 10px;
+    min-width: 40px;
+    min-height: 40px;
+  }
+  
+  .code {
+    font-size: 1.25rem;
+    padding: 0 8px;
+  }
+}
+
+@media (max-width: 360px) {
+  .title {
+    font-size: 1.1rem;
+  }
+  
+  .gen,
+  .copy {
+    font-size: 14px;
+    padding: 3px 8px;
+  }
+  
+  .code {
+    font-size: 1rem;
+  }
+}
+
+/* Safari-specific optimizations */
+@supports (-webkit-touch-callout: none) {
+  .gen {
+    /* Safari-specific backdrop filter fallback */
+    background: rgba(26, 20, 35, 0.95);
   }
 }
  

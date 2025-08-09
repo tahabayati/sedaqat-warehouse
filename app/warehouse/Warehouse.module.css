@@ -8,7 +8,9 @@
   gap: 16px;
   width: 100%;
   min-height: calc(100vh - 96px);
-  font-family: 'yekanbakh';
+  font-family: 'yekanbakh', 'Tahoma', 'Arial', sans-serif;
+  max-width: 600px;
+  margin: 0 auto;
 }
 
 .title {
@@ -16,6 +18,7 @@
   color: #f15922;
   text-align: center;
   margin-bottom: 12px;
+  font-family: 'yekanbakh', 'Tahoma', 'Arial', sans-serif;
 }
 
 .list {
@@ -23,7 +26,7 @@
   flex-direction: column;
   gap: 12px;
   width: 100%;
-  max-width: 400px;
+  max-width: 500px;
 }
 
 .card {
@@ -34,34 +37,58 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  -webkit-transition: -webkit-transform 0.2s ease, -webkit-box-shadow 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  -webkit-transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
 }
 
 .cardInfo {
   display: flex;
   flex-direction: column;
   gap: 4px;
+  flex: 1;
+  min-width: 0;
 }
 
 .cardInfo span {
   font-size: 0.9rem;
   color: #555;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-family: 'yekanbakh', 'Tahoma', 'Arial', sans-serif;
 }
 
 .startBtn {
-  padding: 8px 16px;
+  padding: 6px 12px;
   background: #1a1423b5;
   border: none;
   border-radius: 8px;
   color: #fff;
-  font-family: 'yekanbakh';
+  font-family: 'yekanbakh', 'Tahoma', 'Arial', sans-serif;
   font-size: 0.875rem;
   cursor: pointer;
   transition: background 0.3s;
+  -webkit-transition: background 0.3s;
+  min-width: 36px;
+  min-height: 36px;
+  flex-shrink: 0;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
 }
 
 .startBtn:hover {
   background: #f15922;
 }
+
 /* کارت پایه همان قبلی است */
 .card {
   background: #fff;
@@ -82,10 +109,151 @@
 .invName {
   font-weight: 700;
   font-size: 1rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-family: 'yekanbakh', 'Tahoma', 'Arial', sans-serif;
 }
 
 /* تاریخ سبک‌تر */
 .date {
   font-size: 0.8rem;
   color: #777;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-family: 'yekanbakh', 'Tahoma', 'Arial', sans-serif;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .container {
+    padding: 12px;
+    gap: 12px;
+  }
+  
+  .title {
+    font-size: 1.25rem;
+    margin-bottom: 10px;
+  }
+  
+  .list {
+    max-width: 450px;
+    gap: 10px;
+  }
+  
+  .card {
+    padding: 10px 14px;
+  }
+  
+  .cardInfo span {
+    font-size: 0.85rem;
+  }
+  
+  .invName {
+    font-size: 0.95rem;
+  }
+  
+  .date {
+    font-size: 0.75rem;
+  }
+  
+  .startBtn {
+    padding: 4px 10px;
+    font-size: 0.8rem;
+    min-width: 40px;
+    min-height: 40px;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 8px;
+    gap: 8px;
+  }
+  
+  .title {
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+  }
+  
+  .list {
+    max-width: 400px;
+    gap: 8px;
+  }
+  
+  .card {
+    padding: 8px 12px;
+    flex-direction: column;
+    gap: 8px;
+    align-items: flex-start;
+  }
+  
+  .cardInfo {
+    width: 100%;
+  }
+  
+  .cardInfo span {
+    font-size: 0.8rem;
+  }
+  
+  .invName {
+    font-size: 0.9rem;
+  }
+  
+  .date {
+    font-size: 0.7rem;
+  }
+  
+  .startBtn {
+    padding: 4px 8px;
+    font-size: 0.75rem;
+    align-self: flex-end;
+  }
+}
+
+@media (max-width: 360px) {
+  .container {
+    padding: 6px;
+    gap: 6px;
+  }
+  
+  .title {
+    font-size: 1rem;
+  }
+  
+  .list {
+    max-width: 350px;
+    gap: 6px;
+  }
+  
+  .card {
+    padding: 6px 10px;
+  }
+  
+  .cardInfo span {
+    font-size: 0.75rem;
+  }
+  
+  .invName {
+    font-size: 0.85rem;
+  }
+  
+  .date {
+    font-size: 0.65rem;
+  }
+  
+  .startBtn {
+    padding: 3px 6px;
+    font-size: 0.7rem;
+  }
+}
+
+/* Safari-specific optimizations */
+@supports (-webkit-touch-callout: none) {
+  .card {
+    /* Safari-specific optimizations */
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+  }
 }

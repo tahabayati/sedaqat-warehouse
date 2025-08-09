@@ -3,6 +3,7 @@ import { FaRegCopy, FaCheck } from "react-icons/fa";
 import { useState } from 'react';
 import styles from './Barcode.module.css';   // renamed file
 import BarcodeTabs from "../components/BarcodeTabs";
+
 export default function BarcodeGenerator() {
   const [code, setCode] = useState('');
   const [msg, setMsg] = useState('');
@@ -27,30 +28,26 @@ export default function BarcodeGenerator() {
   };
 
   return (
-    <>
-    <BarcodeTabs />
+    <div className={styles.container}>
+      <BarcodeTabs />
 
-    <div className={styles.wrapper}>
+      <div className={styles.wrapper}>
+        <button className={styles.gen} onClick={generate} disabled={isLoading}>
+          <p>تولید بارکد</p>
+        </button>
 
-      {/* <h1 className={styles.title}>صداقت</h1> */}
-      <button className={styles.gen} onClick={generate} disabled={isLoading}>
-        <p>تولید بارکد</p>
-      </button>
+        {isLoading && <span className={styles.loader} />}
 
-      {isLoading && <span className={styles.loader} />}
-
-      {code && !isLoading && (
-        <>
-          <div className={styles.code}>{code}</div>
-          <button className={styles.copy} onClick={copy}>
-            {msg ? <FaCheck /> : <FaRegCopy />}
-            <p>{msg ? "شد" : "کپی"}</p>
-          </button>
-        </>
-      )}
-
+        {code && !isLoading && (
+          <>
+            <div className={styles.code}>{code}</div>
+            <button className={styles.copy} onClick={copy}>
+              {msg ? <FaCheck /> : <FaRegCopy />}
+              <p>{msg ? "شد" : "کپی"}</p>
+            </button>
+          </>
+        )}
+      </div>
     </div>
-
-  </>
   );
 }

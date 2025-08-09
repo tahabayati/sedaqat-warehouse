@@ -1,38 +1,418 @@
 /* کانتینر و تیتر */
-.wrapper{display:flex;flex-direction:column;align-items:center;padding:16px;gap:16px;min-height:calc(100vh - 96px);
-  font-family:'yekanbakh';
+.wrapper{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  padding:16px;
+  gap:16px;
+  min-height:calc(100vh - 96px);
+  font-family:'yekanbakh', 'Tahoma', 'Arial', sans-serif;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
 }
-.title{font-size:1.5rem;color:#f15922;text-align:center}
+
+.title{
+  font-size:1.5rem;
+  color:#f15922;
+  text-align:center;
+  margin-bottom: 8px;
+  font-family:'yekanbakh', 'Tahoma', 'Arial', sans-serif;
+}
 
 /* تب وضعیت */
-.filters{display:flex;gap:6px;flex-wrap:wrap;justify-content:center;margin-bottom:8px}
-.fBtn{background:#eee;border:none;border-radius:8px;padding:6px 12px;font-family:'yekanbakh';font-size:0.8rem;cursor:pointer}
-.active{background:#f15922;color:#fff}
+.filters{
+  display:flex;
+  gap:6px;
+  flex-wrap:wrap;
+  justify-content:center;
+  margin-bottom:8px;
+  width: 100%;
+  max-width: 500px;
+}
+
+.fBtn{
+  background:#eee;
+  border:none;
+  border-radius:8px;
+  padding:4px 10px;
+  font-family:'yekanbakh', 'Tahoma', 'Arial', sans-serif;
+  font-size:0.8rem;
+  cursor:pointer;
+  min-width: 36px;
+  min-height: 36px;
+  transition: all 0.2s ease;
+  -webkit-transition: all 0.2s ease;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.fBtn:hover {
+  background: #ddd;
+}
+
+.active{
+  background:#f15922;
+  color:#fff;
+}
 
 /* محدوده تاریخ */
-.dateRange{display:flex;align-items:center;gap:6px;margin-bottom:10px}
-.dateRange input{width:90px;padding:4px 6px;border:1px solid #ccc;border-radius:6px;font-family:'yekanbakh';font-size:0.8rem;text-align:center}
-.apply{padding:6px 12px;background:#1a1423b5;color:#fff;border:none;border-radius:8px;font-size:0.8rem;cursor:pointer; font-family: 'yekanbakh';}
-.apply:hover{background:#f15922}
+.dateRange{
+  display:flex;
+  align-items:center;
+  gap:6px;
+  margin-bottom:10px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.dateRange input{
+  width:90px;
+  padding:4px 6px;
+  border:1px solid #ccc;
+  border-radius:6px;
+  font-family:'yekanbakh', 'Tahoma', 'Arial', sans-serif;
+  font-size:0.8rem;
+  text-align:center;
+  min-width: 36px;
+  min-height: 36px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.apply{
+  padding:4px 10px;
+  background:#1a1423b5;
+  color:#fff;
+  border:none;
+  border-radius:8px;
+  font-size:0.8rem;
+  cursor:pointer; 
+  font-family: 'yekanbakh', 'Tahoma', 'Arial', sans-serif;
+  min-width: 36px;
+  min-height: 36px;
+  transition: background 0.3s;
+  -webkit-transition: background 0.3s;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.apply:hover{
+  background:#f15922;
+}
 
 /* لیست کارت‌ها */
-.list{display:flex;flex-direction:column;gap:12px;width:100%;max-width:430px}
-.card{background:#fff;border-radius:14px;padding:14px 18px;display:flex;justify-content:space-between;align-items:center;box-shadow:0 4px 12px rgba(0,0,0,0.05)}
-.alt{background:#fafafa}
+.list{
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+  width:100%;
+  max-width:500px;
+}
+
+.card{
+  background:#fff;
+  border-radius:14px;
+  padding:14px 18px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  box-shadow:0 4px 12px rgba(0,0,0,0.05);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  -webkit-transition: -webkit-transform 0.2s ease, -webkit-box-shadow 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  -webkit-transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+  -webkit-box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+}
+
+.alt{
+  background:#fafafa;
+}
 
 /* متادیتا */
-.meta{display:flex;flex-direction:column;gap:4px;font-size:0.85rem}
-.name{font-weight:700;font-size:1rem}
+.meta{
+  display:flex;
+  flex-direction:column;
+  gap:4px;
+  font-size:0.85rem;
+  flex: 1;
+  min-width: 0;
+  font-family:'yekanbakh', 'Tahoma', 'Arial', sans-serif;
+}
+
+.name{
+  font-weight:700;
+  font-size:1rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-family:'yekanbakh', 'Tahoma', 'Arial', sans-serif;
+}
 
 /* وضعیت رنگی */
-.status{font-size:0.8rem;padding:2px 6px;border-radius:6px;width:fit-content}
-.pending{background:#fff8e1;color:#ff9800}
-.in-progress{background:#e3f2fd;color:#2196f3}
-.skipped{background:#ffe0b2;color:#f57c00}
-.done{background:#e8f5e9;color:#4caf50}
+.status{
+  font-size:0.8rem;
+  padding:2px 6px;
+  border-radius:6px;
+  width:fit-content;
+  font-family:'yekanbakh', 'Tahoma', 'Arial', sans-serif;
+}
 
-.date{color:#777;font-size:0.75rem}
+.pending{
+  background:#fff8e1;
+  color:#ff9800;
+}
+
+.in-progress{
+  background:#e3f2fd;
+  color:#2196f3;
+}
+
+.skipped{
+  background:#ffe0b2;
+  color:#f57c00;
+}
+
+.done{
+  background:#e8f5e9;
+  color:#4caf50;
+}
+
+.date{
+  color:#777;
+  font-size:0.75rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-family:'yekanbakh', 'Tahoma', 'Arial', sans-serif;
+}
 
 /* دکمه کارت */
-.btn{padding:8px 18px;background:#1a1423b5;color:#fff;border:none;border-radius:10px;font-family:'yekanbakh';font-size:0.85rem;cursor:pointer;flex-shrink:0}
-.btn:hover{background:#f15922}
+.btn{
+  padding:6px 14px;
+  background:#1a1423b5;
+  color:#fff;
+  border:none;
+  border-radius:10px;
+  font-family:'yekanbakh', 'Tahoma', 'Arial', sans-serif;
+  font-size:0.85rem;
+  cursor:pointer;
+  flex-shrink:0;
+  min-width: 36px;
+  min-height: 36px;
+  transition: background 0.3s;
+  -webkit-transition: background 0.3s;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.btn:hover{
+  background:#f15922;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .wrapper {
+    padding: 12px;
+    gap: 12px;
+  }
+  
+  .title {
+    font-size: 1.25rem;
+  }
+  
+  .filters {
+    max-width: 450px;
+    gap: 4px;
+  }
+  
+  .fBtn {
+    padding: 6px 8px;
+    font-size: 0.75rem;
+    min-width: 40px;
+    min-height: 40px;
+  }
+  
+  .dateRange input {
+    width: 80px;
+    padding: 6px;
+    min-width: 40px;
+    min-height: 40px;
+  }
+  
+  .apply {
+    padding: 6px 8px;
+    min-width: 40px;
+    min-height: 40px;
+  }
+  
+  .list {
+    max-width: 450px;
+    gap: 10px;
+  }
+  
+  .card {
+    padding: 12px 16px;
+  }
+  
+  .meta {
+    font-size: 0.8rem;
+  }
+  
+  .name {
+    font-size: 0.95rem;
+  }
+  
+  .date {
+    font-size: 0.7rem;
+  }
+  
+  .btn {
+    padding: 4px 10px;
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .wrapper {
+    padding: 8px;
+    gap: 8px;
+  }
+  
+  .title {
+    font-size: 1.1rem;
+  }
+  
+  .filters {
+    max-width: 400px;
+    gap: 3px;
+  }
+  
+  .fBtn {
+    padding: 4px 6px;
+    font-size: 0.7rem;
+  }
+  
+  .dateRange {
+    gap: 4px;
+  }
+  
+  .dateRange input {
+    width: 70px;
+    padding: 4px;
+    font-size: 0.75rem;
+  }
+  
+  .apply {
+    padding: 4px 6px;
+    font-size: 0.75rem;
+  }
+  
+  .list {
+    max-width: 400px;
+    gap: 8px;
+  }
+  
+  .card {
+    padding: 10px 14px;
+    flex-direction: column;
+    gap: 8px;
+    align-items: flex-start;
+  }
+  
+  .meta {
+    width: 100%;
+    font-size: 0.75rem;
+  }
+  
+  .name {
+    font-size: 0.9rem;
+  }
+  
+  .date {
+    font-size: 0.65rem;
+  }
+  
+  .btn {
+    padding: 4px 8px;
+    font-size: 0.75rem;
+    align-self: flex-end;
+  }
+}
+
+@media (max-width: 360px) {
+  .wrapper {
+    padding: 6px;
+    gap: 6px;
+  }
+  
+  .title {
+    font-size: 1rem;
+  }
+  
+  .filters {
+    max-width: 350px;
+  }
+  
+  .fBtn {
+    padding: 3px 4px;
+    font-size: 0.65rem;
+  }
+  
+  .dateRange input {
+    width: 60px;
+    font-size: 0.7rem;
+  }
+  
+  .list {
+    max-width: 350px;
+    gap: 6px;
+  }
+  
+  .card {
+    padding: 8px 12px;
+  }
+  
+  .meta {
+    font-size: 0.7rem;
+  }
+  
+  .name {
+    font-size: 0.85rem;
+  }
+  
+  .date {
+    font-size: 0.6rem;
+  }
+  
+  .btn {
+    padding: 3px 6px;
+    font-size: 0.7rem;
+  }
+}
+
+/* Safari-specific optimizations */
+@supports (-webkit-touch-callout: none) {
+  .dateRange input {
+    /* Safari-specific input optimizations */
+    -webkit-appearance: none;
+    border-radius: 6px;
+  }
+  
+  .card {
+    /* Safari-specific optimizations */
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+  }
+}

@@ -1,23 +1,115 @@
 /* styles/globals.css */
 @font-face {
   font-family: 'yekanbakh';
-  src: url('/font/yekanbakh.TTF');
-
+  src: url('/font/yekanbakh.TTF') format('truetype');
+  font-display: swap;
+  font-weight: normal;
+  font-style: normal;
 }
+
 @font-face {
   font-family: 'yekanbakh-black';
-  src: url('/font/YekanBakh-Black.ttf');
-
+  src: url('/font/YekanBakh-Black.ttf') format('truetype');
+  font-display: swap;
+  font-weight: 900;
+  font-style: normal;
 }
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+html {
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+}
+
 body {
-  font-family: sans-serif;
+  font-family: 'yekanbakh', 'Tahoma', 'Arial', sans-serif;
   /* background-color: #fff; */
   background-color: #fff;
   color: #000;
+  overflow-x: hidden;
+  width: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* Responsive typography */
+@media (max-width: 768px) {
+  html {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  html {
+    font-size: 13px;
+  }
+}
+
+/* Ensure images are responsive */
+img {
+  max-width: 100%;
+  height: auto;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Better touch targets for mobile - thinner buttons */
+button, a {
+  min-height: 36px;
+  min-width: 36px;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+@media (max-width: 768px) {
+  button, a {
+    min-height: 40px;
+    min-width: 40px;
+  }
+}
+
+/* Safari-specific fixes */
+@supports (-webkit-touch-callout: none) {
+  body {
+    /* Safari-specific optimizations */
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  input, textarea, select {
+    -webkit-appearance: none;
+    border-radius: 0;
+  }
+}
+
+/* Prevent zoom on input focus in iOS */
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+  select,
+  textarea,
+  input {
+    font-size: 16px;
+  }
+}
+
+/* Hide scrollbars globally but keep scrolling */
+* {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE 10+ */
+}
+*::-webkit-scrollbar {
+  width: 0px; /* Chrome, Safari, Opera */
+  height: 0px;
 }

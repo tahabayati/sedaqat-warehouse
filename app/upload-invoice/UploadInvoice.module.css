@@ -9,12 +9,11 @@
    width: 100%;
    min-height: calc(100vh - 96px); /* full height minus ~nav pill height */
    background-color: white;
-
-   font-family: 'yekanbakh';
+   font-family: 'yekanbakh', 'Tahoma', 'Arial', sans-serif;
  }
  
  .title {
-   font-family: 'yekanbakh-black', sans-serif;
+   font-family: 'yekanbakh-black', 'yekanbakh', 'Tahoma', 'Arial', sans-serif;
    font-size: 1.5rem;
    font-weight: bolder;
    color: #f15922;
@@ -29,8 +28,12 @@
    border-radius: 8px;
    text-align: center;
    cursor: pointer;
-   font-family: 'yekanbakh';
+   font-family: 'yekanbakh', 'Tahoma', 'Arial', sans-serif;
    background-color: white;
+   -webkit-tap-highlight-color: transparent;
+   -webkit-touch-callout: none;
+   -webkit-user-select: none;
+   user-select: none;
  }
  
  .fileInput:hover {
@@ -44,16 +47,17 @@
    border-radius: 8px;
    border: 1px solid #000000;
    max-width: 1200px;
+   margin: 0 auto;
+   -webkit-overflow-scrolling: touch;
  }
  
  .table {
    width: 100%;
+   min-width: 600px; /* Ensure minimum width for readability */
    border-collapse: collapse;
    background: #fff;
    border-radius: 8px;
    overflow: hidden;
- 
-
  }
  
  .table th,
@@ -62,38 +66,59 @@
    text-align: center;
    border-bottom: 1px solid #eee;
    font-size: 0.9rem;
+   white-space: nowrap;
+   overflow: hidden;
+   text-overflow: ellipsis;
+   max-width: 150px;
+   font-family: 'yekanbakh', 'Tahoma', 'Arial', sans-serif;
  }
  
  .table th {
    background: #f15922;
    color: #fff;
    font-weight: bold;
+   position: sticky;
+   top: 0;
+   z-index: 10;
+   font-family: 'yekanbakh', 'Tahoma', 'Arial', sans-serif;
  }
+ 
  .nameInput {
   width: 100%;
   max-width: 300px;
   padding: 10px 12px;
   border: 2px solid #ccc;
   border-radius: 8px;
-  font-family: 'yekanbakh';
+  font-family: 'yekanbakh', 'Tahoma', 'Arial', sans-serif;
   font-size: 1rem;
   margin-top: 12px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
 }
 .nameInput:focus { outline: none; border-color: #f15922; }
 
  .button {
    margin-top: 16px;
-   padding: 12px 24px;
+   padding: 8px 20px;
    background: #1a1423b5;
    backdrop-filter: blur(12px);
+   -webkit-backdrop-filter: blur(12px);
    border: none;
    border-radius: 12px;
    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
    color: #fff;
-   font-family: 'yekanbakh';
+   font-family: 'yekanbakh', 'Tahoma', 'Arial', sans-serif;
    font-size: 1rem;
    cursor: pointer;
    transition: background 0.3s;
+   -webkit-transition: background 0.3s;
+   min-width: 36px;
+   min-height: 36px;
+   -webkit-tap-highlight-color: transparent;
+   -webkit-touch-callout: none;
+   -webkit-user-select: none;
+   user-select: none;
  }
  
  .button:hover {
@@ -103,7 +128,7 @@
  .success {
    margin-top: 8px;
    color: #28a745;
-   font-family: 'yekanbakh';
+   font-family: 'yekanbakh', 'Tahoma', 'Arial', sans-serif;
  }
  /* ...existing styles above... */
 
@@ -112,6 +137,7 @@
   inset: 0;
   background: rgba(0,0,0,0.5);
   backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -131,6 +157,7 @@
   position: relative;
   box-sizing: border-box;
   animation: rotation 1s linear infinite;
+  -webkit-animation: rotation 1s linear infinite;
 }
 .loader::after {
   content: '';
@@ -139,6 +166,7 @@
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
   width: 40px;
   height: 40px;
   border-radius: 50%;
@@ -148,6 +176,11 @@
 @keyframes rotation {
   0%   { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
+}
+
+@-webkit-keyframes rotation {
+  0%   { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
 }
 
 /* لایهٔ لاتی */
@@ -165,4 +198,113 @@
   padding: 24px;
   border-radius: 16px;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .container {
+    padding: 12px;
+    gap: 12px;
+  }
+  
+  .title {
+    font-size: 1.25rem;
+  }
+  
+  .fileInput {
+    max-width: 280px;
+    padding: 10px;
+  }
+  
+  .nameInput {
+    max-width: 280px;
+    padding: 8px 10px;
+  }
+  
+  .button {
+    padding: 6px 16px;
+    font-size: 0.9rem;
+    min-width: 40px;
+    min-height: 40px;
+  }
+  
+  .tableWrapper {
+    max-width: 100%;
+    border-radius: 6px;
+  }
+  
+  .table {
+    min-width: 500px;
+  }
+  
+  .table th,
+  .table td {
+    padding: 6px;
+    font-size: 0.8rem;
+    max-width: 120px;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 8px;
+    gap: 8px;
+  }
+  
+  .title {
+    font-size: 1.1rem;
+  }
+  
+  .fileInput {
+    max-width: 260px;
+    padding: 8px;
+  }
+  
+  .nameInput {
+    max-width: 260px;
+    padding: 6px 8px;
+    font-size: 0.9rem;
+  }
+  
+  .button {
+    padding: 4px 12px;
+    font-size: 0.85rem;
+  }
+  
+  .table {
+    min-width: 400px;
+  }
+  
+  .table th,
+  .table td {
+    padding: 4px;
+    font-size: 0.75rem;
+    max-width: 100px;
+  }
+}
+
+@media (max-width: 360px) {
+  .table {
+    min-width: 350px;
+  }
+  
+  .table th,
+  .table td {
+    padding: 3px;
+    font-size: 0.7rem;
+    max-width: 80px;
+  }
+}
+
+/* Safari-specific optimizations */
+@supports (-webkit-touch-callout: none) {
+  .button {
+    /* Safari-specific backdrop filter fallback */
+    background: rgba(26, 20, 35, 0.95);
+  }
+  
+  .popupOverlay {
+    /* Safari-specific backdrop filter fallback */
+    background: rgba(0,0,0,0.6);
+  }
 }

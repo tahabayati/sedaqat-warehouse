@@ -1,4 +1,6 @@
 // app/layout.js
+import NavBar from './components/NavBar';
+
 export const metadata = {
   title: 'H-Bisetun',
   description: 'Barcode & warehouse tools',
@@ -18,7 +20,18 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="fa" dir="rtl">
-      <body>{children}</body>
+      <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes, viewport-fit=cover" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+        <meta name="apple-mobile-web-app-title" content="H-Bisetun" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="msapplication-tap-highlight" content="no" />
+      </head>
+      <body>
+          <NavBar/>
+          {children}
+      </body>
     </html>
   );
 }

@@ -74,16 +74,16 @@ export async function GET(req) {
    <rect width="100%" height="100%" fill="#ffffff"/>
  
    <!-- متن‌های بالا -->
-   <text x="50" y="12" font-size="3pt" font-weight="normal"
+   <text x="50" y="12" font-size="5pt" font-weight="bold"
          direction="rtl" text-anchor="middle"
          style="unicode-bidi:bidi-override">
      ${isCarton ? 'کارتن ' : ''}${name}
    </text>
    ${model ? `
-   <text x="50" y="18" font-size="3pt" font-weight="bold"
+   <text x="50" y="22" font-size="4pt" font-weight="normal"
          direction="rtl" text-anchor="middle"
          style="unicode-bidi:bidi-override">
-     مدل ${model}
+         ${model}
    </text>` : ''}
  
    <!-- بارکد -->
