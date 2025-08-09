@@ -30,6 +30,12 @@
   overflow: auto;
   scrollbar-width: auto; /* Firefox */
 }
+.search:focus{
+  border:1px solid #f15922;
+}
+.search:active{
+  border:1px solid #f15922;
+}
 .search::-webkit-scrollbar {
   width: 8px;
   height: 8px;

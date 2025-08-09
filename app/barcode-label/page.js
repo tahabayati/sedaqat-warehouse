@@ -198,6 +198,7 @@ ${pages}
             border: '1px solid #ddd',
             borderRadius: 8,
             fontFamily: 'yekanbakh',
+          
           }}
           placeholder="تعداد"
           title="تعداد کل"

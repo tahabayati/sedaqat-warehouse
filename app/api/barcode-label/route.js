@@ -80,7 +80,7 @@ export async function GET(req) {
      ${isCarton ? 'کارتن ' : ''}${name}
    </text>
    ${model ? `
-   <text x="50" y="22" font-size="4pt" font-weight="normal"
+   <text x="50" y="21" font-size="5pt" font-weight="bold"
          direction="rtl" text-anchor="middle"
          style="unicode-bidi:bidi-override">
          ${model}
