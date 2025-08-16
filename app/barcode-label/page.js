@@ -9,6 +9,7 @@ export default function BarcodeLabel() {
   const [suggest, setSuggest] = useState([]);
   const [selected, setSelected] = useState(null);
   const [svgs, setSvgs] = useState({ prod: '', carton: '' });
+  const [message, setMessage] = useState('');
 
   // TOP quantity input (total items user wants to print)
   const [totalQty, setTotalQty] = useState(1);
@@ -32,13 +33,38 @@ export default function BarcodeLabel() {
   useEffect(() => {
     if (query.length < 2) return setSuggest([]);
     const id = setTimeout(() => {
-      fetch('/api/barcodes/search?q=' + encodeURIComponent(query))
-        .then((r) => (r.ok ? r.json() : { results: [] }))
-        .then((d) => setSuggest(d.results || []))
-        .catch(() => setSuggest([]));
+      // Only fetch if component is mounted and window exists
+      if (typeof window !== 'undefined') {
+        fetch('/api/barcodes/search?q=' + encodeURIComponent(query))
+          .then((r) => (r.ok ? r.json() : { results: [] }))
+          .then((d) => setSuggest(d.results || []))
+          .catch(() => setSuggest([]));
+      }
     }, 300);
     return () => clearTimeout(id);
   }, [query]);
+
+  /* search by barcode */
+  const searchByBarcode = async (barcode) => {
+    if (!/^\d{13}$/.test(barcode)) return;
+    
+    try {
+      const response = await fetch(`/api/barcodes/search?barcode=${barcode}`);
+      if (response.ok) {
+        const data = await response.json();
+        if (data.results && data.results.length > 0) {
+          const product = data.results[0];
+          setSelected(product);
+          setQuery(product.name || barcode);
+          setSuggest([]);
+        } else {
+          setMessage('محصولی با این بارکد یافت نشد');
+        }
+      }
+    } catch (error) {
+      setMessage('خطا در جستجو');
+    }
+  };
 
   /* ساخت لیبل */
   const buildLabels = async () => {
@@ -182,6 +208,13 @@ ${pages}
   return (
     <div className={styles.container}>
       <BarcodeTabs />
+      
+      {message && (
+        <div className={styles.message}>
+          {message}
+          <button onClick={() => setMessage('')} className={styles.closeMessage}>✕</button>
+        </div>
+      )}
 
       {/* TOP quantity input */}
       <div style={{ display:'flex', gap:8, alignItems:'center', justifyContent:'center', marginTop:8 }}>
@@ -216,9 +249,17 @@ ${pages}
       <input
         className={styles.search}
         type="text"
-        placeholder="نام محصول…"
+        placeholder="نام محصول یا بارکد ۱۳ رقمی…"
         value={query}
         onChange={(e) => setQuery(e.target.value)}
+        onKeyPress={(e) => {
+          if (e.key === 'Enter') {
+            // If input looks like a barcode (13 digits), search by barcode
+            if (/^\d{13}$/.test(e.target.value.trim())) {
+              searchByBarcode(e.target.value.trim());
+            }
+          }
+        }}
       />
       {suggest.length > 0 && (
         <ul className={styles.suggest}>

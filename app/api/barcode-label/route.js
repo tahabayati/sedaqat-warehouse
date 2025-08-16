@@ -43,6 +43,28 @@ function plus(x, y, { arm, stroke }) {
   `;
 }
 
+// Function to split text into RTL and LTR parts for proper rendering
+function splitTextForRendering(text) {
+  if (!text) return '';
+  
+  // Split text by dimensions pattern (e.g., "50×60", "60×50")
+  const dimensionPattern = /(\d+[×xX]\d+)/g;
+  const parts = text.split(dimensionPattern);
+  
+  let result = '';
+  parts.forEach((part, index) => {
+    if (dimensionPattern.test(part)) {
+      // This is a dimension - render as LTR to preserve number order
+      result += `<tspan class="ltr-text">${part}</tspan>`;
+    } else if (part.trim()) {
+      // This is regular text - render as RTL
+      result += `<tspan class="rtl-text">${part}</tspan>`;
+    }
+  });
+  
+  return result || text;
+}
+
 /* ---------- GET handler ---------- */
 // /api/barcode-label?code=112...&name=آتلانتیک&model=کروم&carton=0|1
 export async function GET(req) {
@@ -67,7 +89,18 @@ export async function GET(req) {
          font-family:'yekanbakh';
          src:url(data:font/ttf;base64,${font64}) format('truetype');
        }
-       text{font-family:'yekanbakh';}
+       text{
+         font-family:'yekanbakh';
+         text-align: center;
+       }
+       .rtl-text {
+         direction: rtl;
+         unicode-bidi: bidi-override;
+       }
+       .ltr-text {
+         direction: ltr;
+         unicode-bidi: normal;
+       }
      </style>
    </defs>
  
@@ -75,15 +108,13 @@ export async function GET(req) {
  
    <!-- متن‌های بالا -->
    <text x="50" y="12" font-size="5pt" font-weight="bold"
-         direction="rtl" text-anchor="middle"
-         style="unicode-bidi:bidi-override">
-     ${isCarton ? 'کارتن ' : ''}${name}
+         text-anchor="middle">
+     ${isCarton ? 'کارتن ' : ''}${splitTextForRendering(name)}
    </text>
    ${model ? `
    <text x="50" y="21" font-size="5pt" font-weight="bold"
-         direction="rtl" text-anchor="middle"
-         style="unicode-bidi:bidi-override">
-         ${model}
+         text-anchor="middle">
+         ${splitTextForRendering(model)}
    </text>` : ''}
  
    <!-- بارکد -->
@@ -92,8 +123,8 @@ export async function GET(req) {
  
    <!-- نام برند پایین -->
    <text x="50" y="55" font-size="3pt"
-         direction="rtl" text-anchor="middle"
-         style="unicode-bidi:bidi-override">
+         text-anchor="middle"
+         class="rtl-text">
      هیبرید بیستون
    </text>
  </svg>`;

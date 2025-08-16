@@ -79,10 +79,40 @@ function detectHeaders(rows) {
   return best;
 }
 
-// Safety net for product name values (don’t save obvious non-product admin values)
+// Safety net for product name values (don't save obvious non-product admin values)
 const isBadNameValue = (name) => {
   const nv = faNorm(name);
   return /(مرکز|انبار|واحد|اداره|بخش)/.test(nv);
+};
+
+// New function to validate and correct product dimensions
+const validateAndCorrectDimensions = (name) => {
+  if (!name || typeof name !== 'string') return name;
+  
+  // Pattern to match dimensions like "50×60", "60×50", "05×06", "06×05"
+  const dimensionPattern = /(\d{1,2})[×xX](\d{1,2})/g;
+  
+  let correctedName = name;
+  let hasCorrections = false;
+  
+  correctedName = correctedName.replace(dimensionPattern, (match, num1, num2) => {
+    const n1 = parseInt(num1, 10);
+    const n2 = parseInt(num2, 10);
+    
+    // Check if dimensions seem reversed (e.g., "06×05" instead of "50×60")
+    // If both numbers are less than 20, they might be reversed dimensions
+    if (n1 < 20 && n2 < 20) {
+      // This could be a reversed dimension, but we can't automatically fix it
+      // without knowing the correct values. Log it for manual review.
+      console.warn(`[DIMENSION_WARNING] Possible reversed dimensions detected: "${match}" in product name: "${name}"`);
+      return match; // Keep as is, but log the warning
+    }
+    
+    // If dimensions look reasonable (at least one number >= 20), keep them
+    return match;
+  });
+  
+  return correctedName;
 };
 
 // Optional: get small sample set for debugging
@@ -151,7 +181,16 @@ export async function POST(req) {
 
       const update = {};
       // Safety: avoid writing admin-ish values as product name
-      if (name && !isBadNameValue(name)) update.name = name;
+      if (name && !isBadNameValue(name)) {
+        // Validate and potentially correct dimensions
+        const validatedName = validateAndCorrectDimensions(name);
+        update.name = validatedName;
+        
+        // Log if dimensions were flagged for review
+        if (validatedName !== name) {
+          console.log(`[DIMENSION_VALIDATION] Product name processed: "${name}" -> "${validatedName}"`);
+        }
+      }
       if (model) update.model = model;
       if (box_num !== '') update.box_num = box_num;
       if (in_stock !== null) update.in_stock = in_stock;

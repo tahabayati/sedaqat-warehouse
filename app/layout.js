@@ -28,7 +28,7 @@ export default function RootLayout({ children }) {
         <meta name="format-detection" content="telephone=no" />
         <meta name="msapplication-tap-highlight" content="no" />
       </head>
-      <body>
+      <body suppressHydrationWarning={true}>
           <NavBar/>
           {children}
       </body>

@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <title>تست SVG با ابعاد صحیح</title>
+    <style>
+      body {
+        font-family: "Tahoma", "Arial", sans-serif;
+        padding: 20px;
+        background: #f5f5f5;
+      }
+      .test-container {
+        max-width: 800px;
+        margin: 0 auto;
+        background: white;
+        padding: 20px;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      }
+      .svg-test {
+        border: 2px solid #ddd;
+        border-radius: 8px;
+        margin: 20px 0;
+        background: white;
+      }
+      h1 {
+        color: #f15922;
+        text-align: center;
+      }
+      .test-case {
+        margin: 20px 0;
+        padding: 20px;
+        background: #f8f9fa;
+        border-radius: 8px;
+      }
+      .test-case h3 {
+        color: #333;
+        margin-top: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="test-container">
+      <h1>تست SVG با ابعاد صحیح</h1>
+
+      <div class="test-case">
+        <h3>تست 1: حوله خشک کن فلت 50×60</h3>
+        <div class="svg-test">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="100mm"
+            height="60mm"
+            viewBox="0 0 100 60"
+          >
+            <defs>
+              <style>
+                text {
+                  font-family: "Tahoma", "Arial", sans-serif;
+                  text-align: center;
+                }
+                .rtl-text {
+                  direction: rtl;
+                  unicode-bidi: bidi-override;
+                }
+                .ltr-text {
+                  direction: ltr;
+                  unicode-bidi: normal;
+                }
+              </style>
+            </defs>
+
+            <rect width="100%" height="100%" fill="#ffffff" />
+
+            <!-- متن‌های بالا -->
+            <text
+              x="50"
+              y="12"
+              font-size="5pt"
+              font-weight="bold"
+              text-anchor="middle"
+            >
+              <tspan class="rtl-text">حوله خشک کن فلت</tspan>
+              <tspan class="ltr-text">50×60</tspan>
+            </text>
+
+            <text
+              x="50"
+              y="21"
+              font-size="5pt"
+              font-weight="bold"
+              text-anchor="middle"
+            >
+              <tspan class="rtl-text">طلا</tspan>
+            </text>
+
+            <!-- بارکد (شبیه‌سازی) -->
+            <rect
+              x="5"
+              y="25"
+              width="90"
+              height="27"
+              fill="#f0f0f0"
+              stroke="#ccc"
+            />
+            <text
+              x="50"
+              y="42"
+              font-size="3pt"
+              text-anchor="middle"
+              fill="#666"
+            >
+              بارکد محصول
+            </text>
+
+            <!-- نام برند پایین -->
+            <text
+              x="50"
+              y="55"
+              font-size="3pt"
+              text-anchor="middle"
+              class="rtl-text"
+            >
+              هیبرید بیستون
+            </text>
+          </svg>
+        </div>
+      </div>
+
+      <div class="test-case">
+        <h3>تست 2: حوله خشک کن فلت 60×50</h3>
+        <div class="svg-test">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="100mm"
+            height="60mm"
+            viewBox="0 0 100 60"
+          >
+            <defs>
+              <style>
+                text {
+                  font-family: "Tahoma", "Arial", sans-serif;
+                  text-align: center;
+                }
+                .rtl-text {
+                  direction: rtl;
+                  unicode-bidi: bidi-override;
+                }
+                .ltr-text {
+                  direction: ltr;
+                  unicode-bidi: normal;
+                }
+              </style>
+            </defs>
+
+            <rect width="100%" height="100%" fill="#ffffff" />
+
+            <!-- متن‌های بالا -->
+            <text
+              x="50"
+              y="12"
+              font-size="5pt"
+              font-weight="bold"
+              text-anchor="middle"
+            >
+              <tspan class="rtl-text">حوله خشک کن فلت</tspan>
+              <tspan class="ltr-text">60×50</tspan>
+            </text>
+
+            <text
+              x="50"
+              y="21"
+              font-size="5pt"
+              font-weight="bold"
+              text-anchor="middle"
+            >
+              <tspan class="rtl-text">طلا</tspan>
+            </text>
+
+            <!-- بارکد (شبیه‌سازی) -->
+            <rect
+              x="5"
+              y="25"
+              width="90"
+              height="27"
+              fill="#f0f0f0"
+              stroke="#ccc"
+            />
+            <text
+              x="50"
+              y="42"
+              font-size="3pt"
+              text-anchor="middle"
+              fill="#666"
+            >
+              بارکد محصول
+            </text>
+
+            <!-- نام برند پایین -->
+            <text
+              x="50"
+              y="55"
+              font-size="3pt"
+              text-anchor="middle"
+              class="rtl-text"
+            >
+              هیبرید بیستون
+            </text>
+          </svg>
+        </div>
+      </div>
+
+      <div class="test-case">
+        <h3>تست 3: مقایسه با روش قدیمی (مشکل‌دار)</h3>
+        <div class="svg-test">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="100mm"
+            height="60mm"
+            viewBox="0 0 100 60"
+          >
+            <defs>
+              <style>
+                text {
+                  font-family: "Tahoma", "Arial", sans-serif;
+                  text-align: center;
+                }
+              </style>
+            </defs>
+
+            <rect width="100%" height="100%" fill="#ffffff" />
+
+            <!-- متن‌های بالا (روش قدیمی - مشکل‌دار) -->
+            <text
+              x="50"
+              y="12"
+              font-size="5pt"
+              font-weight="bold"
+              text-anchor="middle"
+              direction="rtl"
+              style="unicode-bidi: bidi-override"
+            >
+              حوله خشک کن فلت 50×60
+            </text>
+
+            <text
+              x="50"
+              y="21"
+              font-size="5pt"
+              font-weight="bold"
+              text-anchor="middle"
+              direction="rtl"
+              style="unicode-bidi: bidi-override"
+            >
+              طلا
+            </text>
+
+            <!-- بارکد (شبیه‌سازی) -->
+            <rect
+              x="5"
+              y="25"
+              width="90"
+              height="27"
+              fill="#f0f0f0"
+              stroke="#ccc"
+            />
+            <text
+              x="50"
+              y="42"
+              font-size="3pt"
+              text-anchor="middle"
+              fill="#666"
+            >
+              بارکد محصول
+            </text>
+
+            <!-- نام برند پایین -->
+            <text
+              x="50"
+              y="55"
+              font-size="3pt"
+              text-anchor="middle"
+              direction="rtl"
+              style="unicode-bidi: bidi-override"
+            >
+              هیبرید بیستون
+            </text>
+          </svg>
+        </div>
+        <p style="color: #e65100; font-weight: bold">
+          ⚠️ این روش قدیمی است و اعداد را معکوس می‌کند (60×50 → 06×05)
+        </p>
+      </div>
+
+      <div class="test-case">
+        <h3>نتیجه‌گیری</h3>
+        <ul>
+          <li>
+            ✅ <strong>روش جدید:</strong> اعداد به درستی نمایش داده می‌شوند
+            (50×60)
+          </li>
+          <li>❌ <strong>روش قدیمی:</strong> اعداد معکوس می‌شوند (06×05)</li>
+          <li>
+            🔧 <strong>راه‌حل:</strong> استفاده از tspan با کلاس‌های RTL و LTR
+            جداگانه
+          </li>
+        </ul>
+      </div>
+    </div>
+  </body>
+</html>

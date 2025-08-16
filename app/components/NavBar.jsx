@@ -5,6 +5,7 @@ import { usePathname } from 'next/navigation';
 import { FaBarcode } from "react-icons/fa6";
 import { TbFileInvoice } from 'react-icons/tb';
 import { LuWarehouse, LuHistory } from 'react-icons/lu';
+import { MdAdminPanelSettings } from 'react-icons/md';
 import styles from './NavBar.module.css';
 
 const links = [
@@ -12,6 +13,7 @@ const links = [
   { href: '/upload-invoice',   icon: TbFileInvoice,    label: 'فاکتور' },
   { href: '/warehouse',        icon: LuWarehouse,      label: 'انبار' },
   { href: '/warehouse/history',icon: LuHistory,        label: 'تاریخچه' },
+  { href: '/admin/fix-dimensions', icon: MdAdminPanelSettings, label: 'ادمین' },
 ];
 
 export default function NavBar() {
