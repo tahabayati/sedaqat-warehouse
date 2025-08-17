@@ -2,6 +2,7 @@
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import styles from './Warehouse.module.css';
+import { formatPersianDateTime } from '../../lib/persianDate';
 
 export default function WarehouseListPage() {
   const [invoices, setInvoices] = useState([]);
@@ -17,6 +18,15 @@ export default function WarehouseListPage() {
       .then(([p, ip]) => setInvoices([...(p.invoices || []), ...(ip.invoices || [])]));
   }, []);
 
+  // تبدیل تاریخ به فرمت شمسی نمایشی
+  const formatDate = (date) => {
+    // اگر تاریخ از قبل به صورت رشته فارسی ذخیره شده باشد
+    if (typeof date === 'string' && !date.includes('T')) {
+      return date;
+    }
+    return formatPersianDateTime(date);
+  };
+
   return (
     <div className={styles.container}>
       <h1 className={styles.title}>فاکتورهای جاری</h1>
@@ -25,7 +35,9 @@ export default function WarehouseListPage() {
           <div key={inv._id} className={`${styles.card} ${idx % 2 ? styles.alt : ''}`}>
             <div className={styles.cardInfo}>
               <span className={styles.invName}>{inv.name || 'بدون نام'}</span>
-              <span className={styles.date}>{inv.createdAt}</span>
+              <span className={styles.date}>
+                {formatDate(inv.legacyCreatedAt || inv.createdAt)}
+              </span>
             </div>
             <button
               className={styles.startBtn}

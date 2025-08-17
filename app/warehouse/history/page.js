@@ -1,9 +1,8 @@
 'use client';
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import moment from 'moment-jalaali';
-import 'moment/locale/fa';
 import styles from './History.module.css';
+import { formatPersianDateTime, toGregorian } from '../../../lib/persianDate';
 
 export default function HistoryPage() {
   const [invoices, setInvoices] = useState([]);
@@ -13,14 +12,14 @@ export default function HistoryPage() {
   const router = useRouter();
 
   /* تبدیل شمسی → میلادی 'YYYY-MM-DD' */
-  const toGregorian = (j) =>
-    j ? moment.from(j, 'fa', 'jYYYY/jMM/jDD').format('YYYY-MM-DD') : '';
+  const toGregorianDate = (j) =>
+    j ? toGregorian(j, 'jYYYY/jMM/jDD', 'YYYY-MM-DD') : '';
 
   const fetchInvoices = () => {
     const qs = new URLSearchParams();
     if (status !== 'all') qs.set('status', status);
-    if (from) qs.set('from', toGregorian(from));
-    if (to)   qs.set('to',   toGregorian(to));
+    if (from) qs.set('from', toGregorianDate(from));
+    if (to)   qs.set('to',   toGregorianDate(to));
 
     fetch(`/api/warehouse/invoices?${qs.toString()}`, { cache: 'no-store' })
       .then((r) => r.json())
@@ -32,6 +31,15 @@ export default function HistoryPage() {
   const applyDate = () => fetchInvoices();
 
   const btnLabel = (st) => (st === 'done' ? 'مشاهده' : 'ادامه');
+  
+  // تبدیل تاریخ به فرمت شمسی نمایشی
+  const formatDate = (date) => {
+    // اگر تاریخ از قبل به صورت رشته فارسی ذخیره شده باشد
+    if (typeof date === 'string' && !date.includes('T')) {
+      return date;
+    }
+    return formatPersianDateTime(date);
+  };
 
   return (
     <div className={styles.wrapper}>
@@ -91,7 +99,9 @@ export default function HistoryPage() {
                   ? 'رسید موقت'
                   : 'تمام‌شده'}
               </span>
-              <span className={styles.date}>{inv.createdAt}</span>
+              <span className={styles.date}>
+                {formatDate(inv.legacyCreatedAt || inv.createdAt)}
+              </span>
             </div>
             <button
               className={styles.btn}

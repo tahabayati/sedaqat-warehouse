@@ -3,6 +3,7 @@ import { useParams, useRouter } from 'next/navigation';
 import { useEffect, useState, useCallback, useRef } from 'react';
 import styles from './Invoice.module.css';
 import { IoOpenOutline } from "react-icons/io5";
+import { formatPersianDateTime } from '../../../lib/persianDate';
 
 export default function InvoiceProcess() {
   const { id }          = useParams();
@@ -114,16 +115,27 @@ export default function InvoiceProcess() {
     setErrorPopup(null);
   };
 
+  // تبدیل تاریخ به فرمت شمسی نمایشی
+  const formatDate = (date) => {
+    // اگر تاریخ از قبل به صورت رشته فارسی ذخیره شده باشد
+    if (typeof date === 'string' && !date.includes('T')) {
+      return date;
+    }
+    return formatPersianDateTime(date);
+  };
+
   if (loading)  return <p className={styles.wrapper}>در حال بارگذاری…</p>;
   if (!inv)     return <p className={styles.wrapper}>فاکتور یافت نشد 🚫</p>;
 
   const readOnly = inv.status === 'done';
+  const createdAtFormatted = formatDate(inv.legacyCreatedAt || inv.createdAt);
 
   return (
     <div className={styles.wrapper}>
       {toast && <div className={styles.toast}>{toast}</div>}
 
       <h2>{inv.name || `فاکتور ${id}`}</h2>
+      <p className={styles.invoiceDate}>تاریخ: {createdAtFormatted}</p>
 
       {!readOnly && (
         <input

@@ -2,9 +2,9 @@
 import { NextResponse } from 'next/server';
 import dbConnect from '../../../lib/mongodb';
 import Invoice from '../../../lib/models/Invoice';
-import { persianNow } from '../../../lib/persianNow';
+import { gregorianNowISO, persianNow } from '../../../lib/persianDate';
 
-export const dynamic = 'force-dynamic'; // ⬅️ از کش شدن جلوگیری می‌کند
+export const dynamic = 'force-dynamic'; // ⬅️ از کش شدن جلوگیری می‌کند
 
 export async function POST(req) {
   try {
@@ -31,7 +31,8 @@ export async function POST(req) {
 
     // ایجاد فاکتور در وضعیت «pending»
     const invoiceData = {
-      createdAt: persianNow(), // زمان به‌صورت منطقهٔ تهران
+      createdAt: new Date(), // ذخیره تاریخ به صورت Date برای سهولت کوئری
+      legacyCreatedAt: persianNow(), // برای حفظ سازگاری با نمایش قبلی
       status: 'pending',
       items,
       name,   
