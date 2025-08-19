@@ -43,26 +43,40 @@ function plus(x, y, { arm, stroke }) {
   `;
 }
 
-// Function to split text into RTL and LTR parts for proper rendering
+// Split text into RTL and LTR runs without changing content
+function escapeXml(s) {
+  return String(s)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
+// Keep content intact. Only wrap explicit dimension tokens (e.g., 50×60, 50x60) as LTR.
 function splitTextForRendering(text) {
   if (!text) return '';
-  
-  // Split text by dimensions pattern (e.g., "50×60", "60×50")
-  const dimensionPattern = /(\d+[×xX]\d+)/g;
-  const parts = text.split(dimensionPattern);
-  
-  let result = '';
-  parts.forEach((part, index) => {
-    if (dimensionPattern.test(part)) {
-      // This is a dimension - render as LTR to preserve number order
-      result += `<tspan class="ltr-text">${part}</tspan>`;
-    } else if (part.trim()) {
-      // This is regular text - render as RTL
-      result += `<tspan class="rtl-text">${part}</tspan>`;
+  const s = String(text);
+  const re = /(\d+\s*[xX×]\s*\d+)/g;
+  let out = '';
+  let last = 0;
+  let m;
+  while ((m = re.exec(s)) !== null) {
+    if (m.index > last) {
+      const rtlChunk = s.slice(last, m.index);
+      // RLI ... PDI around RTL to force isolation in all renderers
+      out += `<tspan class="rtl-text">&#x2067;${escapeXml(rtlChunk)}&#x2069;</tspan>`;
     }
-  });
-  
-  return result || text;
+    const dim = m[0].replace(/\s+/g, '');
+    // LRI ... PDI around LTR to force isolation in all renderers
+    out += `<tspan class="ltr-text">&#x2066;${escapeXml(dim)}&#x2069;</tspan>`;
+    last = m.index + m[0].length;
+  }
+  if (last < s.length) {
+    const tail = s.slice(last);
+    out += `<tspan class="rtl-text">&#x2067;${escapeXml(tail)}&#x2069;</tspan>`;
+  }
+  return out || `<tspan class="rtl-text">&#x2067;${escapeXml(s)}&#x2069;</tspan>`;
 }
 
 /* ---------- GET handler ---------- */
@@ -95,11 +109,11 @@ export async function GET(req) {
        }
        .rtl-text {
          direction: rtl;
-         unicode-bidi: bidi-override;
+         unicode-bidi: isolate;
        }
        .ltr-text {
          direction: ltr;
-         unicode-bidi: normal;
+         unicode-bidi: isolate;
        }
      </style>
    </defs>
@@ -108,12 +122,12 @@ export async function GET(req) {
  
    <!-- متن‌های بالا -->
    <text x="50" y="12" font-size="5pt" font-weight="bold"
-         text-anchor="middle">
+         text-anchor="middle" xml:space="preserve">
      ${isCarton ? 'کارتن ' : ''}${splitTextForRendering(name)}
    </text>
    ${model ? `
    <text x="50" y="21" font-size="5pt" font-weight="bold"
-         text-anchor="middle">
+         text-anchor="middle" xml:space="preserve">
          ${splitTextForRendering(model)}
    </text>` : ''}
  
