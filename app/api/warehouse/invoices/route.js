@@ -9,11 +9,14 @@ export async function GET(req) {
   await dbConnect();
 
   const status = req.nextUrl.searchParams.get('status') || 'all';
+  const serial = (req.nextUrl.searchParams.get('serial') || '').trim();
   const query  = status === 'all' ? {} : { status };
+  if (serial) {
+    query.serial = String(serial).replace(/[^0-9]/g, '');
+  }
 
   const invoices = await Invoice.find(query)
-    .select('_id createdAt status items')
-    .select('_id name createdAt status items') 
+    .select('_id name serial createdAt status items') 
     .sort({ createdAt: -1 })
     .lean();
 

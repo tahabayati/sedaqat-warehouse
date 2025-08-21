@@ -9,7 +9,7 @@ export const dynamic = 'force-dynamic'; // ⬅️ از کش شدن جلوگیر�
 export async function POST(req) {
   try {
     // بدنهٔ JSON را می‌خوانیم
-    const { items, name = '' } = await req.json(); 
+    const { items, name = '', serial = '' } = await req.json(); 
     
     console.log(`[create-invoice] Request received:`, { 
       name, 
@@ -35,7 +35,8 @@ export async function POST(req) {
       legacyCreatedAt: persianNow(), // برای حفظ سازگاری با نمایش قبلی
       status: 'pending',
       items,
-      name,   
+      name,
+      serial: String(serial || '').replace(/[^0-9]/g, ''),   
     };
     
     console.log(`[create-invoice] Creating invoice with data:`, invoiceData);

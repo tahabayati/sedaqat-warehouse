@@ -16,3 +16,13 @@ export async function GET(_, { params }) {
 
   return NextResponse.json({ invoice: inv });
 }
+
+export async function DELETE(_, { params }) {
+  const id = params.id;
+  if (!mongoose.Types.ObjectId.isValid(id))
+    return NextResponse.json({ error: 'Bad ID' }, { status: 400 });
+
+  await dbConnect();
+  await Invoice.findByIdAndDelete(id);
+  return NextResponse.json({ ok: true });
+}

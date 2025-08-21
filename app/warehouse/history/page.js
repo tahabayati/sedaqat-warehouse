@@ -9,6 +9,7 @@ export default function HistoryPage() {
   const [status, setStatus]     = useState('all');
   const [from, setFrom]         = useState(''); // jYYYY/MM/DD
   const [to,   setTo]           = useState('');
+  const [serial, setSerial]     = useState('');
   const router = useRouter();
 
   /* تبدیل شمسی → میلادی 'YYYY-MM-DD' */
@@ -20,6 +21,7 @@ export default function HistoryPage() {
     if (status !== 'all') qs.set('status', status);
     if (from) qs.set('from', toGregorianDate(from));
     if (to)   qs.set('to',   toGregorianDate(to));
+    if (serial) qs.set('serial', serial.trim());
 
     fetch(`/api/warehouse/invoices?${qs.toString()}`, { cache: 'no-store' })
       .then((r) => r.json())
@@ -68,6 +70,14 @@ export default function HistoryPage() {
 
       {/* ---- فیلتر تاریخ ---- */}
       <div className={styles.dateRange}>
+        <input
+          type="text"
+          inputMode="numeric"
+          pattern="\\d*"
+          value={serial}
+          placeholder="سریال فاکتور"
+          onChange={(e) => setSerial(e.target.value.replace(/[^0-9]/g, ''))}
+        />
         <input
           type="text"
           value={from}

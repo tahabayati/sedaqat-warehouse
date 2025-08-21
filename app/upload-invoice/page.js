@@ -8,6 +8,7 @@ export default function UploadInvoice() {
   const [rows, setRows] = useState([]);
   const [saved, setSaved] = useState(false);
   const [invName, setInvName] = useState('');
+  const [invSerial, setInvSerial] = useState('');
   const [loading, setLoading] = useState(false);   // 🔸 اسپینر
 
   /* ---------- handle file ---------- */
@@ -33,7 +34,8 @@ export default function UploadInvoice() {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ 
         items: rows,
-        name:  invName.trim(), 
+        name:  invName.trim(),
+        serial: invSerial.trim(), 
        }),
     });
     if (res.ok) {
@@ -94,6 +96,16 @@ export default function UploadInvoice() {
               value={invName}
               onChange={(e) => setInvName(e.target.value)}
               placeholder="نام دلخواه فاکتور"
+              className={styles.nameInput}
+            />
+            {/* فیلد سریال فاکتور - فقط عدد */}
+            <input
+              type="text"
+              inputMode="numeric"
+              pattern="\\d*"
+              value={invSerial}
+              onChange={(e) => setInvSerial(e.target.value.replace(/[^0-9]/g, ''))}
+              placeholder="سریال فاکتور"
               className={styles.nameInput}
             />
           <button onClick={createInvoice} className={styles.button}>
