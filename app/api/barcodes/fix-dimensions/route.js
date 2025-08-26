@@ -4,7 +4,7 @@ import Barcode from '../../../../lib/models/Barcode';
 
 export async function POST(req) {
   try {
-    const { barcode, correctedName, correctedModel } = await req.json();
+    const { barcode, correctedName, correctedModel, correctedBoxNum, correctedSingleNum } = await req.json();
     
     if (!barcode) {
       return NextResponse.json(
@@ -13,9 +13,9 @@ export async function POST(req) {
       );
     }
     
-    if (!correctedName && !correctedModel) {
+    if (!correctedName && !correctedModel && (correctedBoxNum === undefined) && (correctedSingleNum === undefined)) {
       return NextResponse.json(
-        { error: 'At least one field (name or model) must be provided' },
+        { error: 'At least one field (name, model, box_num, single_num) must be provided' },
         { status: 400 }
       );
     }
@@ -46,6 +46,23 @@ export async function POST(req) {
       barcodeDoc.model = correctedModel;
       updates.model = correctedModel;
     }
+
+    if (correctedBoxNum !== undefined) {
+      oldValues.oldBoxNum = barcodeDoc.box_num ?? '';
+      // Allow clearing by sending empty string
+      barcodeDoc.box_num = correctedBoxNum === '' ? '' : String(correctedBoxNum);
+      updates.box_num = barcodeDoc.box_num;
+    }
+
+    if (correctedSingleNum !== undefined) {
+      const numeric = Number(correctedSingleNum);
+      if (!Number.isFinite(numeric) || numeric < 1) {
+        return NextResponse.json({ error: 'single_num must be a positive number' }, { status: 400 });
+      }
+      oldValues.oldSingleNum = barcodeDoc.single_num ?? 1;
+      barcodeDoc.single_num = numeric;
+      updates.single_num = numeric;
+    }
     
     await barcodeDoc.save();
 
@@ -55,6 +72,12 @@ export async function POST(req) {
     }
     if (correctedModel) {
       console.log(`   Old model: "${oldValues.oldModel}" -> New model: "${correctedModel}"`);
+    }
+    if (correctedBoxNum !== undefined) {
+      console.log(`   Old box_num: "${oldValues.oldBoxNum}" -> New box_num: "${barcodeDoc.box_num}"`);
+    }
+    if (correctedSingleNum !== undefined) {
+      console.log(`   Old single_num: "${oldValues.oldSingleNum}" -> New single_num: "${barcodeDoc.single_num}"`);
     }
 
     return NextResponse.json({

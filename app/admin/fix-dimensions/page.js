@@ -72,12 +72,12 @@ export default function FixDimensions() {
   };
 
   // Fix a product's dimensions and model
-  const fixDimensions = async (barcode, correctedName, correctedModel) => {
+  const fixDimensions = async (barcode, correctedName, correctedModel, correctedBoxNum, correctedSingleNum) => {
     try {
       const response = await fetch('/api/barcodes/fix-dimensions', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ barcode, correctedName, correctedModel })
+        body: JSON.stringify({ barcode, correctedName, correctedModel, correctedBoxNum, correctedSingleNum })
       });
 
       if (response.ok) {
@@ -102,7 +102,11 @@ export default function FixDimensions() {
       currentName: product.name,
       correctedName: product.name,
       currentModel: product.model,
-      correctedModel: product.model
+      correctedModel: product.model,
+      currentBoxNum: product.box_num || '',
+      correctedBoxNum: product.box_num || '',
+      currentSingleNum: typeof product.single_num === 'number' ? product.single_num : 1,
+      correctedSingleNum: typeof product.single_num === 'number' ? product.single_num : 1,
     });
   };
 
@@ -114,15 +118,23 @@ export default function FixDimensions() {
 
   // Save the correction
   const saveCorrection = () => {
-    const nameChanged = editing.correctedName.trim() !== editing.currentName;
-    const modelChanged = editing.correctedModel.trim() !== editing.currentModel;
+    const nameChanged = (editing.correctedName ?? '').trim() !== (editing.currentName ?? '');
+    const modelChanged = (editing.correctedModel ?? '').trim() !== (editing.currentModel ?? '');
+    const boxNumChanged = (editing.correctedBoxNum ?? '') !== (editing.currentBoxNum ?? '');
+    const singleNumChanged = Number(editing.correctedSingleNum ?? 1) !== Number(editing.currentSingleNum ?? 1);
     
-    if (!nameChanged && !modelChanged) {
+    if (!nameChanged && !modelChanged && !boxNumChanged && !singleNumChanged) {
       setMessage('هیچ تغییری اعمال نشده است');
       return;
     }
     
-    fixDimensions(editing.barcode, editing.correctedName.trim(), editing.correctedModel.trim());
+    fixDimensions(
+      editing.barcode,
+      (editing.correctedName ?? '').trim(),
+      (editing.correctedModel ?? '').trim(),
+      (editing.correctedBoxNum ?? ''),
+      Number(editing.correctedSingleNum ?? 1)
+    );
   };
 
   // Handle page change
@@ -264,6 +276,28 @@ export default function FixDimensions() {
                           })}
                           className={styles.editInput}
                           placeholder="مدل صحیح محصول"
+                        />
+                        <input
+                          type="number"
+                          min=""
+                          value={editing.correctedBoxNum}
+                          onChange={(e) => setEditing({
+                            ...editing,
+                            correctedBoxNum: e.target.value
+                          })}
+                          className={styles.editInput}
+                          placeholder="تعداد هر کارتن (box_num)"
+                        />
+                        <input
+                          type="number"
+                          min="1"
+                          value={editing.correctedSingleNum}
+                          onChange={(e) => setEditing({
+                            ...editing,
+                            correctedSingleNum: e.target.value
+                          })}
+                          className={styles.editInput}
+                          placeholder="تعداد واحد هر بار اسکن (single_num)"
                         />
                       </div>
                       <div className={styles.editButtons}>

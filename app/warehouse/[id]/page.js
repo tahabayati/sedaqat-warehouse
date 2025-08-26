@@ -52,7 +52,9 @@ export default function InvoiceProcess() {
     const item = inv.items.find((i) => i.barcode === productBC);
     if (!item) return showErrorPopup('بارکد در فاکتور نیست');
 
-    const delta = isCarton ? Number(item.box_num) || 1 : 1;
+    const delta = isCarton
+      ? Number(item.box_num) || 1
+      : (Number(item.single_num) || 1);
     if (item.collected + delta > item.quantity)
       return showErrorPopup('از حد مجاز بیشتر است');
 
@@ -115,12 +117,8 @@ export default function InvoiceProcess() {
     setErrorPopup(null);
   };
 
-  // تبدیل تاریخ به فرمت شمسی نمایشی
+  // تبدیل تاریخ به فرمت شمسی نمایشی (همیشه از فرمت‌کننده‌ی مرکزی استفاده می‌کنیم)
   const formatDate = (date) => {
-    // اگر تاریخ از قبل به صورت رشته فارسی ذخیره شده باشد
-    if (typeof date === 'string' && !date.includes('T')) {
-      return date;
-    }
     return formatPersianDateTime(date);
   };
 
@@ -135,7 +133,7 @@ export default function InvoiceProcess() {
       {toast && <div className={styles.toast}>{toast}</div>}
 
       <h2>{inv.name || `فاکتور ${id}`}</h2>
-      <p className={styles.invoiceDate}>تاریخ: {createdAtFormatted}</p>
+      {/* تاریخ نمایش داده نمی‌شود */}
 
       {!readOnly && (
         <input
@@ -166,6 +164,19 @@ export default function InvoiceProcess() {
               <td>{it.collected} / {it.quantity}</td>
             </tr>
           ))}
+          {/* مجموع */}
+          {(() => {
+            const totalCollected = inv.items.reduce((acc, it) => acc + (Number(it.collected) || 0), 0);
+            const totalQty = inv.items.reduce((acc, it) => acc + (Number(it.quantity) || 0), 0);
+            const complete = totalCollected === totalQty && totalQty > 0;
+            return (
+              <tr className={complete ? styles.doneRow : ''}>
+                <td className={styles.iconCell}></td>
+                <td colSpan={2} style={{fontWeight:'bold'}}>مجموع</td>
+                <td style={{fontWeight:'bold'}}>{totalCollected} / {totalQty}</td>
+              </tr>
+            );
+          })()}
         </tbody>
       </table>
 

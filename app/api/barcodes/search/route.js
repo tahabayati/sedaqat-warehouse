@@ -39,7 +39,7 @@ export async function GET(req) {
       // Get paginated results with priority sorting
       const skip = (page - 1) * limit;
       let docs = await Barcode.find(query)
-        .select('code box_code box_num name model')
+        .select('code box_code box_num name model single_num')
         .lean();
       
       // Sort by priority: products with names first, then by name alphabetically

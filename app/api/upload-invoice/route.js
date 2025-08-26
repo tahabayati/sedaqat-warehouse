@@ -89,6 +89,7 @@ export async function POST(req) {
           model:   d.model   || '',
           name:    d.name    || '',
           box_code:d.box_code|| '', 
+          single_num: typeof d.single_num === 'number' && d.single_num > 0 ? d.single_num : 1,
         };
         console.log(`[upload] Item processed:`, { barcode: p.barcode, item });
         return item;
@@ -149,6 +150,7 @@ export async function POST(req) {
         model:   d.model   || '',
         name:    d.name    || '',
         box_code:d.box_code|| '', 
+        single_num: typeof d.single_num === 'number' && d.single_num > 0 ? d.single_num : 1,
       };
       console.log(`[upload-fallback] Item processed:`, { barcode: p.barcode, item });
       return item;
