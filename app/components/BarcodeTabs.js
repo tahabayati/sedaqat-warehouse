@@ -8,7 +8,6 @@ export default function BarcodeTabs() {
   const path = usePathname();
   const isGen   = path.startsWith('/barcode-generator');
   const isLabel = path.startsWith('/barcode-label');
-  const isBulk  = path.startsWith('/barcode-bulk-update');
 
   return (
     <div className={styles.tabs}>
@@ -21,11 +20,6 @@ export default function BarcodeTabs() {
       <div className={styles.BarcodeTabs} style={{borderLeft:"2px solid #c7c7c760"}}  >
          <Link href="/barcode-label" className={`${styles.tab} ${isLabel ? styles.active : ''}`}>
          لیبل بارکد
-         </Link>
-      </div>
-      <div className={styles.BarcodeTabs}>
-         <Link href="/barcode-bulk-update" className={`${styles.tab} ${isBulk ? styles.active : ''}`}>
-          به‌روز‌رسانی
          </Link>
       </div>
      
