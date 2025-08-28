@@ -1,0 +1,1594 @@
+<?xml version="1.0"?>
+<?mso-application progid="Excel.Sheet"?>
+<?fr-application created="FastReport"?>
+<?fr-application homesite="http://www.fast-report.com"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+ xmlns:o="urn:schemas-microsoft-com:office:office"
+ xmlns:x="urn:schemas-microsoft-com:office:excel"
+ xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+ xmlns:html="http://www.w3.org/TR/REC-html40">
+<DocumentProperties xmlns="urn:schemas-microsoft-com:office:office">
+<Title></Title>
+<Author></Author>
+<Version>...</Version>
+</DocumentProperties>
+<ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
+<ProtectStructure>False</ProtectStructure>
+<ProtectWindows>False</ProtectWindows>
+</ExcelWorkbook>
+<Styles>
+<Style ss:ID="s0">
+<Font ss:FontName="Arial" ss:Size="7" ss:Color="#808080"/>
+<Interior ss:Color="#FFFFFF" ss:Pattern="Solid"/>
+<Alignment ss:Horizontal="Right" ss:Vertical="Top" ss:WrapText="1" />
+<Borders>
+</Borders>
+</Style>
+<Style ss:ID="s1">
+<Font ss:FontName="Arial" ss:Size="10" ss:Color="#000000"/>
+<Interior ss:Color="#FFFFFF" ss:Pattern="Solid"/>
+<Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:WrapText="1" />
+<Borders>
+<Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#000000" />
+<Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#000000" />
+</Borders>
+</Style>
+<Style ss:ID="s2">
+<Font ss:FontName="IRANSans(FaNum)" ss:Size="9" ss:Color="#000000"/>
+<Interior ss:Color="#FFFFFF" ss:Pattern="Solid"/>
+<Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:WrapText="1" />
+<Borders>
+</Borders>
+</Style>
+<Style ss:ID="s3">
+<Font ss:FontName="IRANSans(FaNum)" ss:Size="12" ss:Color="#000080" ss:Bold="1"/>
+<Interior ss:Color="#FFFFFF" ss:Pattern="Solid"/>
+<Alignment ss:Horizontal="Center" ss:Vertical="Top" ss:WrapText="1" />
+<Borders>
+</Borders>
+</Style>
+<Style ss:ID="s4">
+<Font ss:FontName="IRANSans(FaNum)" ss:Size="11" ss:Color="#FFFFFF" ss:Bold="1"/>
+<Interior ss:Color="#FFFFFF" ss:Pattern="Solid"/>
+<Alignment ss:Horizontal="Center" ss:Vertical="Top" ss:WrapText="1" />
+<Borders>
+<Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#000000" />
+<Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#000000" />
+</Borders>
+</Style>
+<Style ss:ID="s5">
+<Font ss:FontName="IRANSans(FaNum)" ss:Size="9" ss:Color="#000000"/>
+<Interior ss:Color="#FFFFFF" ss:Pattern="Solid"/>
+<Alignment ss:Horizontal="Right" ss:Vertical="Top" ss:WrapText="1" />
+<Borders>
+</Borders>
+</Style>
+<Style ss:ID="s6">
+<Font ss:FontName="IRANSans(FaNum)" ss:Size="11" ss:Color="#000000"/>
+<Interior ss:Color="#FFFFFF" ss:Pattern="Solid"/>
+<Alignment ss:Horizontal="Right" ss:Vertical="Top" ss:WrapText="1" />
+<Borders>
+</Borders>
+</Style>
+<Style ss:ID="s7">
+<Font ss:FontName="IRANSans(FaNum)" ss:Size="9" ss:Color="#000000" ss:Bold="1"/>
+<Interior ss:Color="#FFFFFF" ss:Pattern="Solid"/>
+<Alignment ss:Horizontal="Right" ss:Vertical="Top" ss:WrapText="1" />
+<Borders>
+</Borders>
+</Style>
+<Style ss:ID="s8">
+<Font ss:FontName="IRANSans(FaNum)" ss:Size="9" ss:Color="#000000"/>
+<Interior ss:Color="#FFFFFF" ss:Pattern="Solid"/>
+<Alignment ss:Horizontal="Center" ss:Vertical="Center" ss:WrapText="1" />
+<Borders>
+<Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#000000" />
+<Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#000000" />
+</Borders>
+</Style>
+<Style ss:ID="s9">
+<Font ss:FontName="IRANSans(FaNum)" ss:Size="9" ss:Color="#000000"/>
+<Interior ss:Color="#FFFFFF" ss:Pattern="Solid"/>
+<Alignment ss:Horizontal="Center" ss:Vertical="Center" ss:WrapText="1" />
+<Borders>
+<Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#000000" />
+</Borders>
+</Style>
+<Style ss:ID="s10">
+<Font ss:FontName="IRANSans(FaNum)" ss:Size="9" ss:Color="#000000"/>
+<Interior ss:Color="#FFFFFF" ss:Pattern="Solid"/>
+<Alignment ss:Horizontal="Center" ss:Vertical="Center" ss:WrapText="1" />
+<Borders>
+<Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#000000" />
+<Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#000000" />
+<Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#000000" />
+</Borders>
+</Style>
+<Style ss:ID="s11">
+<Font ss:FontName="IRANSans(FaNum)" ss:Size="11" ss:Color="#000000" ss:Bold="1"/>
+<Interior ss:Color="#FFFFFF" ss:Pattern="Solid"/>
+<Alignment ss:Horizontal="Center" ss:Vertical="Top" ss:WrapText="1" />
+<Borders>
+<Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#000000" />
+<Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#000000" />
+</Borders>
+</Style>
+<Style ss:ID="s12">
+<Font ss:FontName="IRANSans" ss:Size="10" ss:Color="#000000"/>
+<Interior ss:Color="#FFFFFF" ss:Pattern="Solid"/>
+<Alignment ss:Horizontal="Right" ss:Vertical="Top" ss:WrapText="1" />
+<Borders>
+<Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#000000" />
+<Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#000000" />
+</Borders>
+</Style>
+<Style ss:ID="s13">
+<Font ss:FontName="IRANSans(FaNum)" ss:Size="9" ss:Color="#000000"/>
+<Interior ss:Color="#FFFFFF" ss:Pattern="Solid"/>
+<Alignment ss:Horizontal="Center" ss:Vertical="Top" ss:WrapText="1" />
+<Borders>
+<Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#000000" />
+</Borders>
+</Style>
+<Style ss:ID="s14">
+<Font ss:FontName="IRANSans(FaNum)" ss:Size="8" ss:Color="#000000"/>
+<Interior ss:Color="#FFFFFF" ss:Pattern="Solid"/>
+<Alignment ss:Horizontal="Right" ss:Vertical="Top" ss:WrapText="1" />
+<Borders>
+<Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#000000" />
+<Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#000000" />
+</Borders>
+</Style>
+<Style ss:ID="s15">
+<Font ss:FontName="IRANSans(FaNum)" ss:Size="9" ss:Color="#000000"/>
+<Interior ss:Color="#FFFFFF" ss:Pattern="Solid"/>
+<Alignment ss:Horizontal="Right" ss:Vertical="Top" ss:WrapText="1" />
+<Borders>
+<Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#000000" />
+<Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#000000" />
+</Borders>
+</Style>
+<Style ss:ID="s16">
+<Font ss:FontName="IRANSans(FaNum)" ss:Size="8" ss:Color="#000000"/>
+<Interior ss:Color="#FFFFFF" ss:Pattern="Solid"/>
+<Alignment ss:Horizontal="Center" ss:Vertical="Top" ss:WrapText="1" />
+<Borders>
+<Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#000000" />
+</Borders>
+</Style>
+<Style ss:ID="s17">
+<Font ss:FontName="IRANSans(FaNum)" ss:Size="9" ss:Color="#000000"/>
+<Interior ss:Color="#FFFFFF" ss:Pattern="Solid"/>
+<Alignment ss:Horizontal="Right" ss:Vertical="Top" ss:WrapText="1" />
+<Borders>
+<Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#000000" />
+<Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#000000" />
+</Borders>
+</Style>
+<Style ss:ID="s18">
+<Font ss:FontName="IRANSans(FaNum)" ss:Size="9" ss:Color="#000000"/>
+<Interior ss:Color="#FFFFFF" ss:Pattern="Solid"/>
+<Alignment ss:Horizontal="Right" ss:Vertical="Top" ss:WrapText="1" />
+<Borders>
+<Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#000000" />
+<Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#000000" />
+</Borders>
+<NumberFormat ss:Format="#,##0"/>
+</Style>
+<Style ss:ID="s19">
+<Font ss:FontName="IRANSans(FaNum)" ss:Size="9" ss:Color="#000000"/>
+<Interior ss:Color="#FFFFFF" ss:Pattern="Solid"/>
+<Alignment ss:Horizontal="Right" ss:Vertical="Top" ss:WrapText="1" />
+<Borders>
+<Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#000000" />
+<Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#000000" />
+<Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#000000" />
+</Borders>
+<NumberFormat ss:Format="#,##0"/>
+</Style>
+<Style ss:ID="s20">
+<Font ss:FontName="IRANSans(FaNum)" ss:Size="8" ss:Color="#000000"/>
+<Interior ss:Color="#FFFFFF" ss:Pattern="Solid"/>
+<Alignment ss:Horizontal="Left" ss:Vertical="Center" ss:WrapText="1" />
+<Borders>
+<Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#000000" />
+<Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#000000" />
+<Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#000000" />
+</Borders>
+</Style>
+<Style ss:ID="s21">
+<Font ss:FontName="IRANSans(FaNum)" ss:Size="9" ss:Color="#000000" ss:Bold="1"/>
+<Interior ss:Color="#FFFFFF" ss:Pattern="Solid"/>
+<Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:WrapText="1" />
+<Borders>
+</Borders>
+</Style>
+<Style ss:ID="s22">
+<Font ss:FontName="IRANSans(FaNum)" ss:Size="9" ss:Color="#000000"/>
+<Interior ss:Color="#FFFFFF" ss:Pattern="Solid"/>
+<Alignment ss:Horizontal="Right" ss:Vertical="Top" ss:WrapText="1" />
+<Borders>
+</Borders>
+</Style>
+<Style ss:ID="s23">
+<Font ss:FontName="Arial" ss:Size="10" ss:Color="#000000"/>
+<Interior ss:Color="#FFFFFF" ss:Pattern="Solid"/>
+<Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:WrapText="0" />
+<Borders>
+<Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#000000" />
+<Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#000000" />
+<Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#000000" />
+<Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#000000" />
+</Borders>
+</Style>
+<Style ss:ID="s24">
+<Font ss:FontName="IRANSans(FaNum)" ss:Size="10" ss:Color="#000000" ss:Bold="1"/>
+<Interior ss:Color="#FFFFFF" ss:Pattern="Solid"/>
+<Alignment ss:Horizontal="Right" ss:Vertical="Top" ss:WrapText="1" />
+<Borders>
+</Borders>
+</Style>
+<Style ss:ID="s25">
+<Font ss:FontName="IRANSans(FaNum)" ss:Size="8" ss:Color="#000000"/>
+<Interior ss:Color="#FFFFFF" ss:Pattern="Solid"/>
+<Alignment ss:Horizontal="Right" ss:Vertical="Top" ss:WrapText="1" />
+<Borders>
+<Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#000000" />
+<Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#000000" />
+</Borders>
+</Style>
+<Style ss:ID="s26">
+<Font ss:FontName="Arial" ss:Size="1" ss:Color="#000000"/>
+<Interior ss:Color="#FFFFFF" ss:Pattern="Solid"/>
+<Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:WrapText="0" />
+<Borders>
+<Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#000000" />
+</Borders>
+</Style>
+<Style ss:ID="s27">
+<Font ss:FontName="IRANSans(FaNum)" ss:Size="11" ss:Color="#000000" ss:Bold="1"/>
+<Interior ss:Color="#FFFFFF" ss:Pattern="Solid"/>
+<Alignment ss:Horizontal="Center" ss:Vertical="Top" ss:WrapText="1" />
+<Borders>
+</Borders>
+</Style>
+<Style ss:ID="s28">
+<Font ss:FontName="IRANSans(FaNum)" ss:Size="8" ss:Color="#000000"/>
+<Interior ss:Color="#FFFFFF" ss:Pattern="Solid"/>
+<Alignment ss:Horizontal="Right" ss:Vertical="Top" ss:WrapText="1" />
+<Borders>
+</Borders>
+</Style>
+<Style ss:ID="s29">
+<Font ss:FontName="Arial" ss:Size="10" ss:Color="#000000"/>
+<Interior ss:Color="#FFFFFF" ss:Pattern="Solid"/>
+<Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:WrapText="1" />
+<Borders>
+<Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#000000" />
+</Borders>
+</Style>
+<Style ss:ID="s30">
+<Font ss:FontName="Arial" ss:Size="10" ss:Color="#000000"/>
+<Interior ss:Color="#FFFFFF" ss:Pattern="Solid"/>
+<Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:WrapText="1" />
+<Borders>
+</Borders>
+</Style>
+</Styles>
+<Worksheet ss:Name="Page1">
+<Table ss:ExpandedColumnCount="63" ss:ExpandedRowCount="43" x:FullColumns="1" x:FullRows="1">
+<Column ss:AutoFitWidth="0" ss:Width="2.36"/>
+<Column ss:AutoFitWidth="0" ss:Width="1.25"/>
+<Column ss:AutoFitWidth="0" ss:Width="1.11"/>
+<Column ss:AutoFitWidth="0" ss:Width="66.14"/>
+<Column ss:AutoFitWidth="0" ss:Width="1.25"/>
+<Column ss:AutoFitWidth="0" ss:Width="1.11"/>
+<Column ss:AutoFitWidth="0" ss:Width="1.25"/>
+<Column ss:AutoFitWidth="0" ss:Width="4.02"/>
+<Column ss:AutoFitWidth="0" ss:Width="27.80"/>
+<Column ss:AutoFitWidth="0" ss:Width="2.36"/>
+<Column ss:AutoFitWidth="0" ss:Width="1.25"/>
+<Column ss:AutoFitWidth="0" ss:Width="1.11"/>
+<Column ss:AutoFitWidth="0" ss:Width="1.25"/>
+<Column ss:AutoFitWidth="0" ss:Width="11.42"/>
+<Column ss:AutoFitWidth="0" ss:Width="46.38"/>
+<Column ss:AutoFitWidth="0" ss:Width="2.36"/>
+<Column ss:AutoFitWidth="0" ss:Width="3.59"/>
+<Column ss:AutoFitWidth="0" ss:Width="2.39"/>
+<Column ss:AutoFitWidth="0" ss:Width="2.36"/>
+<Column ss:AutoFitWidth="0" ss:Width="8.20"/>
+<Column ss:AutoFitWidth="0" ss:Width="29.87"/>
+<Column ss:AutoFitWidth="0" ss:Width="12.65"/>
+<Column ss:AutoFitWidth="0" ss:Width="1.25"/>
+<Column ss:AutoFitWidth="0" ss:Width="1.11"/>
+<Column ss:AutoFitWidth="0" ss:Width="1.25"/>
+<Column ss:AutoFitWidth="0" ss:Width="1.11"/>
+<Column ss:AutoFitWidth="0" ss:Width="42.10"/>
+<Column ss:AutoFitWidth="0" ss:Width="14.60"/>
+<Column ss:AutoFitWidth="0" ss:Width="1.87"/>
+<Column ss:AutoFitWidth="0" ss:Width="4.10"/>
+<Column ss:AutoFitWidth="0" ss:Width="2.36"/>
+<Column ss:AutoFitWidth="0" ss:Width="15.29"/>
+<Column ss:AutoFitWidth="0" ss:Width="2.36"/>
+<Column ss:AutoFitWidth="0" ss:Width="9.45"/>
+<Column ss:AutoFitWidth="0" ss:Width="1.25"/>
+<Column ss:AutoFitWidth="0" ss:Width="1.11"/>
+<Column ss:AutoFitWidth="0" ss:Width="2.36"/>
+<Column ss:AutoFitWidth="0" ss:Width="9.45"/>
+<Column ss:AutoFitWidth="0" ss:Width="6.60"/>
+<Column ss:AutoFitWidth="0" ss:Width="1.74"/>
+<Column ss:AutoFitWidth="0" ss:Width="3.61"/>
+<Column ss:AutoFitWidth="0" ss:Width="2.22"/>
+<Column ss:AutoFitWidth="0" ss:Width="9.64"/>
+<Column ss:AutoFitWidth="0" ss:Width="35.68"/>
+<Column ss:AutoFitWidth="0" ss:Width="39.72"/>
+<Column ss:AutoFitWidth="0" ss:Width="5.48"/>
+<Column ss:AutoFitWidth="0" ss:Width="29.95"/>
+<Column ss:AutoFitWidth="0" ss:Width="11.81"/>
+<Column ss:AutoFitWidth="0" ss:Width="4.72"/>
+<Column ss:AutoFitWidth="0" ss:Width="20.12"/>
+<Column ss:AutoFitWidth="0" ss:Width="17.68"/>
+<Column ss:AutoFitWidth="0" ss:Width="10.69"/>
+<Column ss:AutoFitWidth="0" ss:Width="11.81"/>
+<Column ss:AutoFitWidth="0" ss:Width="4.72"/>
+<Column ss:AutoFitWidth="0" ss:Width="17.66"/>
+<Column ss:AutoFitWidth="0" ss:Width="5.96"/>
+<Column ss:AutoFitWidth="0" ss:Width="0.46"/>
+<Column ss:AutoFitWidth="0" ss:Width="5.39"/>
+<Column ss:AutoFitWidth="0" ss:Width="68.35"/>
+<Column ss:AutoFitWidth="0" ss:Width="14.46"/>
+<Column ss:AutoFitWidth="0" ss:Width="2.22"/>
+<Column ss:AutoFitWidth="0" ss:Width="5.02"/>
+<Row ss:Height="2.33">
+<Cell ss:Index="1" ss:MergeAcross="61" ss:StyleID="s29" >
+<Data ss:Type="String"></Data>
+</Cell>
+<Cell ss:Index="63" />
+</Row>
+<Row ss:Height="3.17">
+<Cell ss:Index="1" ss:MergeAcross="25" ss:StyleID="s29" >
+<Data ss:Type="String"></Data>
+</Cell>
+<Cell ss:Index="27" ss:MergeAcross="18" ss:MergeDown="4" ss:StyleID="s3" >
+<Data ss:Type="String">صورتحساب فروش کالا و خدمات</Data>
+</Cell>
+<Cell ss:Index="46" ss:MergeAcross="16" ss:MergeDown="6" ss:StyleID="s30" >
+<Data ss:Type="String"></Data>
+</Cell>
+<Cell ss:Index="63" />
+</Row>
+<Row ss:Height="0.61">
+<Cell ss:Index="1" ss:MergeAcross="2" ss:MergeDown="5" ss:StyleID="s29" >
+<Data ss:Type="String"></Data>
+</Cell>
+<Cell ss:Index="4" ss:MergeAcross="5" ss:MergeDown="2" ss:StyleID="s2" >
+<Data ss:Type="String">شماره سریال:232</Data>
+</Cell>
+<Cell ss:Index="10" ss:MergeAcross="16" ss:MergeDown="5" ss:StyleID="s30" >
+<Data ss:Type="String"></Data>
+</Cell>
+<Cell ss:Index="63" />
+</Row>
+<Row ss:Height="7.27">
+<Cell ss:Index="63" />
+</Row>
+<Row ss:Height="5.86">
+<Cell ss:Index="63" />
+</Row>
+<Row ss:Height="2.65">
+<Cell ss:Index="4" ss:MergeAcross="5" ss:StyleID="s30" >
+<Data ss:Type="String"></Data>
+</Cell>
+<Cell ss:Index="63" />
+</Row>
+<Row ss:Height="13.73">
+<Cell ss:Index="4" ss:MergeAcross="5" ss:StyleID="s2" >
+<Data ss:Type="String">تاریخ:1404/05/06</Data>
+</Cell>
+<Cell ss:Index="27" ss:MergeAcross="18" ss:MergeDown="1" ss:StyleID="s30" >
+<Data ss:Type="String"></Data>
+</Cell>
+<Cell ss:Index="63" />
+</Row>
+<Row ss:Height="10.24">
+<Cell ss:Index="4" ss:MergeAcross="5" ss:StyleID="s30" >
+<Data ss:Type="String"></Data>
+</Cell>
+<Cell ss:Index="63" />
+</Row>
+<Row ss:Height="16.48">
+<Cell ss:Index="1" ss:MergeAcross="61" ss:StyleID="s4" >
+<Data ss:Type="String">اطلاعات سامانه مالیاتی</Data>
+</Cell>
+<Cell ss:Index="63" />
+</Row>
+<Row ss:Height="2.75">
+<Cell ss:Index="1" />
+<Cell ss:Index="2" />
+<Cell ss:Index="3" />
+<Cell ss:Index="4" />
+<Cell ss:Index="5" />
+<Cell ss:Index="6" />
+<Cell ss:Index="7" />
+<Cell ss:Index="8" />
+<Cell ss:Index="9" />
+<Cell ss:Index="10" />
+<Cell ss:Index="11" />
+<Cell ss:Index="12" />
+<Cell ss:Index="13" />
+<Cell ss:Index="14" />
+<Cell ss:Index="15" />
+<Cell ss:Index="16" />
+<Cell ss:Index="17" />
+<Cell ss:Index="18" />
+<Cell ss:Index="19" />
+<Cell ss:Index="20" />
+<Cell ss:Index="21" />
+<Cell ss:Index="22" />
+<Cell ss:Index="23" />
+<Cell ss:Index="24" />
+<Cell ss:Index="25" />
+<Cell ss:Index="26" />
+<Cell ss:Index="27" />
+<Cell ss:Index="28" />
+<Cell ss:Index="29" />
+<Cell ss:Index="30" />
+<Cell ss:Index="31" />
+<Cell ss:Index="32" />
+<Cell ss:Index="33" />
+<Cell ss:Index="34" />
+<Cell ss:Index="35" />
+<Cell ss:Index="36" />
+<Cell ss:Index="37" />
+<Cell ss:Index="38" />
+<Cell ss:Index="39" />
+<Cell ss:Index="40" />
+<Cell ss:Index="41" />
+<Cell ss:Index="42" />
+<Cell ss:Index="43" />
+<Cell ss:Index="44" />
+<Cell ss:Index="45" />
+<Cell ss:Index="46" />
+<Cell ss:Index="47" />
+<Cell ss:Index="48" />
+<Cell ss:Index="49" />
+<Cell ss:Index="50" />
+<Cell ss:Index="51" />
+<Cell ss:Index="52" />
+<Cell ss:Index="53" />
+<Cell ss:Index="54" />
+<Cell ss:Index="55" />
+<Cell ss:Index="56" />
+<Cell ss:Index="57" />
+<Cell ss:Index="58" />
+<Cell ss:Index="59" />
+<Cell ss:Index="60" />
+<Cell ss:Index="61" />
+<Cell ss:Index="62" />
+<Cell ss:Index="63" />
+</Row>
+<Row ss:Height="0.73">
+<Cell ss:Index="1" />
+<Cell ss:Index="2" ss:MergeAcross="18" ss:MergeDown="1" ss:StyleID="s2" >
+<Data ss:Type="String"> تاریخ ایجاد فاکتور:1404/05/12</Data>
+</Cell>
+<Cell ss:Index="21" />
+<Cell ss:Index="22" />
+<Cell ss:Index="23" />
+<Cell ss:Index="24" />
+<Cell ss:Index="25" />
+<Cell ss:Index="26" />
+<Cell ss:Index="27" />
+<Cell ss:Index="28" />
+<Cell ss:Index="29" />
+<Cell ss:Index="30" />
+<Cell ss:Index="31" />
+<Cell ss:Index="32" />
+<Cell ss:Index="33" />
+<Cell ss:Index="34" />
+<Cell ss:Index="35" />
+<Cell ss:Index="36" />
+<Cell ss:Index="37" />
+<Cell ss:Index="38" />
+<Cell ss:Index="39" />
+<Cell ss:Index="40" />
+<Cell ss:Index="41" />
+<Cell ss:Index="42" />
+<Cell ss:Index="43" />
+<Cell ss:Index="44" />
+<Cell ss:Index="45" />
+<Cell ss:Index="46" />
+<Cell ss:Index="47" />
+<Cell ss:Index="48" />
+<Cell ss:Index="49" />
+<Cell ss:Index="50" />
+<Cell ss:Index="51" />
+<Cell ss:Index="52" />
+<Cell ss:Index="53" />
+<Cell ss:Index="54" />
+<Cell ss:Index="55" />
+<Cell ss:Index="56" />
+<Cell ss:Index="57" />
+<Cell ss:Index="58" />
+<Cell ss:Index="59" />
+<Cell ss:Index="60" />
+<Cell ss:Index="61" />
+<Cell ss:Index="62" />
+<Cell ss:Index="63" />
+</Row>
+<Row ss:Height="15.75">
+<Cell ss:Index="1" />
+<Cell ss:Index="21" />
+<Cell ss:Index="22" />
+<Cell ss:Index="23" />
+<Cell ss:Index="24" />
+<Cell ss:Index="25" />
+<Cell ss:Index="26" />
+<Cell ss:Index="27" />
+<Cell ss:Index="28" />
+<Cell ss:Index="29" />
+<Cell ss:Index="30" />
+<Cell ss:Index="31" />
+<Cell ss:Index="32" />
+<Cell ss:Index="33" />
+<Cell ss:Index="34" />
+<Cell ss:Index="35" />
+<Cell ss:Index="36" />
+<Cell ss:Index="37" />
+<Cell ss:Index="38" />
+<Cell ss:Index="39" />
+<Cell ss:Index="40" />
+<Cell ss:Index="41" />
+<Cell ss:Index="42" ss:MergeAcross="18" ss:StyleID="s5" >
+<Data ss:Type="String">شماره فاکتور اصلی:A11R9D04F4900000004DF2</Data>
+</Cell>
+<Cell ss:Index="61" />
+<Cell ss:Index="62" />
+<Cell ss:Index="63" />
+</Row>
+<Row ss:Height="19.23">
+<Cell ss:Index="1" />
+<Cell ss:Index="2" ss:MergeAcross="18" ss:MergeDown="1" ss:StyleID="s2" >
+<Data ss:Type="String"> تاریخ صدور فاکتور:1404/05/06</Data>
+</Cell>
+<Cell ss:Index="21" />
+<Cell ss:Index="22" />
+<Cell ss:Index="23" />
+<Cell ss:Index="24" />
+<Cell ss:Index="25" />
+<Cell ss:Index="26" />
+<Cell ss:Index="27" />
+<Cell ss:Index="28" />
+<Cell ss:Index="29" />
+<Cell ss:Index="30" />
+<Cell ss:Index="31" />
+<Cell ss:Index="32" />
+<Cell ss:Index="33" />
+<Cell ss:Index="34" />
+<Cell ss:Index="35" />
+<Cell ss:Index="36" />
+<Cell ss:Index="37" />
+<Cell ss:Index="38" />
+<Cell ss:Index="39" />
+<Cell ss:Index="40" />
+<Cell ss:Index="41" />
+<Cell ss:Index="42" ss:MergeAcross="18" ss:StyleID="s5" >
+<Data ss:Type="String">شماره فاکتور مرجع:</Data>
+</Cell>
+<Cell ss:Index="61" />
+<Cell ss:Index="62" />
+<Cell ss:Index="63" />
+</Row>
+<Row ss:Height="13.73">
+<Cell ss:Index="1" />
+<Cell ss:Index="21" />
+<Cell ss:Index="22" />
+<Cell ss:Index="23" />
+<Cell ss:Index="24" />
+<Cell ss:Index="25" />
+<Cell ss:Index="26" />
+<Cell ss:Index="27" />
+<Cell ss:Index="28" />
+<Cell ss:Index="29" />
+<Cell ss:Index="30" />
+<Cell ss:Index="31" />
+<Cell ss:Index="32" />
+<Cell ss:Index="33" />
+<Cell ss:Index="34" />
+<Cell ss:Index="35" />
+<Cell ss:Index="36" />
+<Cell ss:Index="37" />
+<Cell ss:Index="38" />
+<Cell ss:Index="39" />
+<Cell ss:Index="40" />
+<Cell ss:Index="41" />
+<Cell ss:Index="42" ss:MergeAcross="18" ss:StyleID="s5" >
+<Data ss:Type="String">سریال فاکتور حافظه مالیاتی:1247</Data>
+</Cell>
+<Cell ss:Index="61" />
+<Cell ss:Index="62" />
+<Cell ss:Index="63" />
+</Row>
+<Row ss:Height="2.75">
+<Cell ss:Index="1" />
+<Cell ss:Index="2" />
+<Cell ss:Index="3" />
+<Cell ss:Index="4" />
+<Cell ss:Index="5" />
+<Cell ss:Index="6" />
+<Cell ss:Index="7" />
+<Cell ss:Index="8" />
+<Cell ss:Index="9" />
+<Cell ss:Index="10" />
+<Cell ss:Index="11" />
+<Cell ss:Index="12" />
+<Cell ss:Index="13" />
+<Cell ss:Index="14" />
+<Cell ss:Index="15" />
+<Cell ss:Index="16" />
+<Cell ss:Index="17" />
+<Cell ss:Index="18" />
+<Cell ss:Index="19" />
+<Cell ss:Index="20" />
+<Cell ss:Index="21" />
+<Cell ss:Index="22" />
+<Cell ss:Index="23" />
+<Cell ss:Index="24" />
+<Cell ss:Index="25" />
+<Cell ss:Index="26" />
+<Cell ss:Index="27" />
+<Cell ss:Index="28" />
+<Cell ss:Index="29" />
+<Cell ss:Index="30" />
+<Cell ss:Index="31" />
+<Cell ss:Index="32" />
+<Cell ss:Index="33" />
+<Cell ss:Index="34" />
+<Cell ss:Index="35" />
+<Cell ss:Index="36" />
+<Cell ss:Index="37" />
+<Cell ss:Index="38" />
+<Cell ss:Index="39" />
+<Cell ss:Index="40" />
+<Cell ss:Index="41" />
+<Cell ss:Index="42" />
+<Cell ss:Index="43" />
+<Cell ss:Index="44" />
+<Cell ss:Index="45" />
+<Cell ss:Index="46" />
+<Cell ss:Index="47" />
+<Cell ss:Index="48" />
+<Cell ss:Index="49" />
+<Cell ss:Index="50" />
+<Cell ss:Index="51" />
+<Cell ss:Index="52" />
+<Cell ss:Index="53" />
+<Cell ss:Index="54" />
+<Cell ss:Index="55" />
+<Cell ss:Index="56" />
+<Cell ss:Index="57" />
+<Cell ss:Index="58" />
+<Cell ss:Index="59" />
+<Cell ss:Index="60" />
+<Cell ss:Index="61" />
+<Cell ss:Index="62" />
+<Cell ss:Index="63" />
+</Row>
+<Row ss:Height="16.48">
+<Cell ss:Index="1" ss:MergeAcross="61" ss:StyleID="s4" >
+<Data ss:Type="String">مشخصات‌ فروشنده‌</Data>
+</Cell>
+<Cell ss:Index="63" />
+</Row>
+<Row ss:Height="2.18">
+<Cell ss:Index="1" />
+<Cell ss:Index="2" />
+<Cell ss:Index="3" />
+<Cell ss:Index="4" />
+<Cell ss:Index="5" />
+<Cell ss:Index="6" />
+<Cell ss:Index="7" />
+<Cell ss:Index="8" />
+<Cell ss:Index="9" />
+<Cell ss:Index="10" />
+<Cell ss:Index="11" />
+<Cell ss:Index="12" />
+<Cell ss:Index="13" />
+<Cell ss:Index="14" />
+<Cell ss:Index="15" />
+<Cell ss:Index="16" />
+<Cell ss:Index="17" />
+<Cell ss:Index="18" />
+<Cell ss:Index="19" />
+<Cell ss:Index="20" />
+<Cell ss:Index="21" />
+<Cell ss:Index="22" />
+<Cell ss:Index="23" />
+<Cell ss:Index="24" />
+<Cell ss:Index="25" />
+<Cell ss:Index="26" />
+<Cell ss:Index="27" />
+<Cell ss:Index="28" />
+<Cell ss:Index="29" />
+<Cell ss:Index="30" />
+<Cell ss:Index="31" />
+<Cell ss:Index="32" />
+<Cell ss:Index="33" />
+<Cell ss:Index="34" />
+<Cell ss:Index="35" />
+<Cell ss:Index="36" />
+<Cell ss:Index="37" />
+<Cell ss:Index="38" />
+<Cell ss:Index="39" />
+<Cell ss:Index="40" />
+<Cell ss:Index="41" />
+<Cell ss:Index="42" />
+<Cell ss:Index="43" />
+<Cell ss:Index="44" />
+<Cell ss:Index="45" />
+<Cell ss:Index="46" />
+<Cell ss:Index="47" />
+<Cell ss:Index="48" />
+<Cell ss:Index="49" />
+<Cell ss:Index="50" />
+<Cell ss:Index="51" />
+<Cell ss:Index="52" />
+<Cell ss:Index="53" />
+<Cell ss:Index="54" />
+<Cell ss:Index="55" />
+<Cell ss:Index="56" />
+<Cell ss:Index="57" />
+<Cell ss:Index="58" />
+<Cell ss:Index="59" />
+<Cell ss:Index="60" />
+<Cell ss:Index="61" />
+<Cell ss:Index="62" />
+<Cell ss:Index="63" />
+</Row>
+<Row ss:Height="0.73">
+<Cell ss:Index="1" />
+<Cell ss:Index="2" />
+<Cell ss:Index="3" />
+<Cell ss:Index="4" />
+<Cell ss:Index="5" />
+<Cell ss:Index="6" />
+<Cell ss:Index="7" />
+<Cell ss:Index="8" ss:MergeAcross="3" ss:MergeDown="1" ss:StyleID="s7" >
+<Data ss:Type="String">کد پستی:</Data>
+</Cell>
+<Cell ss:Index="12" />
+<Cell ss:Index="13" />
+<Cell ss:Index="14" />
+<Cell ss:Index="15" />
+<Cell ss:Index="16" />
+<Cell ss:Index="17" />
+<Cell ss:Index="18" />
+<Cell ss:Index="19" />
+<Cell ss:Index="20" />
+<Cell ss:Index="21" />
+<Cell ss:Index="22" />
+<Cell ss:Index="23" />
+<Cell ss:Index="24" />
+<Cell ss:Index="25" />
+<Cell ss:Index="26" />
+<Cell ss:Index="27" />
+<Cell ss:Index="28" />
+<Cell ss:Index="29" />
+<Cell ss:Index="30" />
+<Cell ss:Index="31" />
+<Cell ss:Index="32" />
+<Cell ss:Index="33" />
+<Cell ss:Index="34" />
+<Cell ss:Index="35" />
+<Cell ss:Index="36" />
+<Cell ss:Index="37" />
+<Cell ss:Index="38" />
+<Cell ss:Index="39" />
+<Cell ss:Index="40" />
+<Cell ss:Index="41" />
+<Cell ss:Index="42" />
+<Cell ss:Index="43" />
+<Cell ss:Index="44" />
+<Cell ss:Index="45" />
+<Cell ss:Index="46" />
+<Cell ss:Index="47" />
+<Cell ss:Index="48" />
+<Cell ss:Index="49" />
+<Cell ss:Index="50" />
+<Cell ss:Index="51" />
+<Cell ss:Index="52" />
+<Cell ss:Index="53" />
+<Cell ss:Index="54" />
+<Cell ss:Index="55" />
+<Cell ss:Index="56" />
+<Cell ss:Index="57" />
+<Cell ss:Index="58" />
+<Cell ss:Index="59" />
+<Cell ss:Index="60" />
+<Cell ss:Index="61" />
+<Cell ss:Index="62" />
+<Cell ss:Index="63" />
+</Row>
+<Row ss:Height="14.78">
+<Cell ss:Index="1" />
+<Cell ss:Index="2" />
+<Cell ss:Index="3" ss:MergeAcross="2" ss:StyleID="s5" >
+<Data ss:Type="String">6719859866</Data>
+</Cell>
+<Cell ss:Index="6" />
+<Cell ss:Index="7" />
+<Cell ss:Index="12" />
+<Cell ss:Index="13" />
+<Cell ss:Index="14" ss:MergeAcross="4" ss:StyleID="s5" >
+<Data ss:Type="String"></Data>
+</Cell>
+<Cell ss:Index="19" />
+<Cell ss:Index="20" ss:MergeAcross="3" ss:StyleID="s7" >
+<Data ss:Type="String">شماره ثبت/ملی:</Data>
+</Cell>
+<Cell ss:Index="24" />
+<Cell ss:Index="25" />
+<Cell ss:Index="26" ss:MergeAcross="4" ss:StyleID="s5" >
+<Data ss:Type="String">14011244414</Data>
+</Cell>
+<Cell ss:Index="31" />
+<Cell ss:Index="32" ss:MergeAcross="8" ss:StyleID="s7" >
+<Data ss:Type="String">شماره اقتصادی:</Data>
+</Cell>
+<Cell ss:Index="41" />
+<Cell ss:Index="42" />
+<Cell ss:Index="43" ss:MergeAcross="18" ss:StyleID="s6" >
+<Data ss:Type="String">نام شخص حقیقی/حقوقی: شركت آروشا تجارت زاگرس</Data>
+</Cell>
+<Cell ss:Index="62" />
+<Cell ss:Index="63" />
+</Row>
+<Row ss:Height="23.66">
+<Cell ss:Index="1" />
+<Cell ss:Index="2" />
+<Cell ss:Index="3" ss:StyleID="s5" >
+<Data ss:Type="String"></Data>
+</Cell>
+<Cell ss:Index="4" ss:MergeAcross="29" ss:MergeDown="1" ss:StyleID="s5" >
+<Data ss:Type="String">تلفن: </Data>
+</Cell>
+<Cell ss:Index="34" ss:StyleID="s7" >
+<Data ss:Type="String"></Data>
+</Cell>
+<Cell ss:Index="35" ss:MergeAcross="26" ss:StyleID="s5" >
+<Data ss:Type="String">نشانی:كرمانشه ديزل آباد معبر ماقبل آخر كوچه چوب فروش ها معبر آخر خيابان فرعي اول چوب فروش ها پلاك 0 طبقه همكف</Data>
+</Cell>
+<Cell ss:Index="62" />
+<Cell ss:Index="63" />
+</Row>
+<Row ss:Height="13.73">
+<Cell ss:Index="1" />
+<Cell ss:Index="2" />
+<Cell ss:Index="3" ss:StyleID="s2" >
+<Data ss:Type="String">WebSite:</Data>
+</Cell>
+<Cell ss:Index="34" ss:MergeAcross="1" ss:StyleID="s2" >
+<Data ss:Type="String"></Data>
+</Cell>
+<Cell ss:Index="36" ss:MergeAcross="2" ss:StyleID="s5" >
+<Data ss:Type="String"></Data>
+</Cell>
+<Cell ss:Index="39" ss:MergeAcross="22" ss:StyleID="s2" >
+<Data ss:Type="String">Email:</Data>
+</Cell>
+<Cell ss:Index="62" />
+<Cell ss:Index="63" />
+</Row>
+<Row ss:Height="16.48">
+<Cell ss:Index="1" ss:MergeAcross="61" ss:StyleID="s4" >
+<Data ss:Type="String">مشخصات‌ خريدار‌</Data>
+</Cell>
+<Cell ss:Index="63" />
+</Row>
+<Row ss:Height="2.02">
+<Cell ss:Index="1" />
+<Cell ss:Index="2" />
+<Cell ss:Index="3" />
+<Cell ss:Index="4" />
+<Cell ss:Index="5" />
+<Cell ss:Index="6" />
+<Cell ss:Index="7" />
+<Cell ss:Index="8" />
+<Cell ss:Index="9" />
+<Cell ss:Index="10" />
+<Cell ss:Index="11" />
+<Cell ss:Index="12" />
+<Cell ss:Index="13" />
+<Cell ss:Index="14" />
+<Cell ss:Index="15" />
+<Cell ss:Index="16" />
+<Cell ss:Index="17" />
+<Cell ss:Index="18" />
+<Cell ss:Index="19" />
+<Cell ss:Index="20" />
+<Cell ss:Index="21" />
+<Cell ss:Index="22" />
+<Cell ss:Index="23" />
+<Cell ss:Index="24" />
+<Cell ss:Index="25" />
+<Cell ss:Index="26" />
+<Cell ss:Index="27" />
+<Cell ss:Index="28" />
+<Cell ss:Index="29" />
+<Cell ss:Index="30" />
+<Cell ss:Index="31" />
+<Cell ss:Index="32" />
+<Cell ss:Index="33" />
+<Cell ss:Index="34" />
+<Cell ss:Index="35" />
+<Cell ss:Index="36" />
+<Cell ss:Index="37" />
+<Cell ss:Index="38" />
+<Cell ss:Index="39" />
+<Cell ss:Index="40" />
+<Cell ss:Index="41" />
+<Cell ss:Index="42" />
+<Cell ss:Index="43" ss:MergeAcross="18" ss:MergeDown="3" ss:StyleID="s5" >
+<Data ss:Type="String">نام شخص حقیقی/حقوقی:  فرهادزاده كوروش</Data>
+</Cell>
+<Cell ss:Index="62" />
+<Cell ss:Index="63" />
+</Row>
+<Row ss:Height="13.73">
+<Cell ss:Index="1" />
+<Cell ss:Index="2" ss:MergeAcross="2" ss:MergeDown="1" ss:StyleID="s5" >
+<Data ss:Type="String"></Data>
+</Cell>
+<Cell ss:Index="5" />
+<Cell ss:Index="6" />
+<Cell ss:Index="7" ss:MergeAcross="3" ss:MergeDown="1" ss:StyleID="s7" >
+<Data ss:Type="String">کد پستی:</Data>
+</Cell>
+<Cell ss:Index="11" />
+<Cell ss:Index="12" />
+<Cell ss:Index="13" ss:MergeAcross="2" ss:StyleID="s5" >
+<Data ss:Type="String">4219170952</Data>
+</Cell>
+<Cell ss:Index="16" />
+<Cell ss:Index="17" ss:MergeAcross="5" ss:MergeDown="1" ss:StyleID="s7" >
+<Data ss:Type="String">شماره ثبت/ملی:</Data>
+</Cell>
+<Cell ss:Index="23" />
+<Cell ss:Index="24" />
+<Cell ss:Index="25" ss:MergeAcross="3" ss:StyleID="s5" >
+<Data ss:Type="String">42191709520005</Data>
+</Cell>
+<Cell ss:Index="29" />
+<Cell ss:Index="30" ss:MergeAcross="9" ss:MergeDown="2" ss:StyleID="s7" >
+<Data ss:Type="String">شماره اقتصادی:</Data>
+</Cell>
+<Cell ss:Index="40" />
+<Cell ss:Index="41" />
+<Cell ss:Index="42" />
+<Cell ss:Index="62" />
+<Cell ss:Index="63" />
+</Row>
+<Row ss:Height="2.43">
+<Cell ss:Index="1" />
+<Cell ss:Index="5" />
+<Cell ss:Index="6" />
+<Cell ss:Index="11" />
+<Cell ss:Index="12" />
+<Cell ss:Index="13" />
+<Cell ss:Index="14" />
+<Cell ss:Index="15" />
+<Cell ss:Index="16" />
+<Cell ss:Index="23" />
+<Cell ss:Index="24" />
+<Cell ss:Index="25" />
+<Cell ss:Index="26" />
+<Cell ss:Index="27" />
+<Cell ss:Index="28" />
+<Cell ss:Index="29" />
+<Cell ss:Index="40" />
+<Cell ss:Index="41" />
+<Cell ss:Index="42" />
+<Cell ss:Index="62" />
+<Cell ss:Index="63" />
+</Row>
+<Row ss:Height="13.73">
+<Cell ss:Index="1" />
+<Cell ss:Index="2" ss:MergeAcross="27" ss:StyleID="s5" >
+<Data ss:Type="String">تلفن:تلفن: 09166682285</Data>
+</Cell>
+<Cell ss:Index="40" ss:MergeAcross="2" ss:StyleID="s5" >
+<Data ss:Type="String">نشانی:خيابان كمربندي بالاتر از بيمارستان نرگس  </Data>
+</Cell>
+<Cell ss:Index="62" />
+<Cell ss:Index="63" />
+</Row>
+<Row ss:Height="16.72">
+<Cell ss:Index="1" ss:MergeAcross="61" ss:StyleID="s11" >
+<Data ss:Type="String">مشخصات کالا و خدمات مورد معامله</Data>
+</Cell>
+<Cell ss:Index="63" />
+</Row>
+<Row ss:Height="27.47">
+<Cell ss:Index="1" ss:MergeAcross="7" ss:StyleID="s10" >
+<Data ss:Type="String">جمع مبلغ کل بعلاوه جمع مالیات و عوارض</Data>
+</Cell>
+<Cell ss:Index="9" ss:MergeAcross="5" ss:StyleID="s8" >
+<Data ss:Type="String">جمع مالیات و عوارض</Data>
+</Cell>
+<Cell ss:Index="15" ss:MergeAcross="2" ss:StyleID="s8" >
+<Data ss:Type="String">مبلغ کل پس از تخفیف</Data>
+</Cell>
+<Cell ss:Index="18" ss:MergeAcross="3" ss:StyleID="s8" >
+<Data ss:Type="String">مبلغ تخفیف</Data>
+</Cell>
+<Cell ss:Index="22" ss:MergeAcross="5" ss:StyleID="s8" >
+<Data ss:Type="String">مبلغ کل(ریال)</Data>
+</Cell>
+<Cell ss:Index="28" ss:MergeAcross="8" ss:StyleID="s8" >
+<Data ss:Type="String">مبلغ واحد</Data>
+</Cell>
+<Cell ss:Index="37" ss:MergeAcross="6" ss:StyleID="s9" >
+<Data ss:Type="String">واحد اندازه گیری</Data>
+</Cell>
+<Cell ss:Index="44" ss:StyleID="s8" >
+<Data ss:Type="String">مقدار</Data>
+</Cell>
+<Cell ss:Index="45" ss:MergeAcross="5" ss:StyleID="s8" >
+<Data ss:Type="String">شرح کالا یا خدمات</Data>
+</Cell>
+<Cell ss:Index="51" ss:MergeAcross="6" ss:StyleID="s8" >
+<Data ss:Type="String">کد</Data>
+</Cell>
+<Cell ss:Index="58" ss:MergeAcross="1" ss:StyleID="s8" >
+<Data ss:Type="String">کد</Data>
+</Cell>
+<Cell ss:Index="60" ss:MergeAcross="2" ss:StyleID="s9" >
+<Data ss:Type="String">ردیف</Data>
+</Cell>
+<Cell ss:Index="63" />
+</Row>
+<Row ss:Height="41.42">
+<Cell ss:Index="1" ss:MergeAcross="7" ss:StyleID="s19" >
+<Data ss:Type="Number">502319998</Data>
+</Cell>
+<Cell ss:Index="9" ss:MergeAcross="5" ss:StyleID="s18" >
+<Data ss:Type="Number">45665454</Data>
+</Cell>
+<Cell ss:Index="15" ss:MergeAcross="2" ss:StyleID="s18" >
+<Data ss:Type="Number">456654544</Data>
+</Cell>
+<Cell ss:Index="18" ss:MergeAcross="3" ss:StyleID="s18" >
+<Data ss:Type="Number">128800000</Data>
+</Cell>
+<Cell ss:Index="22" ss:MergeAcross="5" ss:StyleID="s18" >
+<Data ss:Type="Number">585454544</Data>
+</Cell>
+<Cell ss:Index="28" ss:MergeAcross="8" ss:StyleID="s17" >
+<Data ss:Type="String">146,363,636</Data>
+</Cell>
+<Cell ss:Index="37" ss:MergeAcross="6" ss:StyleID="s16" >
+<Data ss:Type="String">عدد</Data>
+</Cell>
+<Cell ss:Index="44" ss:StyleID="s15" >
+<Data ss:Type="String">4</Data>
+</Cell>
+<Cell ss:Index="45" ss:MergeAcross="1" ss:StyleID="s20" >
+<Data ss:Type="String"></Data>
+</Cell>
+<Cell ss:Index="47" ss:MergeAcross="3" ss:StyleID="s12" >
+<Data ss:Type="String">متعلقات حمام رومر پلاس مشكي كروم 4 سقفي  </Data>
+</Cell>
+<Cell ss:Index="51" ss:MergeAcross="6" ss:StyleID="s14" >
+<Data ss:Type="String"></Data>
+</Cell>
+<Cell ss:Index="58" ss:MergeAcross="1" ss:StyleID="s14" >
+<Data ss:Type="String">2906672707545</Data>
+</Cell>
+<Cell ss:Index="60" ss:MergeAcross="2" ss:StyleID="s13" >
+<Data ss:Type="String">1</Data>
+</Cell>
+<Cell ss:Index="63" />
+</Row>
+<Row ss:Height="28.34">
+<Cell ss:Index="1" ss:MergeAcross="7" ss:StyleID="s19" >
+<Data ss:Type="Number">218088002</Data>
+</Cell>
+<Cell ss:Index="9" ss:MergeAcross="5" ss:StyleID="s18" >
+<Data ss:Type="Number">19826182</Data>
+</Cell>
+<Cell ss:Index="15" ss:MergeAcross="2" ss:StyleID="s18" >
+<Data ss:Type="Number">198261820</Data>
+</Cell>
+<Cell ss:Index="18" ss:MergeAcross="3" ss:StyleID="s18" >
+<Data ss:Type="Number">55920000</Data>
+</Cell>
+<Cell ss:Index="22" ss:MergeAcross="5" ss:StyleID="s18" >
+<Data ss:Type="Number">254181820</Data>
+</Cell>
+<Cell ss:Index="28" ss:MergeAcross="8" ss:StyleID="s17" >
+<Data ss:Type="String">63,545,455</Data>
+</Cell>
+<Cell ss:Index="37" ss:MergeAcross="6" ss:StyleID="s16" >
+<Data ss:Type="String">عدد</Data>
+</Cell>
+<Cell ss:Index="44" ss:StyleID="s15" >
+<Data ss:Type="String">4</Data>
+</Cell>
+<Cell ss:Index="45" ss:MergeAcross="1" ss:StyleID="s20" >
+<Data ss:Type="String"></Data>
+</Cell>
+<Cell ss:Index="47" ss:MergeAcross="3" ss:StyleID="s12" >
+<Data ss:Type="String">متعلقات توالت رومر پلاس كروم مات  </Data>
+</Cell>
+<Cell ss:Index="51" ss:MergeAcross="6" ss:StyleID="s14" >
+<Data ss:Type="String"></Data>
+</Cell>
+<Cell ss:Index="58" ss:MergeAcross="1" ss:StyleID="s14" >
+<Data ss:Type="String">2906672708184</Data>
+</Cell>
+<Cell ss:Index="60" ss:MergeAcross="2" ss:StyleID="s13" >
+<Data ss:Type="String">2</Data>
+</Cell>
+<Cell ss:Index="63" />
+</Row>
+<Row ss:Height="28.34">
+<Cell ss:Index="1" ss:MergeAcross="7" ss:StyleID="s19" >
+<Data ss:Type="Number">92040000</Data>
+</Cell>
+<Cell ss:Index="9" ss:MergeAcross="5" ss:StyleID="s18" >
+<Data ss:Type="Number">8367272</Data>
+</Cell>
+<Cell ss:Index="15" ss:MergeAcross="2" ss:StyleID="s18" >
+<Data ss:Type="Number">83672728</Data>
+</Cell>
+<Cell ss:Index="18" ss:MergeAcross="3" ss:StyleID="s18" >
+<Data ss:Type="Number">23600000</Data>
+</Cell>
+<Cell ss:Index="22" ss:MergeAcross="5" ss:StyleID="s18" >
+<Data ss:Type="Number">107272728</Data>
+</Cell>
+<Cell ss:Index="28" ss:MergeAcross="8" ss:StyleID="s17" >
+<Data ss:Type="String">26,818,182</Data>
+</Cell>
+<Cell ss:Index="37" ss:MergeAcross="6" ss:StyleID="s16" >
+<Data ss:Type="String">عدد</Data>
+</Cell>
+<Cell ss:Index="44" ss:StyleID="s15" >
+<Data ss:Type="String">4</Data>
+</Cell>
+<Cell ss:Index="45" ss:MergeAcross="1" ss:StyleID="s20" >
+<Data ss:Type="String"></Data>
+</Cell>
+<Cell ss:Index="47" ss:MergeAcross="3" ss:StyleID="s12" >
+<Data ss:Type="String">روشويي ثابت اطلس كروم  </Data>
+</Cell>
+<Cell ss:Index="51" ss:MergeAcross="6" ss:StyleID="s14" >
+<Data ss:Type="String"></Data>
+</Cell>
+<Cell ss:Index="58" ss:MergeAcross="1" ss:StyleID="s14" >
+<Data ss:Type="String">2906672710545</Data>
+</Cell>
+<Cell ss:Index="60" ss:MergeAcross="2" ss:StyleID="s13" >
+<Data ss:Type="String">3</Data>
+</Cell>
+<Cell ss:Index="63" />
+</Row>
+<Row ss:Height="28.34">
+<Cell ss:Index="1" ss:MergeAcross="7" ss:StyleID="s19" >
+<Data ss:Type="Number">442416003</Data>
+</Cell>
+<Cell ss:Index="9" ss:MergeAcross="5" ss:StyleID="s18" >
+<Data ss:Type="Number">40219636</Data>
+</Cell>
+<Cell ss:Index="15" ss:MergeAcross="2" ss:StyleID="s18" >
+<Data ss:Type="Number">402196367</Data>
+</Cell>
+<Cell ss:Index="18" ss:MergeAcross="3" ss:StyleID="s18" >
+<Data ss:Type="Number">113440001</Data>
+</Cell>
+<Cell ss:Index="22" ss:MergeAcross="5" ss:StyleID="s18" >
+<Data ss:Type="Number">515636368</Data>
+</Cell>
+<Cell ss:Index="28" ss:MergeAcross="8" ss:StyleID="s17" >
+<Data ss:Type="String">64,454,546</Data>
+</Cell>
+<Cell ss:Index="37" ss:MergeAcross="6" ss:StyleID="s16" >
+<Data ss:Type="String">عدد</Data>
+</Cell>
+<Cell ss:Index="44" ss:StyleID="s15" >
+<Data ss:Type="String">8</Data>
+</Cell>
+<Cell ss:Index="45" ss:MergeAcross="1" ss:StyleID="s20" >
+<Data ss:Type="String"></Data>
+</Cell>
+<Cell ss:Index="47" ss:MergeAcross="3" ss:StyleID="s12" >
+<Data ss:Type="String">آشپزخانه باواريا كروم  </Data>
+</Cell>
+<Cell ss:Index="51" ss:MergeAcross="6" ss:StyleID="s14" >
+<Data ss:Type="String">2906672700447</Data>
+</Cell>
+<Cell ss:Index="58" ss:MergeAcross="1" ss:StyleID="s14" >
+<Data ss:Type="String"></Data>
+</Cell>
+<Cell ss:Index="60" ss:MergeAcross="2" ss:StyleID="s13" >
+<Data ss:Type="String">4</Data>
+</Cell>
+<Cell ss:Index="63" />
+</Row>
+<Row ss:Height="2.75">
+<Cell ss:Index="1" ss:MergeAcross="7" ss:MergeDown="1" ss:StyleID="s18" >
+<Data ss:Type="Number">1254864003</Data>
+</Cell>
+<Cell ss:Index="9" ss:MergeAcross="5" ss:MergeDown="1" ss:StyleID="s18" >
+<Data ss:Type="Number">114078544</Data>
+</Cell>
+<Cell ss:Index="15" ss:MergeAcross="2" ss:MergeDown="1" ss:StyleID="s18" >
+<Data ss:Type="Number">1140785459</Data>
+</Cell>
+<Cell ss:Index="18" ss:MergeAcross="3" ss:MergeDown="1" ss:StyleID="s18" >
+<Data ss:Type="Number">321760001</Data>
+</Cell>
+<Cell ss:Index="22" ss:MergeAcross="5" ss:MergeDown="1" ss:StyleID="s18" >
+<Data ss:Type="Number">1462545460</Data>
+</Cell>
+<Cell ss:Index="28" ss:MergeAcross="8" ss:MergeDown="1" ss:StyleID="s21" >
+<Data ss:Type="String">جمع کل</Data>
+</Cell>
+<Cell ss:Index="37" ss:MergeAcross="7" ss:MergeDown="1" ss:StyleID="s5" >
+<Data ss:Type="String">20</Data>
+</Cell>
+<Cell ss:Index="45" />
+<Cell ss:Index="46" />
+<Cell ss:Index="47" />
+<Cell ss:Index="48" />
+<Cell ss:Index="49" />
+<Cell ss:Index="50" />
+<Cell ss:Index="51" />
+<Cell ss:Index="52" />
+<Cell ss:Index="53" />
+<Cell ss:Index="54" />
+<Cell ss:Index="55" />
+<Cell ss:Index="56" />
+<Cell ss:Index="57" />
+<Cell ss:Index="58" />
+<Cell ss:Index="59" />
+<Cell ss:Index="60" />
+<Cell ss:Index="61" />
+<Cell ss:Index="62" />
+<Cell ss:Index="63" />
+</Row>
+<Row ss:Height="13.73">
+<Cell ss:Index="45" />
+<Cell ss:Index="46" />
+<Cell ss:Index="47" />
+<Cell ss:Index="49" />
+<Cell ss:Index="50" ss:MergeAcross="1" ss:StyleID="s2" >
+<Data ss:Type="String">غیر نقدی</Data>
+</Cell>
+<Cell ss:Index="52" />
+<Cell ss:Index="54" />
+<Cell ss:Index="55" ss:MergeAcross="1" ss:StyleID="s2" >
+<Data ss:Type="String">نقدی</Data>
+</Cell>
+<Cell ss:Index="57" />
+<Cell ss:Index="58" />
+<Cell ss:Index="59" ss:MergeAcross="1" ss:StyleID="s5" >
+<Data ss:Type="String">شرایط و نحوه ی فروش:</Data>
+</Cell>
+<Cell ss:Index="61" />
+<Cell ss:Index="62" />
+<Cell ss:Index="63" />
+</Row>
+<Row ss:Height="10.99">
+<Cell ss:Index="1" />
+<Cell ss:Index="2" />
+<Cell ss:Index="3" />
+<Cell ss:Index="4" />
+<Cell ss:Index="5" />
+<Cell ss:Index="6" />
+<Cell ss:Index="7" />
+<Cell ss:Index="8" />
+<Cell ss:Index="9" />
+<Cell ss:Index="10" />
+<Cell ss:Index="11" />
+<Cell ss:Index="12" />
+<Cell ss:Index="13" />
+<Cell ss:Index="14" />
+<Cell ss:Index="15" />
+<Cell ss:Index="16" />
+<Cell ss:Index="17" />
+<Cell ss:Index="18" />
+<Cell ss:Index="19" />
+<Cell ss:Index="20" />
+<Cell ss:Index="21" />
+<Cell ss:Index="22" />
+<Cell ss:Index="23" />
+<Cell ss:Index="24" />
+<Cell ss:Index="25" />
+<Cell ss:Index="26" />
+<Cell ss:Index="27" />
+<Cell ss:Index="28" />
+<Cell ss:Index="29" />
+<Cell ss:Index="30" />
+<Cell ss:Index="31" />
+<Cell ss:Index="32" />
+<Cell ss:Index="33" />
+<Cell ss:Index="34" />
+<Cell ss:Index="35" />
+<Cell ss:Index="36" />
+<Cell ss:Index="37" />
+<Cell ss:Index="38" />
+<Cell ss:Index="39" />
+<Cell ss:Index="40" />
+<Cell ss:Index="41" />
+<Cell ss:Index="42" />
+<Cell ss:Index="43" />
+<Cell ss:Index="44" />
+<Cell ss:Index="45" />
+<Cell ss:Index="46" />
+<Cell ss:Index="47" />
+<Cell ss:Index="48" />
+<Cell ss:Index="49" />
+<Cell ss:Index="50" />
+<Cell ss:Index="51" />
+<Cell ss:Index="52" />
+<Cell ss:Index="53" />
+<Cell ss:Index="54" />
+<Cell ss:Index="55" />
+<Cell ss:Index="56" />
+<Cell ss:Index="57" />
+<Cell ss:Index="58" />
+<Cell ss:Index="59" />
+<Cell ss:Index="60" />
+<Cell ss:Index="61" />
+<Cell ss:Index="62" />
+<Cell ss:Index="63" />
+</Row>
+<Row ss:Height="13.81">
+<Cell ss:Index="1" />
+<Cell ss:Index="2" ss:MergeAcross="32" ss:StyleID="s24" >
+<Data ss:Type="String"> يک ميليارد و دويست و پنجاه و چهار ميليون و هشتصد و شصت و چهار هزار و سه </Data>
+</Cell>
+<Cell ss:Index="35" />
+<Cell ss:Index="36" />
+<Cell ss:Index="37" />
+<Cell ss:Index="38" ss:MergeAcross="22" ss:StyleID="s22" >
+<Data ss:Type="String">توضیحات: </Data>
+</Cell>
+<Cell ss:Index="61" />
+<Cell ss:Index="62" />
+<Cell ss:Index="63" />
+</Row>
+<Row ss:Height="13.73">
+<Cell ss:Index="1" ss:MergeAcross="61" ss:StyleID="s25" >
+<Data ss:Type="String"></Data>
+</Cell>
+<Cell ss:Index="63" />
+</Row>
+<Row ss:Height="37.04">
+<Cell ss:Index="1" />
+<Cell ss:Index="2" />
+<Cell ss:Index="3" />
+<Cell ss:Index="4" />
+<Cell ss:Index="5" />
+<Cell ss:Index="6" />
+<Cell ss:Index="7" />
+<Cell ss:Index="8" />
+<Cell ss:Index="9" />
+<Cell ss:Index="10" />
+<Cell ss:Index="11" />
+<Cell ss:Index="12" />
+<Cell ss:Index="13" />
+<Cell ss:Index="14" />
+<Cell ss:Index="15" />
+<Cell ss:Index="16" />
+<Cell ss:Index="17" />
+<Cell ss:Index="18" />
+<Cell ss:Index="19" />
+<Cell ss:Index="20" />
+<Cell ss:Index="21" />
+<Cell ss:Index="22" />
+<Cell ss:Index="23" />
+<Cell ss:Index="24" />
+<Cell ss:Index="25" />
+<Cell ss:Index="26" />
+<Cell ss:Index="27" />
+<Cell ss:Index="28" />
+<Cell ss:Index="29" />
+<Cell ss:Index="30" />
+<Cell ss:Index="31" />
+<Cell ss:Index="32" />
+<Cell ss:Index="33" />
+<Cell ss:Index="34" />
+<Cell ss:Index="35" />
+<Cell ss:Index="36" />
+<Cell ss:Index="37" />
+<Cell ss:Index="38" />
+<Cell ss:Index="39" />
+<Cell ss:Index="40" />
+<Cell ss:Index="41" />
+<Cell ss:Index="42" />
+<Cell ss:Index="43" />
+<Cell ss:Index="44" />
+<Cell ss:Index="45" />
+<Cell ss:Index="46" />
+<Cell ss:Index="47" />
+<Cell ss:Index="48" />
+<Cell ss:Index="49" />
+<Cell ss:Index="50" />
+<Cell ss:Index="51" />
+<Cell ss:Index="52" />
+<Cell ss:Index="53" />
+<Cell ss:Index="54" />
+<Cell ss:Index="55" />
+<Cell ss:Index="56" />
+<Cell ss:Index="57" />
+<Cell ss:Index="58" />
+<Cell ss:Index="59" />
+<Cell ss:Index="60" />
+<Cell ss:Index="61" />
+<Cell ss:Index="62" />
+<Cell ss:Index="63" />
+</Row>
+<Row ss:Height="0.73">
+<Cell ss:Index="1" ss:StyleID="s26" >
+<Data ss:Type="String"></Data>
+</Cell>
+<Cell ss:Index="2" ss:MergeAcross="34" ss:MergeDown="1" ss:StyleID="s27" >
+<Data ss:Type="String">مهر و امضا خریدار</Data>
+</Cell>
+<Cell ss:Index="37" ss:MergeAcross="23" ss:MergeDown="1" ss:StyleID="s27" >
+<Data ss:Type="String">مهر و امضا فروشنده</Data>
+</Cell>
+<Cell ss:Index="61" ss:MergeAcross="1" ss:StyleID="s26" >
+<Data ss:Type="String"></Data>
+</Cell>
+<Cell ss:Index="63" />
+</Row>
+<Row ss:Height="18.50">
+<Cell ss:Index="1" />
+<Cell ss:Index="61" />
+<Cell ss:Index="62" />
+<Cell ss:Index="63" />
+</Row>
+<Row ss:Height="13.73">
+<Cell ss:Index="1" />
+<Cell ss:Index="2" />
+<Cell ss:Index="3" />
+<Cell ss:Index="4" />
+<Cell ss:Index="5" />
+<Cell ss:Index="6" />
+<Cell ss:Index="7" />
+<Cell ss:Index="8" />
+<Cell ss:Index="9" />
+<Cell ss:Index="10" />
+<Cell ss:Index="11" />
+<Cell ss:Index="12" />
+<Cell ss:Index="13" />
+<Cell ss:Index="14" />
+<Cell ss:Index="15" />
+<Cell ss:Index="16" />
+<Cell ss:Index="17" />
+<Cell ss:Index="18" />
+<Cell ss:Index="19" />
+<Cell ss:Index="20" />
+<Cell ss:Index="21" />
+<Cell ss:Index="22" />
+<Cell ss:Index="23" />
+<Cell ss:Index="24" />
+<Cell ss:Index="25" />
+<Cell ss:Index="26" />
+<Cell ss:Index="27" />
+<Cell ss:Index="28" />
+<Cell ss:Index="29" />
+<Cell ss:Index="30" />
+<Cell ss:Index="31" />
+<Cell ss:Index="32" />
+<Cell ss:Index="33" />
+<Cell ss:Index="34" />
+<Cell ss:Index="35" />
+<Cell ss:Index="36" />
+<Cell ss:Index="37" />
+<Cell ss:Index="38" />
+<Cell ss:Index="39" />
+<Cell ss:Index="40" />
+<Cell ss:Index="41" />
+<Cell ss:Index="42" />
+<Cell ss:Index="43" />
+<Cell ss:Index="44" />
+<Cell ss:Index="45" />
+<Cell ss:Index="46" />
+<Cell ss:Index="47" />
+<Cell ss:Index="48" />
+<Cell ss:Index="49" />
+<Cell ss:Index="50" />
+<Cell ss:Index="51" />
+<Cell ss:Index="52" />
+<Cell ss:Index="53" />
+<Cell ss:Index="54" />
+<Cell ss:Index="55" />
+<Cell ss:Index="56" />
+<Cell ss:Index="57" />
+<Cell ss:Index="58" />
+<Cell ss:Index="59" />
+<Cell ss:Index="60" />
+<Cell ss:Index="61" />
+<Cell ss:Index="62" />
+<Cell ss:Index="63" />
+</Row>
+<Row ss:Height="13.73">
+<Cell ss:Index="1" />
+<Cell ss:Index="2" />
+<Cell ss:Index="3" />
+<Cell ss:Index="4" />
+<Cell ss:Index="5" />
+<Cell ss:Index="6" />
+<Cell ss:Index="7" />
+<Cell ss:Index="8" />
+<Cell ss:Index="9" />
+<Cell ss:Index="10" />
+<Cell ss:Index="11" />
+<Cell ss:Index="12" />
+<Cell ss:Index="13" />
+<Cell ss:Index="14" />
+<Cell ss:Index="15" />
+<Cell ss:Index="16" />
+<Cell ss:Index="17" />
+<Cell ss:Index="18" />
+<Cell ss:Index="19" />
+<Cell ss:Index="20" />
+<Cell ss:Index="21" />
+<Cell ss:Index="22" />
+<Cell ss:Index="23" />
+<Cell ss:Index="24" />
+<Cell ss:Index="25" />
+<Cell ss:Index="26" />
+<Cell ss:Index="27" />
+<Cell ss:Index="28" />
+<Cell ss:Index="29" />
+<Cell ss:Index="30" />
+<Cell ss:Index="31" />
+<Cell ss:Index="32" />
+<Cell ss:Index="33" />
+<Cell ss:Index="34" />
+<Cell ss:Index="35" />
+<Cell ss:Index="36" />
+<Cell ss:Index="37" />
+<Cell ss:Index="38" />
+<Cell ss:Index="39" />
+<Cell ss:Index="40" />
+<Cell ss:Index="41" />
+<Cell ss:Index="42" />
+<Cell ss:Index="43" />
+<Cell ss:Index="44" />
+<Cell ss:Index="45" />
+<Cell ss:Index="46" />
+<Cell ss:Index="47" />
+<Cell ss:Index="48" />
+<Cell ss:Index="49" />
+<Cell ss:Index="50" />
+<Cell ss:Index="51" />
+<Cell ss:Index="52" />
+<Cell ss:Index="53" />
+<Cell ss:Index="54" />
+<Cell ss:Index="55" />
+<Cell ss:Index="56" ss:MergeAcross="4" ss:StyleID="s28" >
+<Data ss:Type="String">صفحه 1 از 1</Data>
+</Cell>
+<Cell ss:Index="61" />
+<Cell ss:Index="62" />
+<Cell ss:Index="63" />
+</Row>
+</Table>
+<WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+<PageSetup>
+<Layout x:Orientation="Landscape"/>
+<PageMargins x:Bottom="0.19" x:Left="0.19" x:Right="0.19" x:Top="0.19"/>
+</PageSetup>
+</WorksheetOptions>
+<PageBreaks xmlns="urn:schemas-microsoft-com:office:excel">
+<RowBreaks>
+</RowBreaks>
+</PageBreaks>
+</Worksheet>
+</Workbook>
