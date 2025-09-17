@@ -1,5 +1,7 @@
 // app/layout.js
 import NavBar from './components/NavBar';
+import { AuthProvider } from './contexts/AuthContext';
+import ProtectedRoute from './components/ProtectedRoute';
 
 export const metadata = {
   title: 'H-Bisetun',
@@ -29,8 +31,12 @@ export default function RootLayout({ children }) {
         <meta name="msapplication-tap-highlight" content="no" />
       </head>
       <body suppressHydrationWarning={true}>
-          <NavBar/>
-          {children}
+        <AuthProvider>
+          <ProtectedRoute>
+            <NavBar/>
+            {children}
+          </ProtectedRoute>
+        </AuthProvider>
       </body>
     </html>
   );
