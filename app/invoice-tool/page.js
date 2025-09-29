@@ -8,6 +8,7 @@ export default function InvoiceToolPage() {
   const [loading, setLoading] = useState(false);
   const [log, setLog] = useState('');
   const abortRef = useRef(null);
+  const [mode, setMode] = useState('consumer');
 
   const onPickSources = (e) => {
     const files = Array.from(e.target.files || []);
@@ -20,6 +21,7 @@ export default function InvoiceToolPage() {
 
     const fd = new FormData();
     for (const f of sources) fd.append('sources', f);
+    fd.append('mode', mode);
 
     const controller = new AbortController();
     abortRef.current = controller;
@@ -71,6 +73,14 @@ export default function InvoiceToolPage() {
 
       <form onSubmit={onSubmit} className={styles.form}>
         <div className={styles.field}>
+          <label className={styles.label}>نوع قالب</label>
+          <select value={mode} onChange={(e) => setMode(e.target.value)}>
+            <option value="consumer">مصرف کننده</option>
+            <option value="trader">تاجر</option>
+          </select>
+        </div>
+
+        <div className={styles.field}>
           <label className={styles.label}>فایل‌های فاکتور (.xls / .xlsx)</label>
           <input type="file" multiple accept=".xls,.xlsx" onChange={onPickSources} />
           {sources.length > 0 && (
@@ -94,7 +104,7 @@ export default function InvoiceToolPage() {
         <p>راهنما:</p>
         <ul>
           <li>یک یا چند فایل فاکتور (xls/xlsx) را انتخاب کنید.</li>
-          <li>قالب اکسل ثابت است و به‌صورت خودکار استفاده می‌شود.</li>
+          <li>قالب اکسل را از منوی بالا انتخاب کنید (مصرف کننده/تاجر).</li>
           <li>روی «پردازش» بزنید تا فایل نتیجه دانلود شود.</li>
         </ul>
       </div>
